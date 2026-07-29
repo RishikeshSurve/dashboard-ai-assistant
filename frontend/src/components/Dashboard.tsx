@@ -19,11 +19,18 @@ function formatMetricName(name: string): string {
   return name.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase());
 }
 
-function formatValue(value: number | string | null | undefined): string {
+function isPercentMetric(metricName: string): boolean {
+  return metricName.toLowerCase().includes("pct");
+}
+
+/** Rounds to at most 2 decimal places and appends "%" for percentage-style metrics
+ *  (e.g. margin_pct) so numbers stay clean and presentable everywhere they're shown. */
+function formatValue(value: number | string | null | undefined, metricName?: string): string {
   if (value === null || value === undefined) return "—";
   const n = typeof value === "string" ? parseFloat(value) : value;
   if (Number.isNaN(n)) return String(value);
-  return n.toLocaleString(undefined, { maximumFractionDigits: 2 });
+  const formatted = n.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+  return metricName && isPercentMetric(metricName) ? `${formatted}%` : formatted;
 }
 
 /** Score cards: used when the query has no dimension breakdown (a grand total). */
@@ -39,7 +46,7 @@ function ScoreCards({ result }: { result: QueryResult }) {
         return (
           <div className="score-card" key={metric}>
             <div className="score-card-label">{formatMetricName(metric)}</div>
-            <div className="score-card-value">{formatValue(row[metric])}</div>
+            <div className="score-card-value">{formatValue(row[metric], metric)}</div>
             {typeof delta === "number" && (
               <div className={`score-card-delta ${isUp ? "up" : isDown ? "down" : "flat"}`}>
                 {isUp ? "▲" : isDown ? "▼" : "–"} {Math.abs(delta)}%
@@ -86,7 +93,7 @@ export default function Dashboard({ result }: { result: QueryResult }) {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey={dimensionCol!} tick={{ fontSize: 12 }} />
                 <YAxis tick={{ fontSize: 12 }} />
-                <Tooltip />
+                <Tooltip formatter={(value: number, name: string) => [formatValue(value, name), formatMetricName(name)]} />
                 <Legend />
                 {metricCols.map((col, i) => (
                   <Line
@@ -104,7 +111,7 @@ export default function Dashboard({ result }: { result: QueryResult }) {
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis dataKey={dimensionCol!} tick={{ fontSize: 12 }} />
                 <YAxis tick={{ fontSize: 12 }} />
-                <Tooltip />
+                <Tooltip formatter={(value: number, name: string) => [formatValue(value, name), formatMetricName(name)]} />
                 <Legend />
                 {metricCols.map((col, i) => (
                   <Bar key={col} dataKey={col} fill={COLORS[i % COLORS.length]} />
@@ -128,7 +135,7 @@ export default function Dashboard({ result }: { result: QueryResult }) {
             {result.rows.map((row, i) => (
               <tr key={i}>
                 {result.columns.map((c) => (
-                  <td key={c}>{row[c]}</td>
+                  <td key={c}>{c === dimensionCol ? row[c] : formatValue(row[c], c)}</td>
                 ))}
               </tr>
             ))}

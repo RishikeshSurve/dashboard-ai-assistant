@@ -1,0 +1,901 @@
+metric_date,campaign_id,campaign_name,adset_id,adset_name,ecd_code,platform,impressions,clicks,spend,conversions,cpv,revenue,visits
+2026-06-15,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,3306,145,165.57,13,11.5,149.5,143
+2026-06-15,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,9530,275,210.22,5,7.7,38.5,345
+2026-06-15,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,7352,95,202.13,5,8.67,43.35,97
+2026-06-15,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,5154,186,117.8,16,4.17,66.72,230
+2026-06-15,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,16718,620,566.38,19,7.87,149.53,744
+2026-06-15,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,19559,213,352.47,9,11.25,101.25,255
+2026-06-15,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,5648,63,66.15,2,9.63,19.26,71
+2026-06-15,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,19800,894,1540.68,88,8.89,782.32,718
+2026-06-15,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,6136,206,150.13,19,7.19,136.61,191
+2026-06-15,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,11052,537,1186.14,25,10.09,252.25,501
+2026-06-15,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,19764,503,744.88,13,5.09,66.17,457
+2026-06-15,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,6059,266,261.71,15,7.01,105.15,340
+2026-06-15,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,6342,284,175.31,27,4.43,119.61,286
+2026-06-15,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,17986,194,303.5,10,3.15,31.5,225
+2026-06-15,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,5334,266,418.62,13,4.77,62.01,227
+2026-06-15,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,19582,722,581.47,19,3.71,70.49,910
+2026-06-15,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,6860,91,95.55,6,7.94,47.64,87
+2026-06-15,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,7925,408,833.22,34,4.49,152.66,415
+2026-06-15,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,7307,190,364.55,9,11.47,103.23,237
+2026-06-15,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,10430,479,252.99,22,5.66,124.52,544
+2026-06-16,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,19702,910,499.96,55,9.93,546.15,962
+2026-06-16,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,15755,808,1382.51,27,11.11,299.97,888
+2026-06-16,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,12966,298,363.74,19,10.29,195.51,289
+2026-06-16,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,8621,132,116.59,2,8.78,17.56,131
+2026-06-16,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,6525,166,317.11,10,4.22,42.2,215
+2026-06-16,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,4169,243,257.8,5,11.85,59.25,270
+2026-06-16,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,19870,285,383.0,6,4.97,29.82,300
+2026-06-16,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,11810,668,472.39,60,5.38,322.8,831
+2026-06-16,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,14087,259,444.05,20,4.03,80.6,313
+2026-06-16,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,2084,50,54.86,3,11.99,35.97,52
+2026-06-16,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,19250,652,758.58,45,10.26,461.7,632
+2026-06-16,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,17551,690,827.67,22,11.05,243.1,810
+2026-06-16,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,17816,892,1656.25,30,6.42,192.6,873
+2026-06-16,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,19555,1151,614.96,97,9.07,879.79,1384
+2026-06-16,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,18039,656,1166.51,44,8.5,374.0,717
+2026-06-16,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,7091,261,334.46,18,10.51,189.18,297
+2026-06-16,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,19385,479,723.82,26,10.14,263.64,410
+2026-06-16,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,15463,436,845.48,42,8.5,357.0,512
+2026-06-16,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,4584,103,182.32,6,4.13,24.78,97
+2026-06-16,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,8329,156,345.12,14,10.44,146.16,164
+2026-06-17,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,18670,602,353.8,55,4.73,260.15,636
+2026-06-17,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,19413,682,501.29,39,4.17,162.63,751
+2026-06-17,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,15492,248,554.21,24,4.79,114.96,269
+2026-06-17,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,18053,655,1246.22,26,6.3,163.8,722
+2026-06-17,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,6756,289,470.98,9,3.61,32.49,308
+2026-06-17,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,7438,286,365.83,19,10.78,204.82,336
+2026-06-17,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,2869,109,210.59,8,6.78,54.24,111
+2026-06-17,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,7093,167,285.51,12,4.83,57.96,186
+2026-06-17,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,12192,187,103.1,8,9.1,72.8,239
+2026-06-17,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,6869,222,326.05,10,9.87,98.7,219
+2026-06-17,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,7815,437,956.4,20,3.2,64.0,477
+2026-06-17,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,4961,120,152.78,3,8.15,24.45,153
+2026-06-17,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,2944,156,352.54,12,11.03,132.36,162
+2026-06-17,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,7874,120,83.12,3,4.73,14.19,127
+2026-06-17,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,13400,369,522.4,12,9.06,108.72,442
+2026-06-17,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,4166,106,145.75,10,5.15,51.5,97
+2026-06-17,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,9045,284,646.44,15,10.45,156.75,283
+2026-06-17,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16710,362,354.16,35,10.06,352.1,453
+2026-06-17,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,19481,285,507.86,19,8.23,156.37,252
+2026-06-17,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,4842,145,100.16,14,7.3,102.2,183
+2026-06-18,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,5144,94,226.78,5,3.07,15.35,78
+2026-06-18,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,2039,111,227.52,7,7.7,53.9,109
+2026-06-18,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,19643,367,756.25,17,9.06,154.02,383
+2026-06-18,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,4322,46,107.74,3,11.36,34.08,55
+2026-06-18,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,5879,112,244.05,3,3.27,9.81,107
+2026-06-18,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,12305,559,583.03,15,10.89,163.35,551
+2026-06-18,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,11115,560,287.28,47,9.28,436.16,543
+2026-06-18,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,10650,375,375.84,34,3.46,117.64,418
+2026-06-18,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,14997,855,766.64,57,10.48,597.36,787
+2026-06-18,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,12544,670,1649.24,26,6.45,167.7,822
+2026-06-18,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,6641,323,708.33,28,11.65,326.2,318
+2026-06-18,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,9253,392,727.31,16,6.69,107.04,317
+2026-06-18,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,17994,281,371.64,6,5.35,32.1,268
+2026-06-18,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,13614,318,411.43,15,6.65,99.75,344
+2026-06-18,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,4777,208,234.29,8,4.05,32.4,205
+2026-06-18,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,16237,256,441.5,6,8.99,53.94,289
+2026-06-18,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,5115,131,147.38,5,11.58,57.9,149
+2026-06-18,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,8357,237,567.44,23,7.16,164.68,222
+2026-06-18,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,13063,680,1106.52,58,3.26,189.08,559
+2026-06-18,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,2223,51,49.52,4,11.59,46.36,48
+2026-06-19,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,8985,478,644.54,13,7.84,101.92,550
+2026-06-19,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,3423,153,207.76,14,7.34,102.76,181
+2026-06-19,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,16645,906,1143.5,38,8.69,330.22,790
+2026-06-19,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,17337,867,538.75,56,11.44,640.64,873
+2026-06-19,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,15567,903,999.35,71,10.4,738.4,1009
+2026-06-19,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,11916,247,272.85,7,10.06,70.42,293
+2026-06-19,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,7094,147,297.97,4,6.42,25.68,143
+2026-06-19,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,11066,135,157.56,4,11.82,47.28,118
+2026-06-19,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,11882,623,1059.61,18,11.85,213.3,742
+2026-06-19,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,15460,188,374.01,14,10.3,144.2,186
+2026-06-19,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,14962,588,689.8,26,11.78,306.28,685
+2026-06-19,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,2291,77,58.88,2,10.21,20.42,70
+2026-06-19,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,19197,928,1534.26,60,11.8,708.0,1053
+2026-06-19,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,9400,234,504.53,6,11.93,71.58,263
+2026-06-19,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,6632,235,314.07,7,6.45,45.15,209
+2026-06-19,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,7755,123,235.64,9,4.47,40.23,157
+2026-06-19,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,17540,234,506.27,6,3.87,23.22,273
+2026-06-19,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,14513,510,682.03,16,4.8,76.8,562
+2026-06-19,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,10672,454,923.4,24,8.75,210.0,476
+2026-06-19,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,2374,54,65.83,2,9.01,18.02,55
+2026-06-20,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,16261,688,1637.1,54,4.38,236.52,708
+2026-06-20,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,13485,532,1054.84,43,9.27,398.61,451
+2026-06-20,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,7491,314,740.14,16,8.51,136.16,314
+2026-06-20,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,14093,700,431.62,48,7.76,372.48,817
+2026-06-20,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,10971,193,169.04,5,3.24,16.2,249
+2026-06-20,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,5034,162,89.08,9,7.5,67.5,145
+2026-06-20,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,13270,533,1126.9,41,7.83,321.03,685
+2026-06-20,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,16478,619,838.98,12,3.68,44.16,768
+2026-06-20,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,13377,490,893.29,12,8.83,105.96,395
+2026-06-20,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,6984,242,138.92,14,8.31,116.34,298
+2026-06-20,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,16315,809,1958.85,58,4.57,265.06,1039
+2026-06-20,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,12009,548,1051.47,23,11.06,254.38,671
+2026-06-20,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,13085,470,881.95,32,6.9,220.8,546
+2026-06-20,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,3038,44,55.38,2,3.51,7.02,35
+2026-06-20,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,19608,875,1566.71,87,7.99,695.13,914
+2026-06-20,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,19137,686,1471.48,27,6.35,171.45,805
+2026-06-20,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,6263,236,394.81,15,5.97,89.55,203
+2026-06-20,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,10192,128,187.03,6,11.41,68.46,147
+2026-06-20,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,19877,486,1172.86,28,10.24,286.72,555
+2026-06-20,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,7233,218,328.1,19,9.33,177.27,208
+2026-06-21,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,12869,153,98.91,5,5.27,26.35,127
+2026-06-21,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,6387,145,294.6,13,3.75,48.75,159
+2026-06-21,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,4337,60,71.24,2,8.88,17.76,69
+2026-06-21,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,11958,166,154.68,10,3.91,39.1,151
+2026-06-21,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,10744,432,745.08,29,5.08,147.32,351
+2026-06-21,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,17842,831,1285.77,68,4.29,291.72,1027
+2026-06-21,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,14403,200,217.27,14,10.97,153.58,196
+2026-06-21,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,6884,256,555.31,17,4.33,73.61,221
+2026-06-21,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,15764,805,572.42,77,8.72,671.44,977
+2026-06-21,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,16427,246,570.94,5,4.3,21.5,303
+2026-06-21,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,13692,289,484.91,9,5.76,51.84,330
+2026-06-21,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,17040,385,551.86,28,10.42,291.76,384
+2026-06-21,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,17791,485,898.51,24,10.55,253.2,523
+2026-06-21,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,7615,107,234.4,7,5.98,41.86,137
+2026-06-21,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,6597,127,277.36,8,10.79,86.32,162
+2026-06-21,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,10806,504,371.0,46,6.02,276.92,511
+2026-06-21,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,13586,729,1736.67,39,11.24,438.36,601
+2026-06-21,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,18905,993,1062.64,80,5.46,436.8,1243
+2026-06-21,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11746,383,718.98,12,6.74,80.88,395
+2026-06-21,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,5847,245,583.41,12,4.99,59.88,313
+2026-06-22,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,9459,525,690.51,29,6.64,192.56,503
+2026-06-22,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,19816,603,529.46,46,10.1,464.6,656
+2026-06-22,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,14958,352,489.21,31,6.27,194.37,384
+2026-06-22,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,14626,284,440.88,11,8.63,94.93,252
+2026-06-22,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,4604,204,296.45,12,8.44,101.28,235
+2026-06-22,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,18913,829,634.55,64,7.13,456.32,959
+2026-06-22,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,8300,375,221.87,14,5.6,78.4,314
+2026-06-22,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,12101,341,806.87,33,3.36,110.88,333
+2026-06-22,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,7013,222,436.81,21,5.43,114.03,267
+2026-06-22,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,7058,96,198.05,3,8.61,25.83,95
+2026-06-22,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,6172,116,58.42,8,8.16,65.28,142
+2026-06-22,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,5352,55,137.44,5,10.55,52.75,59
+2026-06-22,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,3788,40,94.75,2,7.22,14.44,41
+2026-06-22,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,5124,280,654.73,10,11.11,111.1,320
+2026-06-22,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,17879,300,639.13,29,7.55,218.95,314
+2026-06-22,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,19165,252,485.01,16,3.69,59.04,258
+2026-06-22,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,11425,457,549.9,30,4.91,147.3,515
+2026-06-22,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,6828,351,239.88,32,10.35,331.2,436
+2026-06-22,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,13147,530,596.34,41,9.61,394.01,652
+2026-06-22,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,17669,312,622.59,21,6.74,141.54,335
+2026-06-23,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,14763,644,1010.87,45,8.57,385.65,758
+2026-06-23,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,5861,210,262.51,7,10.24,71.68,210
+2026-06-23,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,16755,514,446.04,11,9.55,105.05,581
+2026-06-23,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,15604,738,1500.03,48,9.07,435.36,849
+2026-06-23,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,14253,273,348.05,15,4.47,67.05,249
+2026-06-23,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,19116,301,337.71,7,10.63,74.41,372
+2026-06-23,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,9628,513,646.51,28,10.51,294.28,452
+2026-06-23,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,10176,441,532.44,28,10.87,304.36,567
+2026-06-23,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,19634,956,1366.84,82,8.33,683.06,918
+2026-06-23,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,4631,243,535.74,21,6.42,134.82,232
+2026-06-23,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,3061,58,65.91,4,8.5,34.0,64
+2026-06-23,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,11262,280,200.54,7,11.9,83.3,313
+2026-06-23,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,7419,101,149.81,3,11.73,35.19,83
+2026-06-23,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,17581,414,972.2,30,5.52,165.6,443
+2026-06-23,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,18112,557,1214.14,32,3.74,119.68,454
+2026-06-23,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,13800,176,390.49,5,4.42,22.1,208
+2026-06-23,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,9348,489,586.91,31,4.03,124.93,459
+2026-06-23,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,2873,88,113.78,4,6.48,25.92,73
+2026-06-23,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,15065,249,309.03,16,5.87,93.92,257
+2026-06-23,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,17428,834,1754.73,71,9.86,700.06,950
+2026-06-24,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,3491,157,101.29,14,3.96,55.44,187
+2026-06-24,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,5492,97,174.91,3,10.69,32.07,98
+2026-06-24,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,4623,94,121.64,2,11.43,22.86,97
+2026-06-24,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,15994,865,721.08,29,6.61,191.69,837
+2026-06-24,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,15388,742,393.28,30,6.72,201.6,869
+2026-06-24,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,12921,430,254.68,26,8.93,232.18,411
+2026-06-24,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,13641,279,288.47,26,8.83,229.58,308
+2026-06-24,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,7064,397,386.47,13,10.2,132.6,352
+2026-06-24,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,10044,517,348.11,46,5.19,238.74,533
+2026-06-24,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,17989,964,551.21,24,8.68,208.32,1215
+2026-06-24,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,5411,307,239.86,24,5.14,123.36,396
+2026-06-24,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,11072,255,490.16,23,5.69,130.87,223
+2026-06-24,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,9297,348,437.53,29,3.71,107.59,355
+2026-06-24,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,3078,58,127.65,1,4.86,4.86,50
+2026-06-24,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,9226,227,238.28,14,4.51,63.14,233
+2026-06-24,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,5779,123,186.67,2,10.77,21.54,113
+2026-06-24,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,9410,473,1036.02,46,10.37,477.02,523
+2026-06-24,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,9357,106,250.34,9,8.85,79.65,126
+2026-06-24,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,10764,349,272.83,8,11.51,92.08,429
+2026-06-24,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,4682,169,263.02,8,11.26,90.08,144
+2026-06-25,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,11874,478,508.13,44,6.43,282.92,578
+2026-06-25,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,13981,567,1408.2,29,4.83,140.07,610
+2026-06-25,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,3763,42,54.35,3,3.75,11.25,39
+2026-06-25,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,7183,263,447.06,24,11.12,266.88,282
+2026-06-25,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,8646,414,261.76,38,11.87,451.06,510
+2026-06-25,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,12228,512,470.88,18,5.58,100.44,545
+2026-06-25,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,7607,279,276.1,15,5.43,81.45,352
+2026-06-25,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,15510,174,343.32,8,11.38,91.04,208
+2026-06-25,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,14418,386,574.6,17,7.39,125.63,377
+2026-06-25,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,9454,447,611.47,12,8.7,104.4,552
+2026-06-25,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,7501,313,759.39,26,9.03,234.78,364
+2026-06-25,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,9874,542,1144.09,45,8.4,378.0,612
+2026-06-25,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,16683,240,359.26,10,11.83,118.3,281
+2026-06-25,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,15051,849,932.67,55,8.1,445.5,1039
+2026-06-25,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,18230,683,496.15,19,9.98,189.62,827
+2026-06-25,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,17458,492,1151.5,16,11.64,186.24,402
+2026-06-25,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,2860,115,208.8,8,3.26,26.08,107
+2026-06-25,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,6508,77,179.78,4,10.48,41.92,90
+2026-06-25,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,15701,351,782.95,11,5.95,65.45,382
+2026-06-25,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,19945,1099,993.84,69,4.48,309.12,1348
+2026-06-26,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,3009,101,158.26,3,6.52,19.56,121
+2026-06-26,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,17809,337,545.33,19,11.9,226.1,366
+2026-06-26,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,7088,100,236.32,5,5.06,25.3,116
+2026-06-26,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,12638,660,874.29,46,10.44,480.24,634
+2026-06-26,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,18054,801,1789.07,72,6.85,493.2,951
+2026-06-26,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,16454,716,748.44,23,4.03,92.69,915
+2026-06-26,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,9196,406,887.4,33,5.06,166.98,331
+2026-06-26,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,10131,236,489.64,6,10.85,65.1,290
+2026-06-26,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,10465,282,637.5,21,5.49,115.29,227
+2026-06-26,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,16538,302,331.88,6,5.92,35.52,250
+2026-06-26,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,13001,420,432.78,16,3.61,57.76,389
+2026-06-26,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,6585,303,548.67,30,5.33,159.9,305
+2026-06-26,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,2582,39,51.66,2,3.0,6.0,32
+2026-06-26,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,19713,524,1053.88,16,11.9,190.4,608
+2026-06-26,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,14021,520,1047.06,42,6.97,292.74,472
+2026-06-26,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,15741,334,332.84,31,5.88,182.28,405
+2026-06-26,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,12124,679,816.19,23,4.29,98.67,766
+2026-06-26,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,17371,563,287.41,14,5.3,74.2,685
+2026-06-26,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,12247,238,194.85,23,7.2,165.6,295
+2026-06-26,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,16478,260,236.81,17,3.82,64.94,274
+2026-06-27,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,19882,492,869.9,21,10.98,230.58,631
+2026-06-27,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,15045,703,1553.63,51,9.73,496.23,719
+2026-06-27,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,16521,682,520.06,59,3.26,192.34,771
+2026-06-27,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,9887,377,349.8,30,11.34,340.2,349
+2026-06-27,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,14464,665,856.72,63,8.15,513.45,710
+2026-06-27,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,18844,284,450.16,18,5.44,97.92,361
+2026-06-27,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,12336,370,233.98,34,8.1,275.4,428
+2026-06-27,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,9288,185,432.33,8,10.38,83.04,228
+2026-06-27,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,8260,117,227.0,6,9.82,58.92,134
+2026-06-27,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,13746,395,312.5,24,8.09,194.16,472
+2026-06-27,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,5540,254,151.46,13,6.78,88.14,224
+2026-06-27,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,14722,689,1147.91,68,10.34,703.12,669
+2026-06-27,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,11981,653,1060.91,47,7.11,334.17,633
+2026-06-27,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,18409,870,1036.8,24,5.09,122.16,729
+2026-06-27,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,15931,240,518.43,19,5.68,107.92,311
+2026-06-27,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,14216,227,419.19,5,5.01,25.05,240
+2026-06-27,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,4280,73,128.94,1,9.72,9.72,66
+2026-06-27,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,19983,1139,1956.53,61,9.99,609.39,1046
+2026-06-27,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,18297,204,487.65,12,11.7,140.4,185
+2026-06-27,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,3823,124,189.29,7,3.52,24.64,127
+2026-06-28,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,14226,823,429.85,74,4.27,315.98,675
+2026-06-28,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,7301,109,165.32,9,10.21,91.89,120
+2026-06-28,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,12656,673,965.34,60,11.41,684.6,722
+2026-06-28,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,16824,544,704.03,42,11.85,497.7,597
+2026-06-28,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,3261,117,164.18,10,3.38,33.8,151
+2026-06-28,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,11282,436,367.35,19,11.03,209.57,466
+2026-06-28,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,8967,383,494.55,35,7.13,249.55,357
+2026-06-28,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,9304,104,92.17,4,10.78,43.12,133
+2026-06-28,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,18083,586,313.21,25,6.64,166.0,540
+2026-06-28,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,7570,141,242.38,7,9.15,64.05,147
+2026-06-28,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,15566,539,677.75,34,3.91,132.94,560
+2026-06-28,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,9286,411,730.19,23,11.47,263.81,402
+2026-06-28,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,3778,192,420.22,8,9.91,79.28,211
+2026-06-28,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,14999,876,1009.81,61,10.05,613.05,898
+2026-06-28,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,16736,387,860.84,10,10.79,107.9,332
+2026-06-28,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,3504,202,128.85,11,5.54,60.94,246
+2026-06-28,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,15757,514,418.82,23,5.92,136.16,653
+2026-06-28,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,5992,74,99.13,6,7.11,42.66,63
+2026-06-28,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,13563,168,178.54,11,10.59,116.49,190
+2026-06-28,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,12098,558,720.88,47,9.71,456.37,607
+2026-06-29,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,14913,549,1314.28,24,9.73,233.52,687
+2026-06-29,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,3705,66,160.32,1,3.82,3.82,57
+2026-06-29,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,6427,375,710.72,12,8.38,100.56,418
+2026-06-29,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,18961,317,722.97,6,11.86,71.16,287
+2026-06-29,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,18996,700,1727.36,16,6.49,103.84,827
+2026-06-29,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,3662,60,86.49,4,3.95,15.8,49
+2026-06-29,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,10081,476,751.11,37,6.86,253.82,519
+2026-06-29,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,11146,307,466.28,22,10.59,232.98,296
+2026-06-29,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,14092,474,740.31,25,9.71,242.75,457
+2026-06-29,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,6689,144,255.72,8,9.0,72.0,179
+2026-06-29,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,9391,170,110.06,14,5.65,79.1,163
+2026-06-29,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,11836,618,1348.03,55,4.63,254.65,524
+2026-06-29,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,13904,636,463.04,51,5.0,255.0,617
+2026-06-29,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,9475,263,626.54,14,9.12,127.68,297
+2026-06-29,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,9764,200,395.05,15,10.75,161.25,221
+2026-06-29,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,12724,182,257.26,9,5.62,50.58,216
+2026-06-29,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,4783,259,210.09,20,3.45,69.0,217
+2026-06-29,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,18378,732,390.06,44,5.18,227.92,638
+2026-06-29,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11363,418,917.24,22,10.94,240.68,486
+2026-06-29,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,3484,108,205.28,6,3.54,21.24,134
+2026-06-30,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,13267,273,630.97,24,4.28,102.72,243
+2026-06-30,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,16266,234,240.13,11,8.48,93.28,271
+2026-06-30,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,16253,587,1044.31,26,6.12,159.12,627
+2026-06-30,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,12318,136,291.57,10,5.48,54.8,146
+2026-06-30,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,3615,70,96.54,6,9.96,59.76,66
+2026-06-30,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,15974,472,901.22,43,8.67,372.81,540
+2026-06-30,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,13861,290,723.57,17,3.82,64.94,238
+2026-06-30,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,2904,45,109.84,1,11.66,11.66,41
+2026-06-30,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,16868,397,398.11,11,4.73,52.03,341
+2026-06-30,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,17245,949,1760.61,30,6.98,209.4,923
+2026-06-30,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,5431,74,62.18,3,9.59,28.77,79
+2026-06-30,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,6192,291,567.56,18,11.21,201.78,370
+2026-06-30,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,11567,432,539.04,12,11.07,132.84,451
+2026-06-30,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,4808,233,254.15,9,3.66,32.94,217
+2026-06-30,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,16030,293,228.09,10,4.86,48.6,243
+2026-06-30,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,9948,330,555.52,19,9.95,189.05,296
+2026-06-30,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,16519,711,1046.11,39,5.46,212.94,837
+2026-06-30,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16065,161,194.11,10,4.69,46.9,182
+2026-06-30,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,15213,430,559.5,28,4.75,133.0,462
+2026-06-30,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,17468,202,266.18,16,9.89,158.24,260
+2026-07-01,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,10281,202,174.27,16,10.67,170.72,247
+2026-07-01,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,15128,615,948.34,47,8.38,393.86,782
+2026-07-01,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,4934,158,194.59,6,5.73,34.38,126
+2026-07-01,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,7069,104,147.76,3,5.38,16.14,129
+2026-07-01,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,7455,232,400.49,5,7.65,38.25,202
+2026-07-01,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,16609,677,761.54,57,9.42,536.94,768
+2026-07-01,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,5592,98,80.36,7,8.37,58.59,97
+2026-07-01,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,5552,221,263.29,18,6.93,124.74,285
+2026-07-01,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,19559,1125,2115.37,39,9.65,376.35,1055
+2026-07-01,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,11802,495,667.57,19,10.61,201.59,445
+2026-07-01,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,5050,135,333.52,12,9.34,112.08,137
+2026-07-01,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,12998,555,524.2,21,10.84,227.64,560
+2026-07-01,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,15409,236,406.32,8,11.37,90.96,235
+2026-07-01,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,14451,658,1163.21,52,5.85,304.2,561
+2026-07-01,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,13495,494,836.7,16,11.81,188.96,467
+2026-07-01,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,19909,956,946.68,19,6.69,127.11,876
+2026-07-01,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,5729,156,112.6,11,8.34,91.74,165
+2026-07-01,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,19153,1124,714.14,69,7.57,522.33,1454
+2026-07-01,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,4409,129,180.69,8,10.43,83.44,143
+2026-07-01,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,15774,453,1034.05,25,11.25,281.25,447
+2026-07-02,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,19984,660,1055.56,28,3.61,101.08,560
+2026-07-02,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,7743,325,447.83,11,8.91,98.01,390
+2026-07-02,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,6466,175,251.72,3,11.3,33.9,222
+2026-07-02,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,10187,220,466.87,6,6.6,39.6,276
+2026-07-02,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,16801,243,364.82,8,8.27,66.16,303
+2026-07-02,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,19481,271,635.65,21,8.11,170.31,229
+2026-07-02,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,17337,632,1543.44,56,3.1,173.6,733
+2026-07-02,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,5789,169,279.39,6,9.38,56.28,135
+2026-07-02,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,19191,764,1880.22,66,5.67,374.22,749
+2026-07-02,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,14605,769,548.53,38,6.23,236.74,728
+2026-07-02,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,7406,298,407.78,7,5.98,41.86,383
+2026-07-02,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,12856,367,613.31,20,4.06,81.2,303
+2026-07-02,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,16976,869,765.73,40,9.81,392.4,715
+2026-07-02,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,2170,124,172.29,10,3.92,39.2,104
+2026-07-02,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,10760,619,946.35,56,10.34,579.04,537
+2026-07-02,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,13351,558,1052.9,11,6.02,66.22,658
+2026-07-02,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,12106,148,191.0,10,3.07,30.7,140
+2026-07-02,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,2666,78,112.34,5,11.83,59.15,72
+2026-07-02,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,5893,96,66.56,4,11.88,47.52,103
+2026-07-02,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,4629,204,372.01,12,8.88,106.56,198
+2026-07-03,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,17964,1034,1255.56,76,5.11,388.36,974
+2026-07-03,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,11371,224,463.21,13,9.29,120.77,248
+2026-07-03,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,17632,440,893.96,36,8.37,301.32,527
+2026-07-03,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,4529,209,435.93,7,10.43,73.01,239
+2026-07-03,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,19904,333,441.93,18,4.61,82.98,364
+2026-07-03,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,17344,257,288.04,18,9.9,178.2,266
+2026-07-03,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,19595,931,1896.63,43,5.64,242.52,818
+2026-07-03,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,19643,871,2073.44,68,4.77,324.36,884
+2026-07-03,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,11904,127,199.17,5,11.77,58.85,136
+2026-07-03,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,11674,129,278.65,6,3.07,18.42,158
+2026-07-03,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,15411,691,1343.36,54,5.39,291.06,650
+2026-07-03,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,4333,145,128.92,4,9.13,36.52,154
+2026-07-03,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,6037,293,410.5,21,11.61,243.81,254
+2026-07-03,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,16122,523,841.76,27,3.24,87.48,510
+2026-07-03,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,15487,866,2151.99,77,4.14,318.78,1067
+2026-07-03,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,14329,751,1467.78,21,7.77,163.17,690
+2026-07-03,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,8921,431,874.21,18,4.08,73.44,451
+2026-07-03,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,2532,70,44.46,2,8.91,17.82,59
+2026-07-03,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,13980,667,599.04,40,7.5,300.0,548
+2026-07-03,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,7848,468,601.9,14,11.81,165.34,569
+2026-07-04,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,4287,235,266.86,13,8.55,111.15,223
+2026-07-04,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,3181,89,161.09,8,3.78,30.24,83
+2026-07-04,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,19963,572,757.03,37,6.55,242.35,504
+2026-07-04,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,5124,203,223.46,15,8.19,122.85,170
+2026-07-04,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,8616,466,317.05,21,8.84,185.64,538
+2026-07-04,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,9333,160,366.62,6,6.27,37.62,142
+2026-07-04,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,2106,121,272.46,4,7.51,30.04,107
+2026-07-04,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,12819,527,962.71,15,11.1,166.5,555
+2026-07-04,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,6137,257,515.44,7,3.11,21.77,242
+2026-07-04,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,3607,200,398.07,17,11.13,189.21,237
+2026-07-04,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,9783,144,185.16,9,7.42,66.78,119
+2026-07-04,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,15536,197,435.07,6,4.8,28.8,197
+2026-07-04,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,18345,187,368.84,12,6.9,82.8,204
+2026-07-04,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,5049,201,415.84,17,3.11,52.87,202
+2026-07-04,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,10181,176,201.38,7,10.59,74.13,175
+2026-07-04,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,18122,1052,2572.26,33,5.52,182.16,864
+2026-07-04,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,16111,302,380.65,23,7.5,172.5,367
+2026-07-04,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,12895,214,257.78,10,8.79,87.9,260
+2026-07-04,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,6490,296,623.95,18,4.34,78.12,368
+2026-07-04,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,2744,161,229.59,12,6.82,81.84,159
+2026-07-05,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,6993,267,328.14,12,6.85,82.2,214
+2026-07-05,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,15088,417,538.05,27,7.66,206.82,487
+2026-07-05,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,14770,759,714.36,19,8.63,163.97,803
+2026-07-05,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,3832,214,250.12,19,6.91,131.29,270
+2026-07-05,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,7373,338,252.52,9,7.04,63.36,331
+2026-07-05,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,12824,634,1435.89,35,3.27,114.45,657
+2026-07-05,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,5486,293,321.39,20,8.48,169.6,256
+2026-07-05,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,15382,404,765.34,25,4.73,118.25,457
+2026-07-05,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,17686,566,491.7,13,11.47,149.11,587
+2026-07-05,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,9540,384,462.58,27,8.59,231.93,437
+2026-07-05,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,2125,66,71.88,4,8.4,33.6,59
+2026-07-05,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,16993,291,647.41,10,3.73,37.3,281
+2026-07-05,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,18657,915,2123.13,68,4.56,310.08,1104
+2026-07-05,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,4775,220,356.2,21,5.18,108.78,233
+2026-07-05,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,6658,258,267.66,13,7.07,91.91,288
+2026-07-05,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,9584,525,808.25,39,6.35,247.65,675
+2026-07-05,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,13605,185,411.35,4,3.17,12.68,233
+2026-07-05,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,17224,1016,1480.38,35,4.21,147.35,1176
+2026-07-05,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,6580,173,298.62,5,11.92,59.6,202
+2026-07-05,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,9525,213,253.96,8,11.44,91.52,247
+2026-07-06,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,10066,496,954.5,35,5.49,192.15,485
+2026-07-06,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,4248,237,379.01,18,8.03,144.54,258
+2026-07-06,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,10908,264,524.27,22,6.72,147.84,323
+2026-07-06,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,5949,318,303.19,22,8.42,185.24,256
+2026-07-06,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,19164,869,1697.81,85,8.51,723.35,764
+2026-07-06,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,13516,458,1003.72,19,6.14,116.66,498
+2026-07-06,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,7293,269,553.4,16,3.01,48.16,258
+2026-07-06,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,14423,632,1457.15,43,5.71,245.53,678
+2026-07-06,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,4141,124,80.37,8,3.48,27.84,108
+2026-07-06,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,6481,268,618.22,19,5.78,109.82,273
+2026-07-06,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,2843,57,101.25,5,7.26,36.3,48
+2026-07-06,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,7794,200,123.21,11,4.88,53.68,237
+2026-07-06,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,5393,158,268.77,14,7.54,105.56,156
+2026-07-06,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,14475,267,277.1,11,4.31,47.41,235
+2026-07-06,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,5050,152,303.94,11,10.9,119.9,156
+2026-07-06,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,4782,186,281.02,13,6.55,85.15,203
+2026-07-06,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,12258,475,782.23,36,6.76,243.36,407
+2026-07-06,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16997,201,181.54,16,10.97,175.52,192
+2026-07-06,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11805,468,708.85,28,7.41,207.48,506
+2026-07-06,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,5697,66,120.15,4,11.43,45.72,82
+2026-07-07,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,12864,693,988.01,33,5.75,189.75,745
+2026-07-07,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,13386,778,819.25,53,4.75,251.75,984
+2026-07-07,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,7977,134,96.58,7,7.07,49.49,154
+2026-07-07,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,14533,184,284.97,8,8.08,64.64,177
+2026-07-07,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,14471,176,148.15,8,10.84,86.72,216
+2026-07-07,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,18644,282,602.1,23,5.93,136.39,317
+2026-07-07,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,2638,41,50.26,4,10.26,41.04,37
+2026-07-07,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,2013,50,46.02,4,8.46,33.84,48
+2026-07-07,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,11956,170,169.38,10,6.75,67.5,186
+2026-07-07,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,13955,650,442.17,28,9.73,272.44,577
+2026-07-07,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,15024,504,1154.04,20,8.78,175.6,500
+2026-07-07,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,7191,247,500.7,6,8.53,51.18,275
+2026-07-07,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,10134,239,580.1,23,7.08,162.84,207
+2026-07-07,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,11042,342,502.21,8,5.27,42.16,315
+2026-07-07,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,17992,474,239.34,38,9.59,364.42,552
+2026-07-07,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,4040,128,310.84,4,5.35,21.4,122
+2026-07-07,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,2683,156,131.62,14,7.14,99.96,178
+2026-07-07,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,12160,434,1075.56,27,5.28,142.56,510
+2026-07-07,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,17561,891,1101.91,65,11.82,768.3,972
+2026-07-07,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,9886,200,140.36,4,8.38,33.52,230
+2026-07-08,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,7759,328,217.77,13,10.44,135.72,408
+2026-07-08,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,2152,49,64.4,1,3.65,3.65,46
+2026-07-08,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,18121,351,189.12,8,7.81,62.48,313
+2026-07-08,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,9235,163,301.11,16,11.74,187.84,191
+2026-07-08,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,7312,390,334.52,30,6.78,203.4,372
+2026-07-08,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,11899,435,566.21,23,8.59,197.57,467
+2026-07-08,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,9892,533,1275.95,14,7.37,103.18,444
+2026-07-08,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,16476,529,490.6,30,11.11,333.3,633
+2026-07-08,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,9395,458,577.43,42,5.68,238.56,501
+2026-07-08,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,6330,312,702.91,15,7.52,112.8,292
+2026-07-08,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,14157,768,951.4,42,5.37,225.54,792
+2026-07-08,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,15218,478,695.39,9,7.8,70.2,557
+2026-07-08,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,15524,622,1413.73,37,10.59,391.83,667
+2026-07-08,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,18246,724,645.15,20,5.74,114.8,922
+2026-07-08,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,17022,710,1345.15,62,10.16,629.92,709
+2026-07-08,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,14876,669,1318.4,30,5.45,163.5,560
+2026-07-08,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,13857,199,435.6,7,8.3,58.1,211
+2026-07-08,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,8262,200,444.86,4,8.9,35.6,187
+2026-07-08,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,2873,114,117.54,8,11.75,94.0,124
+2026-07-08,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,3595,79,46.49,4,7.86,31.44,92
+2026-07-09,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,8436,195,443.17,5,3.68,18.4,157
+2026-07-09,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,5834,292,704.72,26,10.32,268.32,317
+2026-07-09,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,5351,128,96.01,7,3.07,21.49,108
+2026-07-09,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,18538,268,365.52,22,4.33,95.26,259
+2026-07-09,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,16622,406,349.73,37,11.64,430.68,325
+2026-07-09,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,17806,519,613.16,44,8.32,366.08,618
+2026-07-09,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,19455,939,710.62,54,7.95,429.3,875
+2026-07-09,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,7560,324,345.89,23,8.57,197.11,274
+2026-07-09,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,16051,405,705.53,27,9.66,260.82,515
+2026-07-09,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,7391,168,361.1,9,10.26,92.34,197
+2026-07-09,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,9413,488,794.7,15,9.27,139.05,413
+2026-07-09,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,2461,134,269.84,8,3.16,25.28,107
+2026-07-09,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,12286,560,1327.77,39,4.81,187.59,622
+2026-07-09,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,12886,671,845.31,59,6.96,410.64,681
+2026-07-09,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,16078,823,1225.8,37,5.55,205.35,883
+2026-07-09,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,8642,145,295.84,4,3.95,15.8,148
+2026-07-09,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,14968,801,1595.28,30,10.01,300.3,671
+2026-07-09,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,14059,447,581.12,24,11.61,278.64,433
+2026-07-09,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,9456,435,725.17,14,8.66,121.24,482
+2026-07-09,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,3849,65,161.65,2,11.25,22.5,70
+2026-07-10,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,18619,774,1644.97,51,9.92,505.92,701
+2026-07-10,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,16508,962,1564.54,78,9.82,765.96,1231
+2026-07-10,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,2482,86,101.81,3,10.2,30.6,111
+2026-07-10,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,17592,678,405.87,35,3.77,131.95,712
+2026-07-10,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,10293,109,162.98,6,10.27,61.62,120
+2026-07-10,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,16265,623,737.88,47,4.56,214.32,706
+2026-07-10,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,15865,923,2176.27,74,9.21,681.54,1067
+2026-07-10,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,9696,423,401.55,15,3.22,48.3,390
+2026-07-10,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,8808,363,373.63,9,5.16,46.44,390
+2026-07-10,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,13099,657,943.89,17,9.79,166.43,599
+2026-07-10,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,13265,668,887.09,53,5.05,267.65,554
+2026-07-10,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,10153,216,486.86,9,3.92,35.28,227
+2026-07-10,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,11521,510,1194.62,15,9.39,140.85,656
+2026-07-10,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,6460,161,274.73,12,7.31,87.72,143
+2026-07-10,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,6279,240,352.96,11,9.14,100.54,197
+2026-07-10,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,12290,372,584.73,36,4.87,175.32,354
+2026-07-10,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,5736,209,185.55,17,6.16,104.72,267
+2026-07-10,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,8121,282,421.6,26,7.67,199.42,338
+2026-07-10,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,14458,251,467.22,5,11.53,57.65,214
+2026-07-10,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,12507,273,614.94,26,7.69,199.94,274
+2026-07-11,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,3201,120,190.43,11,7.25,79.75,142
+2026-07-11,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,17035,750,1719.79,66,7.34,484.44,696
+2026-07-11,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,17194,771,434.44,20,9.76,195.2,673
+2026-07-11,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,6272,301,440.02,10,6.56,65.6,326
+2026-07-11,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,18169,397,666.06,23,6.69,153.87,333
+2026-07-11,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,17945,282,477.19,12,3.88,46.56,288
+2026-07-11,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,15074,900,1619.78,49,7.66,375.34,774
+2026-07-11,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,17569,712,1450.33,40,10.98,439.2,774
+2026-07-11,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,7129,72,100.87,4,5.62,22.48,65
+2026-07-11,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,15022,876,1847.64,43,10.12,435.16,706
+2026-07-11,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,14684,747,998.94,46,10.8,496.8,774
+2026-07-11,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,12030,220,472.49,9,5.62,50.58,256
+2026-07-11,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,7826,275,519.37,12,4.04,48.48,268
+2026-07-11,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,15049,879,951.87,66,7.42,489.72,956
+2026-07-11,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,5262,217,471.63,4,11.36,45.44,190
+2026-07-11,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,10683,562,382.63,47,5.74,269.78,647
+2026-07-11,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,6839,149,118.14,5,8.42,42.1,175
+2026-07-11,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,15910,221,376.78,18,7.91,142.38,212
+2026-07-11,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,2620,83,111.02,4,4.84,19.36,87
+2026-07-11,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,11016,143,342.78,12,11.2,134.4,159
+2026-07-12,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,13987,414,945.11,27,10.71,289.17,358
+2026-07-12,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,14539,606,1507.97,44,5.07,223.08,580
+2026-07-12,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,10732,523,336.17,30,4.73,141.9,638
+2026-07-12,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,19178,427,274.68,35,5.91,206.85,538
+2026-07-12,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,2215,49,78.14,3,8.02,24.06,59
+2026-07-12,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,12093,698,446.17,20,10.33,206.6,827
+2026-07-12,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,9362,123,66.67,7,8.3,58.1,98
+2026-07-12,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,14582,506,499.91,36,3.05,109.8,594
+2026-07-12,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,11264,508,715.3,38,11.32,430.16,606
+2026-07-12,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,19582,316,390.95,25,5.36,134.0,313
+2026-07-12,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,9721,328,215.79,30,9.43,282.9,344
+2026-07-12,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,19174,515,1172.11,51,6.08,310.08,644
+2026-07-12,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,17740,694,1655.43,53,9.07,480.71,865
+2026-07-12,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,9943,261,276.82,21,6.29,132.09,330
+2026-07-12,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,16959,170,410.73,6,9.2,55.2,147
+2026-07-12,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,3321,68,150.49,2,9.4,18.8,87
+2026-07-12,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,4469,84,171.84,5,9.79,48.95,99
+2026-07-12,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,4623,122,133.14,6,9.46,56.76,107
+2026-07-12,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,17453,936,1845.49,23,4.24,97.52,845
+2026-07-12,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,15998,604,358.64,28,8.79,246.12,598
+2026-07-13,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,18420,654,845.99,39,8.96,349.44,800
+2026-07-13,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,13570,486,252.45,42,5.23,219.66,411
+2026-07-13,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,14503,745,554.22,60,5.24,314.4,883
+2026-07-13,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,4935,77,102.19,3,4.71,14.13,74
+2026-07-13,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,3602,69,42.1,3,4.31,12.93,56
+2026-07-13,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,14416,380,680.19,9,4.96,44.64,330
+2026-07-13,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,3929,84,194.11,7,3.64,25.48,77
+2026-07-13,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,5492,268,251.3,22,9.26,203.72,276
+2026-07-13,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,8482,265,421.12,19,11.18,212.42,321
+2026-07-13,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,14172,218,210.95,4,10.96,43.84,235
+2026-07-13,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,18935,947,1756.75,65,4.08,265.2,1116
+2026-07-13,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,13771,654,542.67,60,10.31,618.6,529
+2026-07-13,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,19494,473,1038.05,40,7.7,308.0,384
+2026-07-13,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,8547,338,537.85,25,7.95,198.75,431
+2026-07-13,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,11891,213,503.84,8,8.89,71.12,197
+2026-07-13,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,14984,534,990.23,21,11.92,250.32,435
+2026-07-13,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,16709,736,1666.37,52,11.88,617.76,707
+2026-07-13,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16545,456,266.63,40,6.17,246.8,592
+2026-07-13,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,12651,757,1102.75,37,11.61,429.57,779
+2026-07-13,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,19185,497,662.33,15,6.39,95.85,585
+2026-07-14,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,7434,355,277.16,11,8.1,89.1,384
+2026-07-14,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,13206,182,430.03,10,6.18,61.8,226
+2026-07-14,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,16514,369,918.47,13,9.62,125.06,312
+2026-07-14,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,2793,135,113.2,6,10.39,62.34,162
+2026-07-14,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,11779,312,210.73,8,11.94,95.52,274
+2026-07-14,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,2006,95,173.07,5,5.62,28.1,105
+2026-07-14,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,17906,370,282.91,35,8.14,284.9,383
+2026-07-14,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,10165,567,421.12,17,7.18,122.06,604
+2026-07-14,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,4339,56,116.77,3,10.42,31.26,70
+2026-07-14,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,9253,392,694.16,22,9.31,204.82,440
+2026-07-14,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,7664,440,367.11,16,4.73,75.68,361
+2026-07-14,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,9350,433,330.12,34,8.31,282.54,382
+2026-07-14,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,6762,85,52.12,3,10.07,30.21,109
+2026-07-14,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,17126,978,899.07,81,10.48,848.88,816
+2026-07-14,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,14184,613,1102.07,14,8.63,120.82,712
+2026-07-14,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,15251,804,1295.97,51,3.85,196.35,684
+2026-07-14,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,12359,216,137.5,11,5.73,63.03,202
+2026-07-14,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,10996,461,960.24,11,9.04,99.44,462
+2026-07-14,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,19469,527,636.92,43,9.49,408.07,591
+2026-07-14,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,17516,386,366.97,34,4.3,146.2,398
+2026-07-15,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,6790,317,465.04,15,4.97,74.55,330
+2026-07-15,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,10817,207,412.41,19,4.71,89.49,241
+2026-07-15,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,8830,297,553.28,13,5.91,76.83,331
+2026-07-15,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,6778,217,509.61,8,9.17,73.36,190
+2026-07-15,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,11318,458,862.43,30,10.09,302.7,407
+2026-07-15,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,16652,329,612.94,14,8.13,113.82,413
+2026-07-15,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,17498,881,776.0,24,6.88,165.12,891
+2026-07-15,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,12397,712,1625.39,49,9.47,464.03,749
+2026-07-15,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,16390,265,497.5,20,11.48,229.6,278
+2026-07-15,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,5823,98,234.47,4,7.43,29.72,83
+2026-07-15,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,4567,271,371.48,27,8.65,233.55,329
+2026-07-15,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,14012,638,1329.75,31,8.76,271.56,756
+2026-07-15,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,10210,176,109.84,14,4.84,67.76,188
+2026-07-15,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,15406,672,523.06,29,5.27,152.83,589
+2026-07-15,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,9672,304,207.45,8,4.92,39.36,255
+2026-07-15,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,6580,105,65.45,8,5.0,40.0,94
+2026-07-15,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,3840,105,68.08,5,3.34,16.7,103
+2026-07-15,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,18812,941,1749.15,90,4.29,386.1,1038
+2026-07-15,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,10662,431,381.23,17,8.02,136.34,393
+2026-07-15,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,3888,148,360.46,9,4.21,37.89,136
+2026-07-16,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,4059,94,91.0,6,7.66,45.96,112
+2026-07-16,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,9695,453,1017.2,16,4.82,77.12,418
+2026-07-16,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,3382,159,254.27,4,7.33,29.32,150
+2026-07-16,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,4811,75,45.68,7,11.34,79.38,92
+2026-07-16,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,16920,803,979.96,18,9.92,178.56,772
+2026-07-16,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,11979,669,1587.77,51,11.24,573.24,866
+2026-07-16,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,17303,920,559.67,66,8.82,582.12,763
+2026-07-16,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,19952,644,527.0,57,7.05,401.85,757
+2026-07-16,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,18180,579,982.03,52,9.61,499.72,637
+2026-07-16,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,19614,329,463.0,24,9.69,232.56,418
+2026-07-16,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,10450,271,529.59,22,3.78,83.16,292
+2026-07-16,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,3592,142,84.62,4,10.53,42.12,117
+2026-07-16,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,13753,697,491.36,62,9.66,598.92,858
+2026-07-16,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,15865,784,507.98,77,7.31,562.87,784
+2026-07-16,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,9411,338,469.87,6,6.09,36.54,290
+2026-07-16,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,15126,432,760.58,30,8.24,247.2,401
+2026-07-16,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,11406,157,349.87,13,8.54,111.02,165
+2026-07-16,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16358,192,121.82,15,6.3,94.5,190
+2026-07-16,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11752,570,1088.59,42,7.4,310.8,592
+2026-07-16,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,8662,229,150.71,12,6.34,76.08,244
+2026-07-17,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,14717,492,693.37,11,11.83,130.13,473
+2026-07-17,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,13666,243,173.35,22,9.08,199.76,275
+2026-07-17,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,13810,750,1670.49,28,4.02,112.56,837
+2026-07-17,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,11426,122,230.29,3,7.05,21.15,98
+2026-07-17,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,14417,735,1482.41,64,3.58,229.12,761
+2026-07-17,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,2266,91,138.4,7,10.67,74.69,75
+2026-07-17,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,13118,656,471.36,23,7.83,180.09,570
+2026-07-17,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,11086,535,825.29,37,5.47,202.39,448
+2026-07-17,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,2847,41,99.38,3,8.18,24.54,52
+2026-07-17,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,15733,619,1209.03,56,8.89,497.84,753
+2026-07-17,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,12686,670,1031.38,62,3.11,192.82,770
+2026-07-17,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,5794,178,224.37,11,7.27,79.97,156
+2026-07-17,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,14743,322,666.09,27,5.59,150.93,364
+2026-07-17,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,18600,1044,2337.8,55,3.33,183.15,1340
+2026-07-17,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,15838,707,1028.97,27,3.8,102.6,850
+2026-07-17,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,4457,49,30.82,4,6.99,27.96,42
+2026-07-17,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,17162,669,1611.26,52,3.37,175.24,839
+2026-07-17,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,3061,123,228.55,11,6.35,69.85,145
+2026-07-17,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,10960,267,439.74,16,11.06,176.96,266
+2026-07-17,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,8241,103,129.2,7,3.36,23.52,86
+2026-07-18,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,19084,795,832.36,63,8.21,517.23,862
+2026-07-18,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,2217,106,167.79,2,7.34,14.68,117
+2026-07-18,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,12633,135,281.99,9,6.56,59.04,124
+2026-07-18,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,8848,415,383.36,26,9.75,253.5,445
+2026-07-18,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,5998,268,281.09,16,7.72,123.52,307
+2026-07-18,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,19985,1167,585.47,75,11.81,885.75,997
+2026-07-18,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,8012,191,190.93,17,6.99,118.83,235
+2026-07-18,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,11362,246,288.24,22,3.73,82.06,215
+2026-07-18,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,10831,420,851.01,14,7.67,107.38,428
+2026-07-18,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,15373,875,927.05,65,4.96,322.4,894
+2026-07-18,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,19123,938,680.09,29,8.1,234.9,1023
+2026-07-18,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,2304,57,103.93,4,5.43,21.72,62
+2026-07-18,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,14503,426,1028.11,41,5.81,238.21,458
+2026-07-18,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,19593,777,1809.48,22,5.23,115.06,879
+2026-07-18,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,5381,138,312.15,4,9.96,39.84,162
+2026-07-18,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,12864,207,493.6,4,11.32,45.28,210
+2026-07-18,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,8168,212,307.67,6,3.56,21.36,180
+2026-07-18,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,6511,237,307.17,17,5.25,89.25,203
+2026-07-18,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,13309,768,1619.89,33,5.59,184.47,888
+2026-07-18,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,9111,309,691.83,14,11.61,162.54,249
+2026-07-19,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,14342,612,753.12,44,10.52,462.88,647
+2026-07-19,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,18133,995,2250.66,65,5.47,355.55,886
+2026-07-19,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,3376,131,246.48,9,4.39,39.51,155
+2026-07-19,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,6631,296,543.61,14,11.15,156.1,314
+2026-07-19,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,3906,60,117.57,4,11.88,47.52,62
+2026-07-19,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,11247,599,581.32,45,6.55,294.75,574
+2026-07-19,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,5208,65,162.41,5,11.72,58.6,82
+2026-07-19,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,14551,650,1243.34,16,6.67,106.72,696
+2026-07-19,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,11114,211,352.51,14,7.43,104.02,178
+2026-07-19,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,9736,513,358.44,38,7.9,300.2,661
+2026-07-19,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,5283,297,482.73,8,5.57,44.56,317
+2026-07-19,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,6494,200,459.45,12,8.56,102.72,188
+2026-07-19,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,2424,114,103.3,10,10.74,107.4,116
+2026-07-19,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,7450,315,185.41,31,9.1,282.1,314
+2026-07-19,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,6362,267,495.09,6,8.07,48.42,295
+2026-07-19,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,14943,520,658.04,28,6.19,173.32,652
+2026-07-19,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,13253,783,523.56,56,3.35,187.6,903
+2026-07-19,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,8096,282,359.26,18,5.36,96.48,262
+2026-07-19,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,13349,750,1358.96,59,4.93,290.87,910
+2026-07-19,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,8226,477,350.42,47,7.31,343.57,439
+2026-07-20,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,14331,840,794.47,44,10.36,455.84,816
+2026-07-20,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,18748,450,424.88,29,3.49,101.21,539
+2026-07-20,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,10150,181,123.59,12,11.38,136.56,235
+2026-07-20,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,10370,192,205.06,15,8.56,128.4,158
+2026-07-20,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,11410,357,783.83,14,8.18,114.52,396
+2026-07-20,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,14543,440,602.97,16,4.56,72.96,382
+2026-07-20,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,9745,178,261.89,6,6.61,39.66,147
+2026-07-20,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,15624,204,441.82,10,9.93,99.3,259
+2026-07-20,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,13401,407,464.84,11,4.45,48.95,409
+2026-07-20,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,13753,179,188.27,17,11.54,196.18,216
+2026-07-20,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,13267,715,735.22,51,8.15,415.65,741
+2026-07-20,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,5482,191,328.14,15,10.48,157.2,245
+2026-07-20,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,9390,521,994.72,37,9.8,362.6,559
+2026-07-20,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,12865,749,1019.32,15,5.33,79.95,790
+2026-07-20,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,7377,236,458.99,16,4.36,69.76,237
+2026-07-20,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,11010,264,598.45,6,8.57,51.42,243
+2026-07-20,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,16398,593,1019.73,29,11.26,326.54,589
+2026-07-20,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16623,344,592.97,25,11.99,299.75,309
+2026-07-20,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,10884,616,1165.68,19,8.54,162.26,673
+2026-07-20,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,8701,259,253.47,11,5.55,61.05,267
+2026-07-21,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,17797,967,496.26,87,6.96,605.52,884
+2026-07-21,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,17673,1007,569.08,48,10.74,515.52,1196
+2026-07-21,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,3967,51,91.25,3,10.12,30.36,44
+2026-07-21,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,2273,30,54.62,2,11.22,22.44,29
+2026-07-21,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,6250,254,379.17,19,7.48,142.12,305
+2026-07-21,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,14602,761,928.86,40,5.6,224.0,940
+2026-07-21,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,14418,145,185.72,13,10.07,130.91,136
+2026-07-21,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,2640,139,282.34,7,3.05,21.35,135
+2026-07-21,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,18235,445,1063.72,37,7.95,294.15,457
+2026-07-21,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,5003,215,383.43,14,3.19,44.66,256
+2026-07-21,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,7642,181,142.57,12,9.24,110.88,148
+2026-07-21,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,13728,620,676.24,14,7.47,104.58,560
+2026-07-21,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,8437,411,998.15,17,4.6,78.2,469
+2026-07-21,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,18999,720,1350.24,27,6.37,171.99,742
+2026-07-21,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,16496,874,588.53,24,9.77,234.48,956
+2026-07-21,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,11670,407,922.08,23,3.79,87.17,403
+2026-07-21,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,13087,575,347.72,40,6.01,240.4,554
+2026-07-21,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,6447,339,475.98,31,7.01,217.31,286
+2026-07-21,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,9944,124,286.49,4,5.1,20.4,105
+2026-07-21,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,13772,350,426.75,31,7.19,222.89,420
+2026-07-22,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,18860,795,733.81,27,6.26,169.02,921
+2026-07-22,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,16981,998,1892.7,56,9.2,515.2,804
+2026-07-22,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,9624,248,400.94,17,6.13,104.21,308
+2026-07-22,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,5535,60,134.09,4,5.08,20.32,59
+2026-07-22,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,9625,437,1074.37,8,3.22,25.76,486
+2026-07-22,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,6113,102,65.64,2,9.49,18.98,106
+2026-07-22,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,17947,318,347.71,31,8.21,254.51,340
+2026-07-22,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,14779,778,1872.54,41,9.73,398.93,834
+2026-07-22,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,12306,278,203.45,22,10.78,237.16,337
+2026-07-22,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,9981,593,1229.86,21,10.47,219.87,638
+2026-07-22,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,12862,572,342.39,33,5.42,178.86,564
+2026-07-22,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,17750,470,237.57,34,11.16,379.44,572
+2026-07-22,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,8126,472,929.92,13,3.37,43.81,443
+2026-07-22,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,18399,322,803.52,18,5.66,101.88,405
+2026-07-22,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,14583,402,546.23,33,5.23,172.59,451
+2026-07-22,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,15737,314,712.56,19,8.68,164.92,377
+2026-07-22,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,14666,355,691.35,25,11.16,279.0,439
+2026-07-22,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,12472,541,1038.22,34,5.61,190.74,513
+2026-07-22,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,12823,588,412.24,48,3.05,146.4,632
+2026-07-22,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,17384,835,952.29,30,5.82,174.6,687
+2026-07-23,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,5877,253,336.29,11,4.02,44.22,287
+2026-07-23,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,8905,257,180.28,12,10.76,129.12,229
+2026-07-23,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,8323,92,115.51,7,5.26,36.82,75
+2026-07-23,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,5263,290,426.1,19,3.79,72.01,260
+2026-07-23,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,5864,274,250.62,18,6.73,121.14,225
+2026-07-23,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,16310,958,739.15,29,10.25,297.25,1178
+2026-07-23,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,12276,157,261.93,9,10.67,96.03,137
+2026-07-23,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,9226,317,331.54,18,6.5,117.0,359
+2026-07-23,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,2037,87,137.91,4,4.69,18.76,85
+2026-07-23,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,9076,459,443.39,37,10.1,373.7,503
+2026-07-23,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,13071,664,734.46,28,7.42,207.76,762
+2026-07-23,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,18190,317,215.61,19,9.51,180.69,269
+2026-07-23,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,10658,175,291.9,7,5.98,41.86,202
+2026-07-23,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,4813,76,180.98,2,5.81,11.62,78
+2026-07-23,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,10131,381,647.71,26,10.01,260.26,436
+2026-07-23,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,2639,156,321.96,7,7.9,55.3,162
+2026-07-23,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,12923,181,330.73,16,5.79,92.64,204
+2026-07-23,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,7161,326,767.62,23,10.14,233.22,343
+2026-07-23,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,7175,217,514.3,19,7.3,138.7,195
+2026-07-23,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,9250,435,231.61,27,8.26,223.02,504
+2026-07-24,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,17696,363,298.56,31,3.2,99.2,298
+2026-07-24,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,10613,231,333.26,15,6.29,94.35,242
+2026-07-24,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,16336,619,981.4,36,8.1,291.6,663
+2026-07-24,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,17007,646,1243.51,14,11.3,158.2,615
+2026-07-24,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,13457,511,907.03,10,4.81,48.1,480
+2026-07-24,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,15949,656,924.17,35,10.38,363.3,650
+2026-07-24,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,18640,261,227.5,17,9.08,154.36,239
+2026-07-24,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,15248,704,1535.43,65,11.83,768.95,751
+2026-07-24,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,18334,756,1527.11,27,7.94,214.38,955
+2026-07-24,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,11085,586,462.57,17,5.26,89.42,519
+2026-07-24,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,5218,305,291.55,13,9.69,125.97,362
+2026-07-24,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,10385,438,619.11,43,5.38,231.34,361
+2026-07-24,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,7072,84,198.01,5,9.96,49.8,93
+2026-07-24,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,8778,316,378.13,8,9.5,76.0,324
+2026-07-24,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,11884,240,411.32,8,6.53,52.24,269
+2026-07-24,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,18462,481,500.66,10,8.37,83.7,391
+2026-07-24,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,14843,244,467.91,6,8.03,48.18,273
+2026-07-24,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,5976,354,737.78,13,7.45,96.85,347
+2026-07-24,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11412,297,532.16,27,3.81,102.87,322
+2026-07-24,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,11672,205,237.74,10,10.5,105.0,215
+2026-07-25,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,7279,121,184.56,11,4.32,47.52,106
+2026-07-25,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,8898,275,551.21,13,6.61,85.93,281
+2026-07-25,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,12606,587,616.73,50,11.23,561.5,632
+2026-07-25,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,18054,535,435.5,25,6.17,154.25,595
+2026-07-25,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,4222,107,161.93,4,3.06,12.24,122
+2026-07-25,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,9397,181,309.36,11,10.62,116.82,166
+2026-07-25,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,5928,338,554.1,22,3.36,73.92,284
+2026-07-25,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,14911,590,1077.34,15,6.86,102.9,727
+2026-07-25,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,16356,883,1297.5,19,8.67,164.73,1059
+2026-07-25,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,2844,47,57.17,3,8.3,24.9,37
+2026-07-25,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,12514,293,390.73,20,4.69,93.8,265
+2026-07-25,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,7724,414,912.66,20,9.09,181.8,419
+2026-07-25,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,11868,409,672.95,19,10.06,191.14,392
+2026-07-25,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,4201,105,222.64,3,10.64,31.92,118
+2026-07-25,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,9842,341,247.39,20,8.35,167.0,362
+2026-07-25,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,11205,144,357.56,8,9.9,79.2,187
+2026-07-25,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,12763,646,1188.79,55,9.65,530.75,738
+2026-07-25,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,14088,470,1159.03,14,10.96,153.44,391
+2026-07-25,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,19535,916,2015.81,21,11.29,237.09,924
+2026-07-25,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,13061,298,638.67,29,8.78,254.62,311
+2026-07-26,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,7899,283,370.99,27,8.74,235.98,350
+2026-07-26,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,6297,371,694.52,31,9.49,294.19,445
+2026-07-26,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,4256,155,216.81,13,7.87,102.31,159
+2026-07-26,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,9739,582,1430.08,24,3.56,85.44,540
+2026-07-26,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,13185,392,642.03,37,10.49,388.13,351
+2026-07-26,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,18440,432,1016.55,28,3.3,92.4,353
+2026-07-26,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,19130,493,503.61,36,5.83,209.88,459
+2026-07-26,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,7954,99,124.56,3,5.94,17.82,116
+2026-07-26,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,7189,183,96.5,9,5.02,45.18,223
+2026-07-26,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,10695,134,265.78,8,9.71,77.68,139
+2026-07-26,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,15342,721,1455.69,64,10.39,664.96,762
+2026-07-26,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,5797,85,171.39,2,10.67,21.34,96
+2026-07-26,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,9207,532,819.93,44,4.43,194.92,570
+2026-07-26,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,7385,417,826.07,25,7.97,199.25,402
+2026-07-26,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,2395,142,336.23,4,10.75,43.0,153
+2026-07-26,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,7230,108,195.88,4,10.35,41.4,135
+2026-07-26,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,19248,282,519.14,17,3.16,53.72,269
+2026-07-26,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,15046,902,1747.84,55,9.92,545.6,1092
+2026-07-26,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,7760,439,251.41,38,10.09,383.42,392
+2026-07-26,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,7512,350,421.52,10,7.92,79.2,312
+2026-07-27,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,11288,647,603.77,44,7.24,318.56,673
+2026-07-27,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,16162,853,760.98,71,9.65,685.15,884
+2026-07-27,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,18579,537,467.76,11,10.71,117.81,637
+2026-07-27,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,14686,800,1703.77,17,7.99,135.83,752
+2026-07-27,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,13073,733,1068.87,42,3.32,139.44,636
+2026-07-27,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,17835,806,585.42,47,9.21,432.87,702
+2026-07-27,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,6288,274,301.4,12,9.77,117.24,229
+2026-07-27,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,14423,344,826.43,18,10.51,189.18,356
+2026-07-27,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,5717,189,138.9,16,7.49,119.84,218
+2026-07-27,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,13863,494,354.75,29,11.51,333.79,405
+2026-07-27,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,7209,95,182.32,4,10.02,40.08,100
+2026-07-27,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,7587,200,457.81,19,5.41,102.79,233
+2026-07-27,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,15219,222,209.21,8,5.99,47.92,217
+2026-07-27,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,15971,925,891.43,48,4.66,223.68,1036
+2026-07-27,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,13973,521,440.53,30,11.89,356.7,435
+2026-07-27,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,3832,184,440.79,12,11.84,142.08,182
+2026-07-27,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,9018,244,495.88,8,12.0,96.0,214
+2026-07-27,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,4416,71,80.52,1,7.19,7.19,75
+2026-07-27,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11485,618,320.45,40,3.97,158.8,798
+2026-07-27,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,19764,1176,2839.42,72,10.55,759.6,984
+2026-07-28,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,9188,473,804.89,39,10.38,404.82,421
+2026-07-28,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,2319,43,64.47,4,10.64,42.56,45
+2026-07-28,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,9824,255,159.8,24,10.37,248.88,228
+2026-07-28,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,6971,188,241.71,5,9.57,47.85,199
+2026-07-28,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,7091,293,669.25,18,6.02,108.36,349
+2026-07-28,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,19249,1139,2810.3,93,7.18,667.74,955
+2026-07-28,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,17017,698,1134.94,19,7.84,148.96,734
+2026-07-28,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,19675,247,593.75,9,3.62,32.58,315
+2026-07-28,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,18674,845,1124.68,49,7.25,355.25,868
+2026-07-28,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,19086,478,854.03,10,11.99,119.9,584
+2026-07-28,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,2948,55,123.77,1,3.52,3.52,44
+2026-07-28,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,14210,721,624.2,37,11.66,431.42,674
+2026-07-28,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,9158,526,913.43,30,8.05,241.5,618
+2026-07-28,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,16160,481,949.87,43,7.05,303.15,488
+2026-07-28,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,4212,45,41.92,4,11.54,46.16,44
+2026-07-28,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,7692,144,242.65,12,9.28,111.36,181
+2026-07-28,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,11692,610,428.39,49,10.52,515.48,757
+2026-07-28,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,6205,334,688.22,23,4.64,106.72,428
+2026-07-28,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,11324,370,659.57,22,11.0,242.0,320
+2026-07-28,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,3589,173,229.19,15,5.08,76.2,199
+2026-07-29,CMP-005,Holiday Promo,CMP-005-AS1,Holiday Promo - Adset 1,ECD-005-01,Facebook,18738,435,847.54,20,7.08,141.6,476
+2026-07-29,CMP-005,Holiday Promo,CMP-005-AS2,Holiday Promo - Adset 2,ECD-005-02,Facebook,12345,608,668.84,39,8.11,316.29,607
+2026-07-29,CMP-006,App Install Drive,CMP-006-AS1,App Install Drive - Adset 1,ECD-006-01,Google Ads,18303,883,713.7,37,6.69,247.53,848
+2026-07-29,CMP-006,App Install Drive,CMP-006-AS2,App Install Drive - Adset 2,ECD-006-02,Google Ads,9452,291,478.93,15,5.81,87.15,320
+2026-07-29,CMP-006,App Install Drive,CMP-006-AS3,App Install Drive - Adset 3,ECD-006-03,Google Ads,15564,877,536.76,54,8.08,436.32,998
+2026-07-29,CMP-006,App Install Drive,CMP-006-AS4,App Install Drive - Adset 4,ECD-006-04,Google Ads,4898,109,191.98,7,9.02,63.14,124
+2026-07-29,CMP-001,Summer Sale,CMP-001-AS1,Summer Sale - Adset 1,ECD-001-01,Google Ads,6340,359,811.96,32,6.33,202.56,315
+2026-07-29,CMP-001,Summer Sale,CMP-001-AS2,Summer Sale - Adset 2,ECD-001-02,Google Ads,3319,158,379.08,5,3.18,15.9,138
+2026-07-29,CMP-001,Summer Sale,CMP-001-AS3,Summer Sale - Adset 3,ECD-001-03,Google Ads,6739,196,459.37,11,10.91,120.01,241
+2026-07-29,CMP-001,Summer Sale,CMP-001-AS4,Summer Sale - Adset 4,ECD-001-04,Google Ads,15968,707,1046.74,65,3.66,237.9,594
+2026-07-29,CMP-004,New Customer Acquisition,CMP-004-AS1,New Customer Acquisition - Adset 1,ECD-004-01,PulsePoint,3656,204,389.49,8,10.41,83.28,214
+2026-07-29,CMP-004,New Customer Acquisition,CMP-004-AS2,New Customer Acquisition - Adset 2,ECD-004-02,PulsePoint,14639,651,948.18,34,10.98,373.32,575
+2026-07-29,CMP-004,New Customer Acquisition,CMP-004-AS3,New Customer Acquisition - Adset 3,ECD-004-03,PulsePoint,2288,36,42.91,1,8.78,8.78,45
+2026-07-29,CMP-003,Retargeting Push,CMP-003-AS1,Retargeting Push - Adset 1,ECD-003-01,Quora,2145,97,88.42,7,10.28,71.96,80
+2026-07-29,CMP-003,Retargeting Push,CMP-003-AS2,Retargeting Push - Adset 2,ECD-003-02,Quora,11387,471,707.49,25,9.32,233.0,396
+2026-07-29,CMP-003,Retargeting Push,CMP-003-AS3,Retargeting Push - Adset 3,ECD-003-03,Quora,2924,132,158.84,8,4.28,34.24,168
+2026-07-29,CMP-002,Brand Awareness Q3,CMP-002-AS1,Brand Awareness Q3 - Adset 1,ECD-002-01,Reddit,3236,139,313.14,9,8.38,75.42,121
+2026-07-29,CMP-002,Brand Awareness Q3,CMP-002-AS2,Brand Awareness Q3 - Adset 2,ECD-002-02,Reddit,16176,568,1270.29,49,7.66,375.34,540
+2026-07-29,CMP-002,Brand Awareness Q3,CMP-002-AS3,Brand Awareness Q3 - Adset 3,ECD-002-03,Reddit,18522,618,547.31,17,4.46,75.82,636
+2026-07-29,CMP-002,Brand Awareness Q3,CMP-002-AS4,Brand Awareness Q3 - Adset 4,ECD-002-04,Reddit,2299,48,67.78,1,8.74,8.74,60
