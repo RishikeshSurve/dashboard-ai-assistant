@@ -27,17 +27,36 @@ ANTHROPIC_API_KEY = os.environ.get("ANTHROPIC_API_KEY")
 @dataclass
 class QuerySpec:
     metrics: list[str] = field(default_factory=lambda: ["spend", "clicks", "conversions"])
-    group_by: list[str] = field(default_factory=lambda: ["date"])
+    # Empty group_by means "grand total, no breakdown" -> rendered as score cards by the frontend.
+    group_by: list[str] = field(default_factory=list)
     platforms: list[str] | None = None
     campaign_contains: str | None = None
     date_from: str | None = None
     date_to: str | None = None
     limit: int = 500
+    # "previous_period" (immediately preceding range of equal length) or "yoy" (same dates, 1 year back).
+    compare: str | None = None
 
 
 def _default_date_range(days: int = 30) -> tuple[str, str]:
     today = date.today()
     return (today - timedelta(days=days)).isoformat(), today.isoformat()
+
+
+def previous_period_range(date_from: str, date_to: str, mode: str) -> tuple[str, str]:
+    """Compute the comparison date range for a given current range + comparison mode."""
+    d_from = date.fromisoformat(date_from)
+    d_to = date.fromisoformat(date_to)
+    if mode == "yoy":
+        return (
+            date(d_from.year - 1, d_from.month, d_from.day).isoformat(),
+            date(d_to.year - 1, d_to.month, d_to.day).isoformat(),
+        )
+    # previous_period: shift the whole window back by its own length, immediately preceding it.
+    span = (d_to - d_from).days + 1
+    prev_to = d_from - timedelta(days=1)
+    prev_from = prev_to - timedelta(days=span - 1)
+    return prev_from.isoformat(), prev_to.isoformat()
 
 
 def _rule_based_parse(prompt: str) -> QuerySpec:
@@ -68,7 +87,8 @@ def _rule_based_parse(prompt: str) -> QuerySpec:
         group_by.append("adset")
     if "by day" in text or "daily" in text or "trend" in text or "over time" in text:
         group_by.append("date")
-    spec.group_by = group_by or ["platform"]
+    # No explicit "by X" phrase -> grand total, no breakdown. Frontend renders this as score cards.
+    spec.group_by = group_by
 
     platforms = [p for p in sl.VALID_PLATFORMS if p.lower() in text or p.lower().replace(" ", "") in text]
     if platforms:
@@ -77,6 +97,22 @@ def _rule_based_parse(prompt: str) -> QuerySpec:
     m = re.search(r"last (\d+) days?", text)
     days = int(m.group(1)) if m else 30
     spec.date_from, spec.date_to = _default_date_range(days)
+
+    if "year over year" in text or "yoy" in text or "vs last year" in text or "compared to last year" in text:
+        spec.compare = "yoy"
+    elif (
+        "previous period" in text
+        or "prior period" in text
+        or "vs last period" in text
+        or "period over period" in text
+        or "pop" in text.split()
+        or "week over week" in text
+        or "wow" in text.split()
+        or "month over month" in text
+        or "mom" in text.split()
+        or ("compared to" in text and "previous" in text)
+    ):
+        spec.compare = "previous_period"
 
     m = re.search(r"campaign[s]? (?:called|named|containing|with name)?\s*[\"']?([a-z0-9 ]+)[\"']?", text)
     if m:
@@ -98,7 +134,15 @@ def _llm_parse(prompt: str) -> QuerySpec:
         f"{sl.schema_description()}\n\n"
         "QuerySpec JSON shape: {\"metrics\": [...], \"group_by\": [...], "
         "\"platforms\": [...] | null, \"campaign_contains\": str | null, "
-        "\"date_from\": \"YYYY-MM-DD\", \"date_to\": \"YYYY-MM-DD\", \"limit\": int}"
+        "\"date_from\": \"YYYY-MM-DD\", \"date_to\": \"YYYY-MM-DD\", \"limit\": int, "
+        "\"compare\": \"previous_period\" | \"yoy\" | null}\n\n"
+        "Leave group_by as an empty array [] when the user just wants overall totals with no "
+        "breakdown (e.g. \"what's my total spend\") -- this renders as score cards. Only include "
+        "a dimension in group_by when the user explicitly asks to break results out by it "
+        "(e.g. \"by platform\", \"by campaign\", \"trend\"/\"daily\" implies group_by ['date']). "
+        "Set compare to 'previous_period' when the user asks to compare against the prior "
+        "period of equal length (e.g. \"vs last period\", \"week over week\"), or 'yoy' when "
+        "they ask for a year-over-year comparison. Otherwise leave compare null."
     )
     resp = client.messages.create(
         model="claude-sonnet-5",
@@ -111,12 +155,13 @@ def _llm_parse(prompt: str) -> QuerySpec:
     date_from, date_to = _default_date_range(30)
     return QuerySpec(
         metrics=data.get("metrics") or ["spend", "clicks", "conversions"],
-        group_by=data.get("group_by") or ["platform"],
+        group_by=data.get("group_by") or [],
         platforms=data.get("platforms"),
         campaign_contains=data.get("campaign_contains"),
         date_from=data.get("date_from") or date_from,
         date_to=data.get("date_to") or date_to,
         limit=int(data.get("limit") or 500),
+        compare=data.get("compare"),
     )
 
 
@@ -130,9 +175,14 @@ def parse_prompt(prompt: str) -> QuerySpec:
 
 
 def build_sql(spec: QuerySpec) -> tuple[str, list[Any]]:
-    """QuerySpec -> parameterized, whitelisted-only SQL. Never string-concatenates user text into SQL."""
+    """QuerySpec -> parameterized, whitelisted-only SQL. Never string-concatenates user text into SQL.
+
+    An empty group_by means "grand total, no breakdown": the query returns exactly one row with
+    just the requested metric aggregates and no dimension columns. The frontend renders this as
+    score cards rather than a chart.
+    """
     metrics = [m for m in spec.metrics if m in sl.METRICS] or ["spend"]
-    group_by = [g for g in spec.group_by if g in sl.DIMENSIONS] or ["platform"]
+    group_by = [g for g in spec.group_by if g in sl.DIMENSIONS]
 
     select_cols = [f"{sl.DIMENSIONS[g]} AS {g}" for g in group_by]
     select_cols += [f"{sl.METRICS[m][0]} AS {m}" for m in metrics]
@@ -149,16 +199,13 @@ def build_sql(spec: QuerySpec) -> tuple[str, list[Any]]:
         where_clauses.append("LOWER(campaign_name) LIKE ?")
         params.append(f"%{spec.campaign_contains.lower()}%")
 
-    group_cols = ", ".join(sl.DIMENSIONS[g] for g in group_by)
-    order_col = sl.DIMENSIONS[group_by[0]]
+    sql = f"SELECT {', '.join(select_cols)} FROM {sl.BASE_TABLE} WHERE {' AND '.join(where_clauses)}"
 
-    sql = (
-        f"SELECT {', '.join(select_cols)} "
-        f"FROM {sl.BASE_TABLE} "
-        f"WHERE {' AND '.join(where_clauses)} "
-        f"GROUP BY {group_cols} "
-        f"ORDER BY {order_col} "
-        f"LIMIT ?"
-    )
-    params.append(min(spec.limit, 5000))
+    if group_by:
+        group_cols = ", ".join(sl.DIMENSIONS[g] for g in group_by)
+        order_col = sl.DIMENSIONS[group_by[0]]
+        sql += f" GROUP BY {group_cols} ORDER BY {order_col}"
+
+    sql += " LIMIT ?"
+    params.append(min(spec.limit, 5000) if group_by else 1)
     return sql, params

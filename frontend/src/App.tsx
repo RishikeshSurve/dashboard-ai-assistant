@@ -4,7 +4,8 @@ import { runQuery, type QueryResult } from "./api";
 
 const EXAMPLE_PROMPTS = [
   "Show spend, clicks and conversions by platform for the last 30 days",
-  "Revenue and visits by campaign for the last 14 days",
+  "Total spend and revenue for the last 14 days compared to previous period",
+  "Spend trend over the last 30 days",
   "CTR and CPA by platform, last 7 days",
 ];
 

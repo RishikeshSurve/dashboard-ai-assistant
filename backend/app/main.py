@@ -15,6 +15,7 @@ dashboard rendered (no need to hit the DB twice or worry about data changing bet
 chart render and the export click). Swap for Redis in production (see design doc).
 """
 import uuid
+from dataclasses import replace
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -47,6 +48,13 @@ class QueryResponse(BaseModel):
     columns: list[str]
     rows: list[dict]
     row_count: int
+    # The single dimension results are grouped by (e.g. "platform", "date"), or None for a grand
+    # total. The frontend uses this to decide: None -> score cards, "date" -> line chart,
+    # anything else -> bar chart.
+    dimension: str | None = None
+    # Present only when the prompt asked for a period/YoY comparison on a totals (no group_by)
+    # query. Maps each metric to {current, previous, delta_pct}.
+    comparison: dict | None = None
 
 
 @app.get("/health")
@@ -77,10 +85,46 @@ def run_query(req: QueryRequest):
     finally:
         conn.close()
 
+    dimension = spec.group_by[0] if spec.group_by else None
+
+    comparison = None
+    if spec.compare and not spec.group_by and rows:
+        prev_from, prev_to = nl_query.previous_period_range(
+            spec.date_from or "", spec.date_to or "", spec.compare
+        )
+        prev_spec = replace(spec, date_from=prev_from, date_to=prev_to, compare=None)
+        prev_sql, prev_params = nl_query.build_sql(prev_spec)
+        try:
+            sql_guard.validate(prev_sql)
+            prev_conn = db.get_connection()
+            try:
+                prev_cur = prev_conn.execute(prev_sql, prev_params)
+                prev_row = dict(zip([d[0] for d in prev_cur.description], prev_cur.fetchone() or ()))
+            finally:
+                prev_conn.close()
+            comparison = {}
+            for metric, current_val in rows[0].items():
+                prev_val = prev_row.get(metric)
+                delta_pct = None
+                if prev_val not in (None, 0) and current_val is not None:
+                    delta_pct = round((current_val - prev_val) / abs(prev_val) * 100, 1)
+                comparison[metric] = {"current": current_val, "previous": prev_val, "delta_pct": delta_pct}
+            comparison["_range"] = {"previous_from": prev_from, "previous_to": prev_to, "mode": spec.compare}
+        except sql_guard.UnsafeSQLError:
+            comparison = None  # comparison is best-effort; don't fail the whole request over it
+
     query_id = str(uuid.uuid4())
     _RESULT_CACHE[query_id] = rows
 
-    return QueryResponse(query_id=query_id, sql=sql, columns=cols, rows=rows, row_count=len(rows))
+    return QueryResponse(
+        query_id=query_id,
+        sql=sql,
+        columns=cols,
+        rows=rows,
+        row_count=len(rows),
+        dimension=dimension,
+        comparison=comparison,
+    )
 
 
 @app.get("/api/export/{query_id}.csv")

@@ -4,12 +4,24 @@
 
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? "";
 
+export interface ComparisonEntry {
+  current: number | null;
+  previous: number | null;
+  delta_pct: number | null;
+}
+
 export interface QueryResult {
   query_id: string;
   sql: string;
   columns: string[];
   rows: Record<string, string | number>[];
   row_count: number;
+  // null = grand total (render as score cards), "date" = render as a line chart,
+  // anything else = render as a bar chart grouped by that dimension.
+  dimension: string | null;
+  // Present only for totals queries that asked for a period/YoY comparison. Keyed by metric
+  // name, plus a "_range" entry describing the comparison window.
+  comparison: (Record<string, ComparisonEntry> & { _range?: { previous_from: string; previous_to: string; mode: string } }) | null;
 }
 
 export async function runQuery(prompt: string): Promise<QueryResult> {
