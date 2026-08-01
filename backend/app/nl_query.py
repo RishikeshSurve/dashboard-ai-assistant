@@ -125,7 +125,23 @@ def previous_period_range(date_from: str, date_to: str, mode: str) -> tuple[str,
             date(d_from.year - 1, d_from.month, d_from.day).isoformat(),
             date(d_to.year - 1, d_to.month, d_to.day).isoformat(),
         )
-    # previous_period: shift the whole window back by its own length, immediately preceding it.
+
+    # If the current range looks like a calendar month -- starts on the 1st and stays within
+    # that same month -- "previous period" means the same day-range in the immediately
+    # preceding calendar month (e.g. Aug 1-15 vs Jul 1-15), not a strict N-days-before window.
+    # This matches how people actually read "previous period" for a month ("compare to last
+    # month") and avoids a lopsided 1-day-vs-1-day comparison on the 1st of the month.
+    is_month_shaped = d_from.day == 1 and d_to.year == d_from.year and d_to.month == d_from.month
+    if is_month_shaped:
+        prev_month_last_day = d_from - timedelta(days=1)
+        prev_month_first_day = date(prev_month_last_day.year, prev_month_last_day.month, 1)
+        day_offset = (d_to - d_from).days
+        prev_to = min(prev_month_first_day + timedelta(days=day_offset), prev_month_last_day)
+        return prev_month_first_day.isoformat(), prev_to.isoformat()
+
+    # Otherwise: shift the whole window back by its own length, immediately preceding it.
+    # This is the standard ad-platform definition of "previous period" for non-month ranges
+    # (e.g. "last 30 days") -- compare against the equal-length window right before it.
     span = (d_to - d_from).days + 1
     prev_to = d_from - timedelta(days=1)
     prev_from = prev_to - timedelta(days=span - 1)

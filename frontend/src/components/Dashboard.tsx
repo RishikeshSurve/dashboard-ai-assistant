@@ -33,9 +33,31 @@ function formatValue(value: number | string | null | undefined, metricName?: str
   return metricName && isPercentMetric(metricName) ? `${formatted}%` : formatted;
 }
 
+/** Formats an ISO date as "Jul 1, 2026", or "Jul 1 – Jul 15, 2026" for a range, so the
+ *  comparison badge can show exactly which dates it's comparing against instead of leaving
+ *  people to guess what "previous period" resolved to. */
+function formatDateRange(from: string, to: string): string {
+  const fmt = (iso: string) =>
+    new Date(`${iso}T00:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric", year: "numeric" });
+  return from === to ? fmt(from) : `${fmt(from)} – ${fmt(to)}`;
+}
+
+const COMPARISON_EXPLANATIONS: Record<string, string> = {
+  yoy: "Year over year: compared to the exact same calendar dates one year earlier.",
+  previous_period:
+    "Previous period: compared to the equivalent stretch of time right before this one " +
+    "(the previous calendar month for a full/partial month, or the same number of days " +
+    "immediately prior for other ranges).",
+};
+
 /** Score cards: used when the query has no dimension breakdown (a grand total). */
 function ScoreCards({ result }: { result: QueryResult }) {
   const row = result.rows[0] ?? {};
+  const mode = result.comparison?._range?.mode;
+  const modeLabel = mode === "yoy" ? "last year" : "previous period";
+  const modeExplanation = mode ? COMPARISON_EXPLANATIONS[mode] : undefined;
+  const range = result.comparison?._range;
+
   return (
     <div className="score-cards">
       {result.columns.map((metric) => {
@@ -50,9 +72,17 @@ function ScoreCards({ result }: { result: QueryResult }) {
             {typeof delta === "number" && (
               <div className={`score-card-delta ${isUp ? "up" : isDown ? "down" : "flat"}`}>
                 {isUp ? "▲" : isDown ? "▼" : "–"} {Math.abs(delta)}%
-                <span className="score-card-delta-label">
+                <span
+                  className="score-card-delta-label"
+                  title={
+                    modeExplanation && cmp
+                      ? `${modeExplanation}\nThis metric: ${formatValue(cmp.current, metric)} vs ${formatValue(cmp.previous, metric)}.`
+                      : modeExplanation
+                  }
+                >
                   {" "}
-                  vs {result.comparison?._range?.mode === "yoy" ? "last year" : "previous period"}
+                  vs {modeLabel}
+                  {range && <span className="score-card-delta-range"> ({formatDateRange(range.previous_from, range.previous_to)})</span>}
                 </span>
               </div>
             )}

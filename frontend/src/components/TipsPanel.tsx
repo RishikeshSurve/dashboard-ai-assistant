@@ -9,7 +9,16 @@ const DATE_EXAMPLES = [
   "from 2025-01-01 to 2025-03-31",
 ];
 
-const COMPARISON_EXAMPLES = ["vs previous period", "year over year"];
+const COMPARISON_EXAMPLES: { label: string; hint: string }[] = [
+  {
+    label: "vs previous period",
+    hint: "Compares to the stretch of time right before your range -- the previous calendar month for a full/partial month, or the same number of days immediately prior otherwise. Good for \"are we trending up or down right now.\"",
+  },
+  {
+    label: "year over year",
+    hint: "Compares to the exact same calendar dates one year earlier. Good for spotting real change while ignoring seasonal patterns (e.g. holiday spikes that repeat every year).",
+  },
+];
 
 const GROUPING_EXAMPLES = ["by platform", "by campaign", "trend over time (daily)"];
 
@@ -65,9 +74,9 @@ export default function TipsPanel({
         <h4>Comparisons</h4>
         <ul className="tips-list">
           {COMPARISON_EXAMPLES.map((ex) => (
-            <li key={ex}>
-              <button type="button" onClick={() => onSuggest(`total spend and revenue this month ${ex}`)}>
-                {ex}
+            <li key={ex.label}>
+              <button type="button" title={ex.hint} onClick={() => onSuggest(`total spend and revenue this month ${ex.label}`)}>
+                {ex.label}
               </button>
             </li>
           ))}
