@@ -201,18 +201,30 @@ def _generate_daily_rows(conn: sqlite3.Connection, date_from: date, date_to: dat
 def _top_up(conn: sqlite3.Connection) -> None:
     """Ensures daily rows exist for every day from START_DATE through today. Cheap no-op when
     already current; only does work on the first connection of a new calendar day (or a fresh
-    / freshly-wiped database)."""
+    / freshly-wiped database).
+
+    Checks both ends of the existing range, not just the newest date: if START_DATE is ever
+    moved earlier (as happened when the dataset was widened to cover all of 2025), a database
+    that was already seeded under the old START_DATE would otherwise keep extending forward
+    forever without ever backfilling the newly-added earlier history -- silently leaving
+    year-over-year / older-date comparisons with no data to compare against.
+    """
     cur = conn.cursor()
-    cur.execute("SELECT MAX(metric_date) FROM platform_metrics")
+    cur.execute("SELECT MIN(metric_date), MAX(metric_date) FROM platform_metrics")
     row = cur.fetchone()
-    max_date_str = row[0] if row else None
+    min_date_str, max_date_str = (row[0], row[1]) if row else (None, None)
     today = date.today()
 
     if max_date_str is None:
         _generate_daily_rows(conn, START_DATE, today)
         return
 
+    min_date = date.fromisoformat(min_date_str)
     max_date = date.fromisoformat(max_date_str)
+
+    if min_date > START_DATE:
+        _generate_daily_rows(conn, START_DATE, min_date - timedelta(days=1))
+
     if max_date < today:
         _generate_daily_rows(conn, max_date + timedelta(days=1), today)
 
