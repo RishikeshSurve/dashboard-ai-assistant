@@ -8,6 +8,7 @@ const EXAMPLE_PROMPTS = [
   "Total spend and revenue for the last 14 days compared to previous period",
   "Spend trend over the last 30 days",
   "CTR and CPA by platform, last 7 days",
+  "Total spend and revenue in 2025",
 ];
 
 export default function App() {

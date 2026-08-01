@@ -7,6 +7,9 @@ db.py) and a fixed registry of metrics/dimensions. The agent's job is to pick fr
 not to write arbitrary SQL from scratch. This keeps generated SQL predictable, auditable, and
 safe to run read-only against production data.
 """
+from datetime import date
+
+from . import db
 
 BASE_TABLE = "unified_metrics"
 
@@ -46,6 +49,9 @@ def schema_description() -> str:
     metrics = "\n".join(f"  - {k}: {v[2]}" for k, v in METRICS.items())
     return (
         f"Table: {BASE_TABLE}\n"
+        f"Data available from {db.START_DATE.isoformat()} through today ({date.today().isoformat()}), "
+        "and grows by one day automatically as time passes -- always resolve relative dates "
+        "(\"this year\", \"last 90 days\", \"year to date\") against today's actual date.\n"
         f"Dimensions you may group/filter by: {dims}\n"
         f"Platforms available: {', '.join(VALID_PLATFORMS)}\n"
         f"Metrics available:\n{metrics}\n"

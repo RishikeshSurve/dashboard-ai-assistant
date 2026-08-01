@@ -43,6 +43,40 @@ def _default_date_range(days: int = 30) -> tuple[str, str]:
     return (today - timedelta(days=days)).isoformat(), today.isoformat()
 
 
+def _parse_date_range_from_text(text: str) -> tuple[str, str] | None:
+    """Recognizes explicit ranges and calendar-period phrases (needed now that the dataset
+    spans full years, not just a recent window) -- e.g. "in 2025", "this year", "year to
+    date", "from 2025-03-01 to 2025-05-31". Returns None if nothing more specific than "last N
+    days" (handled by the caller) is present."""
+    today = date.today()
+
+    m = re.search(r"(?:from|between)\s+(\d{4}-\d{2}-\d{2})\s+(?:to|and)\s+(\d{4}-\d{2}-\d{2})", text)
+    if m:
+        return m.group(1), m.group(2)
+
+    if "year to date" in text or re.search(r"\bytd\b", text):
+        return date(today.year, 1, 1).isoformat(), today.isoformat()
+
+    if "this year" in text:
+        return date(today.year, 1, 1).isoformat(), today.isoformat()
+
+    is_comparison_mention = "compared" in text or re.search(r"\bvs\b", text)
+
+    if not is_comparison_mention and "last year" in text:
+        year = today.year - 1
+        return date(year, 1, 1).isoformat(), date(year, 12, 31).isoformat()
+
+    m = re.search(r"\b(?:in|for|during)\s+(20\d{2})\b", text)
+    if not m and not is_comparison_mention:
+        m = re.search(r"\b(20\d{2})\b", text)
+    if m:
+        year = int(m.group(1))
+        year_end = min(date(year, 12, 31), today)
+        return date(year, 1, 1).isoformat(), year_end.isoformat()
+
+    return None
+
+
 def previous_period_range(date_from: str, date_to: str, mode: str) -> tuple[str, str]:
     """Compute the comparison date range for a given current range + comparison mode."""
     d_from = date.fromisoformat(date_from)
@@ -94,9 +128,13 @@ def _rule_based_parse(prompt: str) -> QuerySpec:
     if platforms:
         spec.platforms = platforms
 
-    m = re.search(r"last (\d+) days?", text)
-    days = int(m.group(1)) if m else 30
-    spec.date_from, spec.date_to = _default_date_range(days)
+    date_range = _parse_date_range_from_text(text)
+    if date_range:
+        spec.date_from, spec.date_to = date_range
+    else:
+        m = re.search(r"last (\d+) days?", text)
+        days = int(m.group(1)) if m else 30
+        spec.date_from, spec.date_to = _default_date_range(days)
 
     if "year over year" in text or "yoy" in text or "vs last year" in text or "compared to last year" in text:
         spec.compare = "yoy"

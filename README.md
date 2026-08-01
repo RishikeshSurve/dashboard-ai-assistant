@@ -10,14 +10,20 @@ the underlying rows as CSV/Excel to verify.
   your Postgres warehouse) -> JSON. Includes the SQL safety guard, the semantic layer (metric
   registry), and CSV/Excel export endpoints. Seeded with realistic sample campaign/adset data,
   including the ecd_code join key used to stitch in mock Salesforce CPV and Adobe visit data.
+  **Data coverage**: the seed starts Jan 1, 2025 and always extends through today — every
+  request tops up any missing days automatically (`backend/app/db.py`), so the dataset keeps
+  growing on its own as real time passes, no manual reseed needed.
 - `frontend/` — React + TypeScript + Vite chat UI. Renders results as score cards, trend lines,
   or bar charts depending on the query, plus CSV/Excel download buttons and the generated SQL
   for transparency.
 - `AI_Dashboard_Assistant_Design.docx` — full architecture and design document.
 - `architecture-flow.svg` — diagram of the data connectors and deployment flow, open in any
   browser or image viewer.
-- `Sample_Dashboard_Data.xlsx` / `.csv` — the current sample data backing the live demo, for
-  verifying numbers shown on the dashboard.
+- `Sample_Dashboard_Data.xlsx` / `.csv` — a snapshot of the sample data backing the live demo,
+  for verifying numbers shown on the dashboard. Covers Jan 1, 2025 through the day it was
+  generated; the live app's dataset will have moved a little further ahead since (see above).
+  Run `python backend/build_sample_data.py` to regenerate an up-to-date snapshot whenever you
+  need one.
 
 ## Run it
 
