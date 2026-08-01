@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import type { QueryResult } from "../api";
-import { exportUrl } from "../api";
+import { AuthError, exportFile } from "../api";
 
 const COLORS = ["#4f46e5", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"];
 
@@ -63,23 +63,41 @@ function ScoreCards({ result }: { result: QueryResult }) {
   );
 }
 
-export default function Dashboard({ result }: { result: QueryResult }) {
+export default function Dashboard({
+  result,
+  onAuthError,
+}: {
+  result: QueryResult;
+  onAuthError?: (message: string) => void;
+}) {
   const dimensionCol = result.dimension;
   const metricCols = dimensionCol ? result.columns.filter((c) => c !== dimensionCol) : result.columns;
   const isTotals = !dimensionCol;
   const isTrend = dimensionCol === "date";
+
+  async function handleExport(format: "csv" | "xlsx") {
+    try {
+      await exportFile(result.query_id, format);
+    } catch (err: any) {
+      if (err instanceof AuthError && onAuthError) {
+        onAuthError(err.message);
+      } else {
+        alert(err?.message ?? "Export failed.");
+      }
+    }
+  }
 
   return (
     <div className="dashboard">
       <div className="dashboard-header">
         <h2>{isTotals ? "Summary" : `Results (${result.row_count} rows)`}</h2>
         <div className="export-buttons">
-          <a href={exportUrl(result.query_id, "csv")} download>
+          <button type="button" onClick={() => handleExport("csv")}>
             Download CSV
-          </a>
-          <a href={exportUrl(result.query_id, "xlsx")} download>
+          </button>
+          <button type="button" onClick={() => handleExport("xlsx")}>
             Download Excel
-          </a>
+          </button>
         </div>
       </div>
 

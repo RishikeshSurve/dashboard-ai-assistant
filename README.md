@@ -10,8 +10,14 @@ the underlying rows as CSV/Excel to verify.
   your Postgres warehouse) -> JSON. Includes the SQL safety guard, the semantic layer (metric
   registry), and CSV/Excel export endpoints. Seeded with realistic sample campaign/adset data,
   including the ecd_code join key used to stitch in mock Salesforce CPV and Adobe visit data.
-- `frontend/` — React + TypeScript + Vite chat UI. Renders results as a bar chart + table with
-  CSV/Excel download buttons, and shows the generated SQL for transparency.
+- `frontend/` — React + TypeScript + Vite chat UI. Renders results as score cards, trend lines,
+  or bar charts depending on the query, plus CSV/Excel download buttons and the generated SQL
+  for transparency.
+- `AI_Dashboard_Assistant_Design.docx` — full architecture and design document.
+- `architecture-flow.svg` — diagram of the data connectors and deployment flow, open in any
+  browser or image viewer.
+- `Sample_Dashboard_Data.xlsx` / `.csv` — the current sample data backing the live demo, for
+  verifying numbers shown on the dashboard.
 
 ## Run it
 
@@ -41,10 +47,45 @@ revenue by platform for the last 14 days".
    already has an `_llm_parse` path that calls Claude with the semantic layer schema and
    returns a structured QuerySpec. Without the key it falls back to a keyword-based parser
    (demo-only, not for production).
-3. **Auth**: add an auth dependency to the FastAPI routes (OIDC/SSO) and enforce row-level
-   security (e.g. restrict by business unit) before the query executes.
+3. **Auth**: the invite-code gate (see "Multi-user access" below) is enough for a pilot with a
+   trusted group. For real per-user accounts, roles, and audit trails, swap `auth.py` for
+   OIDC/SSO and enforce row-level security (e.g. restrict by business unit) before the query
+   executes.
 4. **Result cache**: swap the in-memory `_RESULT_CACHE` dict in `main.py` for Redis so export
    works across multiple backend instances.
+
+## Multi-user access (invite codes)
+
+The app now sits behind a simple access-code gate instead of being wide open: anyone you want
+to use the dashboard needs one shared code (not a full account) to get in.
+
+- **Backend** (`backend/app/auth.py`): codes live in a Postgres table (`access_codes`), not
+  SQLite, because they need to survive backend restarts/redeploys. `POST /api/auth/verify`
+  checks a submitted code and returns a signed session token (JWT, 30-day expiry); every other
+  route (`/api/query`, `/api/schema`, the export endpoints) requires that token via
+  `Authorization: Bearer <token>` and returns 401 without it. `/health` stays public.
+- **Frontend**: a full-screen gate (`AccessGate.tsx`) asks for the code before showing the chat
+  UI, stores the token in `localStorage`, and attaches it to every request. A 401 anywhere
+  (expired/revoked token) drops the user back to the gate automatically. There's a "Log out"
+  link in the header.
+
+**Required env vars on the backend** (set these on Render — see below):
+- `DATABASE_URL` — a Postgres connection string. Render's free Postgres works.
+- `AUTH_SECRET_KEY` — a random secret used to sign session tokens. Without it, a new one is
+  generated on every restart, which logs everyone out each time the free-tier service sleeps
+  and wakes back up — set a fixed one.
+- `ACCESS_CODE_SEED` (optional) — the first access code to hand out. If unset, a random one is
+  generated on first startup and printed to the Render logs (check there if you didn't set this).
+
+**Adding or revoking codes later** (no redeploy needed): open the Postgres database (Render
+dashboard → your database → "Connect" → psql, or any Postgres client) and run:
+```sql
+-- add a new code
+INSERT INTO access_codes (code, label) VALUES ('some-new-code', 'marketing-team');
+
+-- revoke a code
+UPDATE access_codes SET revoked = TRUE WHERE code = 'some-old-code';
+```
 
 ## Deploying to a public URL (so it's not "run terminals every time")
 

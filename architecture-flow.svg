@@ -1,0 +1,135 @@
+<svg viewBox="0 0 900 1450" xmlns="http://www.w3.org/2000/svg" role="img">
+  <title>Detailed data connector and deployment flow for the AI Dashboard Assistant</title>
+  <desc>Numbered steps showing ad platform and attribution APIs feeding existing ETL and a data warehouse, then the new unified_metrics view, semantic layer with Claude, FastAPI backend, and dashboard/export layer, with labels describing what data moves at each hand-off.</desc>
+
+  <rect width="900" height="1450" fill="#ffffff"/>
+
+  <defs>
+    <marker id="arrow2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4b5563"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="38" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="22" font-weight="700" fill="#111827">Data Connectors &amp; Deployment Flow</text>
+  <text x="450" y="60" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" fill="#4b5563">Follow the numbers top to bottom — labels on the arrows show what data moves at each step</text>
+
+  <!-- Step 1 & 2: sources -->
+  <g>
+    <rect x="60" y="90" width="380" height="120" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <circle cx="90" cy="118" r="16" fill="#2563eb"/>
+    <text x="90" y="123" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">1</text>
+    <text x="116" y="123" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">Ad Platform APIs</text>
+    <text x="80" y="150" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Facebook, Google Ads, Reddit,</text>
+    <text x="80" y="167" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Quora, PulsePoint</text>
+    <text x="80" y="189" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Existing scheduled pulls fetch daily</text>
+    <text x="80" y="204" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">spend, clicks &amp; conversions per adset</text>
+  </g>
+  <g>
+    <rect x="460" y="90" width="380" height="120" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+    <circle cx="490" cy="118" r="16" fill="#2563eb"/>
+    <text x="490" y="123" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">2</text>
+    <text x="516" y="123" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">Attribution APIs</text>
+    <text x="480" y="150" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Salesforce (CPV) + Adobe</text>
+    <text x="480" y="167" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Analytics (site visits)</text>
+    <text x="480" y="189" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Existing pulls fetch CPV and visits,</text>
+    <text x="480" y="204" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">tagged with the unique ecd_code</text>
+  </g>
+
+  <line x1="250" y1="210" x2="430" y2="256" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="650" y1="210" x2="470" y2="256" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="380" y="222" width="120" height="20" rx="10" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="440" y="236" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10.5" fill="#4b5563" font-style="italic">raw daily rows</text>
+
+  <!-- Step 3: ETL -->
+  <rect x="250" y="260" width="400" height="100" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="280" cy="288" r="16" fill="#2563eb"/>
+  <text x="280" y="293" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">3</text>
+  <text x="306" y="293" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">ETL / Ingestion Pipelines</text>
+  <text x="270" y="320" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Existing jobs clean &amp; load all raw</text>
+  <text x="270" y="337" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">data into the warehouse nightly</text>
+
+  <line x1="450" y1="360" x2="450" y2="422" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="385" y="380" width="130" height="20" rx="10" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="450" y="394" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10.5" fill="#4b5563" font-style="italic">loaded warehouse tables</text>
+
+  <!-- Step 4: Warehouse -->
+  <rect x="250" y="426" width="400" height="100" rx="10" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <circle cx="280" cy="454" r="16" fill="#2563eb"/>
+  <text x="280" y="459" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">4</text>
+  <text x="306" y="459" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">Central Data Warehouse</text>
+  <text x="270" y="486" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Postgres / Snowflake / BigQuery —</text>
+  <text x="270" y="503" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">the single source of truth</text>
+
+  <line x1="450" y1="526" x2="450" y2="588" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="365" y="546" width="170" height="20" rx="10" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="450" y="560" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10.5" fill="#4b5563" font-style="italic">SELECT through one view</text>
+
+  <!-- Step 5: unified_metrics view (NEW) -->
+  <rect x="250" y="592" width="400" height="100" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <circle cx="280" cy="620" r="16" fill="#7c3aed"/>
+  <text x="280" y="625" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">5</text>
+  <text x="306" y="625" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">unified_metrics View</text>
+  <text x="270" y="652" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">One SQL view joins ad-platform +</text>
+  <text x="270" y="669" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Salesforce + Adobe on ecd_code &amp; date</text>
+
+  <line x1="450" y1="692" x2="450" y2="754" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="375" y="712" width="150" height="20" rx="10" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="450" y="726" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10.5" fill="#4b5563" font-style="italic">governed schema</text>
+
+  <!-- Step 6: Semantic layer + Claude (NEW) -->
+  <rect x="250" y="758" width="400" height="110" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <circle cx="280" cy="786" r="16" fill="#7c3aed"/>
+  <text x="280" y="791" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">6</text>
+  <text x="306" y="791" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">Semantic Layer + Claude</text>
+  <text x="270" y="818" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Claude reads your prompt + the fixed</text>
+  <text x="270" y="835" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">metric list, returns structured JSON —</text>
+  <text x="270" y="852" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">never raw SQL</text>
+
+  <line x1="450" y1="868" x2="450" y2="930" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="365" y="888" width="170" height="20" rx="10" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="450" y="902" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10.5" fill="#4b5563" font-style="italic">QuerySpec JSON</text>
+
+  <!-- Step 7: FastAPI backend (NEW) -->
+  <rect x="250" y="934" width="400" height="100" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <circle cx="280" cy="962" r="16" fill="#7c3aed"/>
+  <text x="280" y="967" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">7</text>
+  <text x="306" y="967" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">FastAPI Backend</text>
+  <text x="270" y="994" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Builds parameterized SQL, runs the</text>
+  <text x="270" y="1011" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">safety guard, executes read-only</text>
+
+  <line x1="350" y1="1034" x2="250" y2="1082" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <line x1="550" y1="1034" x2="650" y2="1082" stroke="#4b5563" stroke-width="2" marker-end="url(#arrow2)"/>
+  <rect x="370" y="1046" width="160" height="20" rx="10" fill="#ffffff" stroke="#d1d5db"/>
+  <text x="450" y="1060" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="10.5" fill="#4b5563" font-style="italic">result rows + query id</text>
+
+  <!-- Step 8 & 9: UI + Export (NEW) -->
+  <g>
+    <rect x="60" y="1086" width="380" height="120" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <circle cx="90" cy="1114" r="16" fill="#7c3aed"/>
+    <text x="90" y="1119" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">8</text>
+    <text x="116" y="1119" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">Dashboard UI</text>
+    <text x="80" y="1146" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Renders score cards, trend</text>
+    <text x="80" y="1163" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">lines, bar charts &amp; comparisons</text>
+    <text x="80" y="1185" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Hosted on Vercel, public URL</text>
+  </g>
+  <g>
+    <rect x="460" y="1086" width="380" height="120" rx="10" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+    <circle cx="490" cy="1114" r="16" fill="#7c3aed"/>
+    <text x="490" y="1119" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="14" font-weight="700" fill="#ffffff">9</text>
+    <text x="516" y="1119" font-family="-apple-system, sans-serif" font-size="15" font-weight="700" fill="#111827">CSV / Excel Export</text>
+    <text x="480" y="1146" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">Downloads the exact rows</text>
+    <text x="480" y="1163" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">behind any chart on screen</text>
+    <text x="480" y="1185" font-family="-apple-system, sans-serif" font-size="12" fill="#374151">for manual, offline verification</text>
+  </g>
+
+  <!-- Legend -->
+  <line x1="60" y1="1240" x2="840" y2="1240" stroke="#e5e7eb" stroke-width="1"/>
+  <rect x="260" y="1266" width="18" height="18" rx="4" fill="#dbeafe" stroke="#2563eb" stroke-width="2"/>
+  <text x="286" y="1280" font-family="-apple-system, sans-serif" font-size="13" fill="#111827">Already live today (steps 1-4)</text>
+  <rect x="500" y="1266" width="18" height="18" rx="4" fill="#ede9fe" stroke="#7c3aed" stroke-width="2"/>
+  <text x="526" y="1280" font-family="-apple-system, sans-serif" font-size="13" fill="#111827">Built for this project (steps 5-9)</text>
+
+  <text x="450" y="1330" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="13" font-weight="600" fill="#111827">Going live with real data changes exactly one thing:</text>
+  <text x="450" y="1352" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12.5" fill="#374151">step 5's unified_metrics view gets pointed at your real warehouse instead of the seeded sample</text>
+  <text x="450" y="1372" text-anchor="middle" font-family="-apple-system, sans-serif" font-size="12.5" fill="#374151">database. Steps 1-4 (your existing pipelines) and steps 6-9 (this project) don't need to change.</text>
+</svg>

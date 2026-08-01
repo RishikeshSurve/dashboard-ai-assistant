@@ -19,12 +19,12 @@ from dataclasses import replace
 
 from dotenv import load_dotenv
 load_dotenv()
-from fastapi import FastAPI, HTTPException
+from fastapi import Depends, FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import Response
 from pydantic import BaseModel
 
-from . import db, export, nl_query, semantic_layer, sql_guard
+from . import auth, db, export, nl_query, semantic_layer, sql_guard
 
 app = FastAPI(title="Dashboard AI Assistant API")
 
@@ -36,6 +36,30 @@ app.add_middleware(
 )
 
 _RESULT_CACHE: dict[str, list[dict]] = {}
+
+
+@app.on_event("startup")
+def _startup():
+    # Soft-fail: local/dev runs without DATABASE_URL should still boot (auth routes just
+    # won't work until Postgres is configured), rather than crashing the whole API.
+    if not auth.DATABASE_URL:
+        print("WARNING: DATABASE_URL not set -- auth is disabled. /api/auth/verify and all "
+              "protected routes will fail until a Postgres DATABASE_URL is configured.")
+        return
+    try:
+        auth.ensure_schema()
+    except Exception as e:
+        print(f"WARNING: auth.ensure_schema() failed ({e}). Auth routes will fail until this "
+              "is resolved.")
+
+
+class AuthRequest(BaseModel):
+    code: str
+
+
+class AuthResponse(BaseModel):
+    token: str
+    label: str
 
 
 class QueryRequest(BaseModel):
@@ -62,13 +86,21 @@ def health():
     return {"status": "ok"}
 
 
+@app.post("/api/auth/verify", response_model=AuthResponse)
+def verify_access_code(req: AuthRequest):
+    row = auth.verify_code(req.code.strip())
+    if row is None:
+        raise HTTPException(status_code=401, detail="Invalid or revoked access code.")
+    return AuthResponse(token=auth.create_token(row["label"]), label=row["label"])
+
+
 @app.get("/api/schema")
-def schema():
+def schema(_session: dict = Depends(auth.require_session)):
     return {"description": semantic_layer.schema_description()}
 
 
 @app.post("/api/query", response_model=QueryResponse)
-def run_query(req: QueryRequest):
+def run_query(req: QueryRequest, _session: dict = Depends(auth.require_session)):
     spec = nl_query.parse_prompt(req.prompt)
     sql, params = nl_query.build_sql(spec)
 
@@ -128,7 +160,7 @@ def run_query(req: QueryRequest):
 
 
 @app.get("/api/export/{query_id}.csv")
-def export_csv(query_id: str):
+def export_csv(query_id: str, _session: dict = Depends(auth.require_session)):
     rows = _RESULT_CACHE.get(query_id)
     if rows is None:
         raise HTTPException(status_code=404, detail="Query result not found or expired.")
@@ -141,7 +173,7 @@ def export_csv(query_id: str):
 
 
 @app.get("/api/export/{query_id}.xlsx")
-def export_xlsx(query_id: str):
+def export_xlsx(query_id: str, _session: dict = Depends(auth.require_session)):
     rows = _RESULT_CACHE.get(query_id)
     if rows is None:
         raise HTTPException(status_code=404, detail="Query result not found or expired.")
