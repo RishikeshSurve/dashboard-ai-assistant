@@ -43,22 +43,61 @@ def _default_date_range(days: int = 30) -> tuple[str, str]:
     return (today - timedelta(days=days)).isoformat(), today.isoformat()
 
 
+MONTH_NAMES = {
+    "jan": 1, "january": 1, "feb": 2, "february": 2, "mar": 3, "march": 3,
+    "apr": 4, "april": 4, "may": 5, "jun": 6, "june": 6, "jul": 7, "july": 7,
+    "aug": 8, "august": 8, "sep": 9, "sept": 9, "september": 9, "oct": 10, "october": 10,
+    "nov": 11, "november": 11, "dec": 12, "december": 12,
+}
+_MONTH_PATTERN = "|".join(sorted(MONTH_NAMES, key=len, reverse=True))
+
+
+def _month_end(year: int, month: int) -> date:
+    if month == 12:
+        return date(year, 12, 31)
+    return date(year, month + 1, 1) - timedelta(days=1)
+
+
 def _parse_date_range_from_text(text: str) -> tuple[str, str] | None:
     """Recognizes explicit ranges and calendar-period phrases (needed now that the dataset
     spans full years, not just a recent window) -- e.g. "in 2025", "this year", "year to
-    date", "from 2025-03-01 to 2025-05-31". Returns None if nothing more specific than "last N
-    days" (handled by the caller) is present."""
+    date", "Jan 2026", "from 2025-03-01 to 2025-05-31". Returns None if nothing more specific
+    than "last N days" (handled by the caller) is present.
+
+    Month+year detection runs before the bare-year fallback below -- otherwise a phrase like
+    "Jan 2026" would match the bare "20\\d{2}" pattern and incorrectly return the whole year
+    instead of just that month.
+    """
     today = date.today()
 
     m = re.search(r"(?:from|between)\s+(\d{4}-\d{2}-\d{2})\s+(?:to|and)\s+(\d{4}-\d{2}-\d{2})", text)
     if m:
         return m.group(1), m.group(2)
 
+    # "Jan 2026", "January 2026", "in Jan 2026", "for january 2026"
+    m = re.search(rf"\b({_MONTH_PATTERN})\.?\s+(20\d{{2}})\b", text)
+    if m:
+        month = MONTH_NAMES[m.group(1)]
+        year = int(m.group(2))
+        start = date(year, month, 1)
+        end = min(_month_end(year, month), today)
+        return start.isoformat(), max(start, end).isoformat()
+
     if "year to date" in text or re.search(r"\bytd\b", text):
         return date(today.year, 1, 1).isoformat(), today.isoformat()
 
     if "this year" in text:
         return date(today.year, 1, 1).isoformat(), today.isoformat()
+
+    if "this month" in text:
+        start = date(today.year, today.month, 1)
+        return start.isoformat(), today.isoformat()
+
+    if "last month" in text:
+        first_of_this_month = date(today.year, today.month, 1)
+        last_month_end = first_of_this_month - timedelta(days=1)
+        start = date(last_month_end.year, last_month_end.month, 1)
+        return start.isoformat(), last_month_end.isoformat()
 
     is_comparison_mention = "compared" in text or re.search(r"\bvs\b", text)
 
@@ -180,7 +219,12 @@ def _llm_parse(prompt: str) -> QuerySpec:
         "(e.g. \"by platform\", \"by campaign\", \"trend\"/\"daily\" implies group_by ['date']). "
         "Set compare to 'previous_period' when the user asks to compare against the prior "
         "period of equal length (e.g. \"vs last period\", \"week over week\"), or 'yoy' when "
-        "they ask for a year-over-year comparison. Otherwise leave compare null."
+        "they ask for a year-over-year comparison. Otherwise leave compare null.\n\n"
+        "Be precise about date ranges: a specific month like \"Jan 2026\" or \"January 2026\" "
+        "means date_from/date_to spanning ONLY that calendar month (e.g. 2026-01-01 to "
+        "2026-01-31), never the whole year. \"in 2026\" or \"this year\" with no month "
+        "mentioned means the full calendar year. Don't widen a range beyond what the user "
+        "actually asked for."
     )
     resp = client.messages.create(
         model="claude-sonnet-5",
