@@ -110,3 +110,30 @@ export async function fetchSchema(): Promise<string> {
   const data = await res.json();
   return data.description;
 }
+
+export type OverviewPeriod = "last30" | "this_month" | "ytd";
+
+export interface KpiEntry {
+  current: number | null;
+  previous: number | null;
+  delta_pct: number | null;
+}
+
+export interface OverviewData {
+  period: { from: string; to: string; label: string; key: string };
+  previous_period: { from: string; to: string };
+  kpis: Record<string, KpiEntry>;
+  trend: { date: string; spend: number; revenue: number; conversions: number }[];
+  platforms: { platform: string; spend: number; revenue: number; conversions: number; roas: number }[];
+  campaigns: { campaign: string; spend: number; revenue: number; conversions: number; roas: number; margin_pct: number | null }[];
+}
+
+/** One round trip for the whole Overview dashboard -- KPIs, trend, platforms, campaigns. */
+export async function fetchOverview(period: OverviewPeriod): Promise<OverviewData> {
+  const res = await authFetch(`/api/overview?period=${period}`);
+  if (!res.ok) {
+    const body = await res.json().catch(() => ({}));
+    throw new Error(body.detail ?? `Overview failed (${res.status})`);
+  }
+  return res.json();
+}

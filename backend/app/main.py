@@ -16,6 +16,7 @@ chart render and the export click). Swap for Redis in production (see design doc
 """
 import uuid
 from dataclasses import replace
+from datetime import date, timedelta
 
 from dotenv import load_dotenv
 load_dotenv()
@@ -157,6 +158,80 @@ def run_query(req: QueryRequest, _session: dict = Depends(auth.require_session))
         dimension=dimension,
         comparison=comparison,
     )
+
+
+def _run_guarded(conn, spec: "nl_query.QuerySpec") -> list[dict]:
+    """Builds, validates, and executes one QuerySpec on an existing connection."""
+    sql, params = nl_query.build_sql(spec)
+    sql_guard.validate(sql)
+    cur = conn.execute(sql, params)
+    cols = [d[0] for d in cur.description]
+    return [dict(zip(cols, r)) for r in cur.fetchall()]
+
+
+@app.get("/api/overview")
+def overview(period: str = "last30", _session: dict = Depends(auth.require_session)):
+    """Everything the Overview dashboard needs in ONE round trip (one HTTP request, one DB
+    connection): KPI totals with previous-period comparison, daily trend, platform breakdown,
+    and top campaigns. A single call keeps the dashboard fast -- especially on the free-tier
+    host, where each extra request risks paying connection overhead."""
+    today = date.today()
+    if period == "this_month":
+        d_from, d_to = date(today.year, today.month, 1), today
+        label = "This month"
+    elif period == "ytd":
+        d_from, d_to = date(today.year, 1, 1), today
+        label = "Year to date"
+    else:
+        d_from, d_to = today - timedelta(days=30), today
+        label = "Last 30 days"
+    date_from, date_to = d_from.isoformat(), d_to.isoformat()
+
+    kpi_metrics = ["spend", "revenue", "conversions", "clicks", "roas", "margin_pct"]
+    base = nl_query.QuerySpec(metrics=kpi_metrics, group_by=[], date_from=date_from, date_to=date_to)
+
+    prev_from, prev_to = nl_query.previous_period_range(date_from, date_to, "previous_period")
+
+    conn = db.get_connection()
+    try:
+        totals_rows = _run_guarded(conn, base)
+        prev_rows = _run_guarded(conn, replace(base, date_from=prev_from, date_to=prev_to))
+        trend = _run_guarded(
+            conn,
+            replace(base, metrics=["spend", "revenue", "conversions"], group_by=["date"], limit=400),
+        )
+        platforms = _run_guarded(
+            conn,
+            replace(base, metrics=["spend", "revenue", "conversions", "roas"], group_by=["platform"], limit=20),
+        )
+        campaigns = _run_guarded(
+            conn,
+            replace(base, metrics=["spend", "revenue", "conversions", "roas", "margin_pct"], group_by=["campaign"], limit=100),
+        )
+    finally:
+        conn.close()
+
+    totals = totals_rows[0] if totals_rows else {}
+    prev = prev_rows[0] if prev_rows else {}
+    kpis = {}
+    for metric in kpi_metrics:
+        current_val = totals.get(metric)
+        prev_val = prev.get(metric)
+        delta_pct = None
+        if prev_val not in (None, 0) and current_val is not None:
+            delta_pct = round((current_val - prev_val) / abs(prev_val) * 100, 1)
+        kpis[metric] = {"current": current_val, "previous": prev_val, "delta_pct": delta_pct}
+
+    campaigns.sort(key=lambda r: r.get("spend") or 0, reverse=True)
+
+    return {
+        "period": {"from": date_from, "to": date_to, "label": label, "key": period},
+        "previous_period": {"from": prev_from, "to": prev_to},
+        "kpis": kpis,
+        "trend": trend,
+        "platforms": platforms,
+        "campaigns": campaigns[:10],
+    }
 
 
 @app.get("/api/export/{query_id}.csv")

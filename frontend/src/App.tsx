@@ -1,5 +1,6 @@
-import { lazy, Suspense, useEffect, useState } from "react";
+import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
+import Overview from "./components/Overview";
 import TipsPanel from "./components/TipsPanel";
 import { AuthError, clearToken, getToken, runQuery, type QueryResult } from "./api";
 
@@ -56,19 +57,20 @@ export default function App() {
   const [history, setHistory] = useState<{ prompt: string; result?: QueryResult; error?: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
+  const [tab, setTab] = useState<"overview" | "chat">("overview");
 
   useEffect(() => {
     document.documentElement.setAttribute("data-theme", theme);
     localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
-  function handleAuthError(message: string) {
+  const handleAuthError = useCallback((message: string) => {
     clearToken();
     setUnlocked(false);
     setHistory([]);
     // surfaced implicitly by returning to the gate; message is available if we want a toast later
     void message;
-  }
+  }, []);
 
   function handleLogout() {
     clearToken();
@@ -120,52 +122,65 @@ export default function App() {
           </div>
         </div>
         <p className="subtitle">
-          Ask for the data you need in plain English. Results render as a dashboard and can be
-          exported as CSV or Excel for verification.
+          {tab === "overview"
+            ? "Key performance at a glance. Switch to Ask AI for custom questions in plain English."
+            : "Ask for the data you need in plain English. Results render as a dashboard and can be exported as CSV or Excel for verification."}
         </p>
+        <nav className="tabs">
+          <button type="button" className={tab === "overview" ? "active" : ""} onClick={() => setTab("overview")}>
+            Overview
+          </button>
+          <button type="button" className={tab === "chat" ? "active" : ""} onClick={() => setTab("chat")}>
+            Ask AI
+          </button>
+        </nav>
       </header>
 
-      <div className="main-layout">
-        <div className="main-column">
-          <div className="examples">
-            {EXAMPLE_PROMPTS.map((ex) => (
-              <button key={ex} onClick={() => handleSubmit(ex)} disabled={loading}>
-                {ex}
+      {tab === "overview" && <Overview onAuthError={handleAuthError} />}
+
+      {tab === "chat" && (
+        <div className="main-layout">
+          <div className="main-column">
+            <div className="examples">
+              {EXAMPLE_PROMPTS.map((ex) => (
+                <button key={ex} onClick={() => handleSubmit(ex)} disabled={loading}>
+                  {ex}
+                </button>
+              ))}
+            </div>
+
+            <div className="conversation">
+              {history.map((turn, i) => (
+                <div className="turn" key={i}>
+                  <div className="user-prompt">{turn.prompt}</div>
+                  {turn.error && <div className="error">{turn.error}</div>}
+                  {turn.result && <Dashboard result={turn.result} onAuthError={handleAuthError} />}
+                </div>
+              ))}
+              {loading && <div className="loading">Fetching data...</div>}
+            </div>
+
+            <form
+              className="composer"
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSubmit(prompt);
+              }}
+            >
+              <input
+                value={prompt}
+                onChange={(e) => setPrompt(e.target.value)}
+                placeholder='e.g. "Show me spend and revenue by platform for the last 30 days"'
+              />
+              <button type="submit" disabled={loading}>
+                Ask
               </button>
-            ))}
+            </form>
           </div>
 
-          <div className="conversation">
-            {history.map((turn, i) => (
-              <div className="turn" key={i}>
-                <div className="user-prompt">{turn.prompt}</div>
-                {turn.error && <div className="error">{turn.error}</div>}
-                {turn.result && <Dashboard result={turn.result} onAuthError={handleAuthError} />}
-              </div>
-            ))}
-            {loading && <div className="loading">Fetching data...</div>}
-          </div>
-
-          <form
-            className="composer"
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSubmit(prompt);
-            }}
-          >
-            <input
-              value={prompt}
-              onChange={(e) => setPrompt(e.target.value)}
-              placeholder='e.g. "Show me spend and revenue by platform for the last 30 days"'
-            />
-            <button type="submit" disabled={loading}>
-              Ask
-            </button>
-          </form>
+          <TipsPanel onSuggest={handleSubmit} lastEmpty={lastEmpty} lastError={lastError} />
         </div>
-
-        <TipsPanel onSuggest={handleSubmit} lastEmpty={lastEmpty} lastError={lastError} />
-      </div>
+      )}
     </div>
   );
 }

@@ -229,10 +229,34 @@ def _top_up(conn: sqlite3.Connection) -> None:
         _generate_daily_rows(conn, max_date + timedelta(days=1), today)
 
 
+# Process-level init guard: schema creation (including the DROP VIEW + CREATE VIEW pair) and
+# the structure seed only need to run once per process, not on every request. The daily
+# top-up check still runs per connection but is a single MAX() lookup -- a no-op except on
+# the first request of a new calendar day. This keeps per-query overhead to just the check,
+# which matters for dashboard loads that fire several queries back to back.
+_initialized_for_path: str | None = None
+
+
+def _ensure_initialized(conn: sqlite3.Connection) -> None:
+    global _initialized_for_path
+    if _initialized_for_path == DB_PATH:
+        return
+    conn.executescript(SCHEMA_SQL)
+    _seed_structure(conn)
+    _initialized_for_path = DB_PATH
+
+
 def get_connection() -> sqlite3.Connection:
     conn = sqlite3.connect(DB_PATH)
     conn.row_factory = sqlite3.Row
-    conn.executescript(SCHEMA_SQL)
-    _seed_structure(conn)
-    _top_up(conn)
+    _ensure_initialized(conn)
+    try:
+        _top_up(conn)
+    except sqlite3.OperationalError:
+        # The DB file was wiped out from under us (e.g. OS temp cleanup) after this process
+        # already initialized -- rebuild schema+seed once and retry.
+        global _initialized_for_path
+        _initialized_for_path = None
+        _ensure_initialized(conn)
+        _top_up(conn)
     return conn

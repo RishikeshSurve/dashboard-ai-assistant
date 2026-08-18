@@ -120,6 +120,15 @@ Create the (empty) repo on github.com first if you haven't.
 - Free tier note: the service sleeps after 15 minutes of no traffic and takes ~30-50s to wake
   up on the next request. Fine for a demo link; upgrade the plan later if that's a problem.
 
+**Keeping the backend awake (faster logins).** That ~30-50s wake-up is the single biggest
+cause of "logging in feels slow" -- the app itself responds in milliseconds once awake. Two
+options:
+1. **Free keep-alive ping**: sign up at uptimerobot.com (free), add an HTTP monitor pointing
+   at `https://<your-backend>.onrender.com/health` with a 5-minute interval. The periodic
+   ping stops Render from ever putting the service to sleep. (Render's free-tier monthly
+   hours are enough to run one service 24/7.)
+2. **Upgrade the Render plan** (paid): removes sleeping entirely and adds more CPU/RAM.
+
 **3. Deploy the frontend on Vercel**
 - Sign up at vercel.com (GitHub login is easiest).
 - New Project → import the same GitHub repo.

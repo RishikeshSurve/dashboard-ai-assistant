@@ -25,11 +25,14 @@ DIMENSIONS = {
 METRICS = {
     "impressions": ("SUM(impressions)", "sum", "Ad impressions served"),
     "clicks": ("SUM(clicks)", "sum", "Ad clicks"),
-    "spend": ("SUM(spend)", "sum", "Media spend in USD"),
+    # Money metrics are rounded in SQL, not just at display time: float summation leaks
+    # artifacts like 3304.1899999999996, and those raw values would otherwise flow into the
+    # API, the CSV/Excel exports people use to verify numbers, and the comparison deltas.
+    "spend": ("ROUND(SUM(spend), 2)", "sum", "Media spend in USD"),
     "conversions": ("SUM(conversions)", "sum", "Conversions reported by the ad platform"),
     "ctr": ("ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4)", "ratio", "Click-through rate"),
     "cpv": ("ROUND(AVG(cpv), 2)", "avg", "Cost-per-visit/value from Salesforce"),
-    "revenue": ("SUM(revenue)", "sum", "conversions * Salesforce CPV, joined on ecd_code"),
+    "revenue": ("ROUND(SUM(revenue), 2)", "sum", "conversions * Salesforce CPV, joined on ecd_code"),
     "visits": ("SUM(visits)", "sum", "Site visits from Adobe Analytics, joined on ecd_code"),
     "cpa": ("ROUND(SUM(spend) * 1.0 / NULLIF(SUM(conversions), 0), 2)", "ratio", "Cost per acquisition"),
     "roas": ("ROUND(SUM(revenue) * 1.0 / NULLIF(SUM(spend), 0), 2)", "ratio", "Return on ad spend"),
