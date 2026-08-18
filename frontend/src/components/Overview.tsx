@@ -49,6 +49,24 @@ function fmtDateLabel(iso: string): string {
   return new Date(`${iso}T00:00:00`).toLocaleDateString(undefined, { month: "short", day: "numeric" });
 }
 
+/** Recharts passes the series' display name (e.g. "Spend") -- format money for money series,
+ *  plain numbers otherwise, and always echo the series' own name back so labels stay correct. */
+function tooltipFormatter(value: number, name: string): [string, string] {
+  const isMoney = name === "Spend" || name === "Revenue";
+  return [isMoney ? fmt(value, "money") : value.toLocaleString(), name];
+}
+
+/** Uses CSS variables so the hover tooltip is readable in both light and dark themes. */
+const TOOLTIP_STYLE = {
+  contentStyle: {
+    background: "var(--surface)",
+    border: "1px solid var(--border-strong)",
+    borderRadius: 8,
+    color: "var(--text-primary)",
+  },
+  labelStyle: { color: "var(--text-secondary)", fontWeight: 600 },
+} as const;
+
 function KpiCards({ data }: { data: OverviewData }) {
   return (
     <div className="kpi-grid">
@@ -169,12 +187,7 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                   <XAxis dataKey="date" tick={{ fontSize: 11 }} tickFormatter={fmtDateLabel} minTickGap={28} />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={fmtShort} width={44} />
-                  <Tooltip
-                    labelFormatter={(l: string) => fmtDateLabel(l)}
-                    formatter={(value: number, name: string) =>
-                      name === "conversions" ? [value.toLocaleString(), "Conversions"] : [fmt(value, "money"), name === "spend" ? "Spend" : "Revenue"]
-                    }
-                  />
+                  <Tooltip labelFormatter={(l: string) => fmtDateLabel(l)} formatter={tooltipFormatter} {...TOOLTIP_STYLE} />
                   <Legend />
                   <Line type="monotone" dataKey="spend" name="Spend" stroke={COLORS[0]} dot={false} strokeWidth={2} />
                   <Line type="monotone" dataKey="revenue" name="Revenue" stroke={COLORS[2]} dot={false} strokeWidth={2} />
@@ -189,11 +202,7 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
                   <XAxis dataKey="platform" tick={{ fontSize: 11 }} interval={0} />
                   <YAxis tick={{ fontSize: 11 }} tickFormatter={fmtShort} width={44} />
-                  <Tooltip
-                    formatter={(value: number, name: string) =>
-                      name === "conversions" ? [value.toLocaleString(), "Conversions"] : [fmt(value, "money"), name === "spend" ? "Spend" : "Revenue"]
-                    }
-                  />
+                  <Tooltip formatter={tooltipFormatter} cursor={{ fill: "var(--surface-muted)" }} {...TOOLTIP_STYLE} />
                   <Legend />
                   <Bar dataKey="spend" name="Spend" fill={COLORS[0]} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="revenue" name="Revenue" fill={COLORS[2]} radius={[3, 3, 0, 0]} />
