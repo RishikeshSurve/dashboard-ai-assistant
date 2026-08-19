@@ -111,7 +111,7 @@ export async function fetchSchema(): Promise<string> {
   return data.description;
 }
 
-export type OverviewPeriod = "last30" | "this_month" | "ytd";
+export type OverviewPeriod = "last30" | "this_month" | "ytd" | "custom";
 
 export interface KpiEntry {
   current: number | null;
@@ -126,11 +126,25 @@ export interface OverviewData {
   trend: { date: string; spend: number; revenue: number; conversions: number }[];
   platforms: { platform: string; spend: number; revenue: number; conversions: number; roas: number }[];
   campaigns: { campaign: string; spend: number; revenue: number; conversions: number; roas: number; margin_pct: number | null }[];
+  movers: {
+    up: { campaign: string; revenue: number; previous_revenue: number; delta: number; delta_pct: number }[];
+    down: { campaign: string; revenue: number; previous_revenue: number; delta: number; delta_pct: number }[];
+  };
+  export_ids: { trend: string; campaigns: string };
 }
 
-/** One round trip for the whole Overview dashboard -- KPIs, trend, platforms, campaigns. */
-export async function fetchOverview(period: OverviewPeriod): Promise<OverviewData> {
-  const res = await authFetch(`/api/overview?period=${period}`);
+/** One round trip for the whole Overview dashboard -- KPIs, trend, platforms, campaigns.
+ *  Pass customRange for a manually-picked date window (period is then ignored server-side). */
+export async function fetchOverview(
+  period: OverviewPeriod,
+  customRange?: { from: string; to: string }
+): Promise<OverviewData> {
+  const params = new URLSearchParams({ period });
+  if (customRange) {
+    params.set("date_from", customRange.from);
+    params.set("date_to", customRange.to);
+  }
+  const res = await authFetch(`/api/overview?${params.toString()}`);
   if (!res.ok) {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.detail ?? `Overview failed (${res.status})`);

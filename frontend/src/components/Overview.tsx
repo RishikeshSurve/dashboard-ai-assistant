@@ -11,11 +11,11 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { AuthError, fetchOverview, type OverviewData, type OverviewPeriod } from "../api";
+import { AuthError, exportFile, fetchOverview, type OverviewData, type OverviewPeriod } from "../api";
 
 const COLORS = ["#4f46e5", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"];
 
-const PERIODS: { key: OverviewPeriod; label: string }[] = [
+const PERIODS: { key: Exclude<OverviewPeriod, "custom">; label: string }[] = [
   { key: "last30", label: "Last 30 days" },
   { key: "this_month", label: "This month" },
   { key: "ytd", label: "Year to date" },
@@ -120,8 +120,62 @@ function Skeleton() {
   );
 }
 
+/** Small "insights at a glance" facts computed from data already on screen -- best ROAS
+ *  platform, highest-margin campaign, biggest spend day. Pure client-side, no extra calls. */
+function Highlights({ data }: { data: OverviewData }) {
+  const bestPlatform = [...data.platforms].sort((a, b) => (b.roas ?? 0) - (a.roas ?? 0))[0];
+  const bestCampaign = [...data.campaigns].sort((a, b) => (b.margin_pct ?? -Infinity) - (a.margin_pct ?? -Infinity))[0];
+  const biggestDay = [...data.trend].sort((a, b) => (b.spend ?? 0) - (a.spend ?? 0))[0];
+  if (!bestPlatform && !bestCampaign && !biggestDay) return null;
+  return (
+    <div className="highlights">
+      {bestPlatform && (
+        <div className="highlight">
+          <span className="highlight-label">Best ROAS</span>
+          <span className="highlight-value">{bestPlatform.platform}</span>
+          <span className="highlight-detail">{fmt(bestPlatform.roas, "ratio")}x return</span>
+        </div>
+      )}
+      {bestCampaign && (
+        <div className="highlight">
+          <span className="highlight-label">Top margin campaign</span>
+          <span className="highlight-value">{bestCampaign.campaign}</span>
+          <span className="highlight-detail">{fmt(bestCampaign.margin_pct, "pct")} margin</span>
+        </div>
+      )}
+      {biggestDay && (
+        <div className="highlight">
+          <span className="highlight-label">Biggest spend day</span>
+          <span className="highlight-value">{fmtDateLabel(biggestDay.date)}</span>
+          <span className="highlight-detail">{fmt(biggestDay.spend, "money")}</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ExportButtons({ queryId, onAuthError }: { queryId: string; onAuthError: (m: string) => void }) {
+  async function handle(format: "csv" | "xlsx") {
+    try {
+      await exportFile(queryId, format);
+    } catch (err: any) {
+      if (err instanceof AuthError) onAuthError(err.message);
+      else alert(err?.message ?? "Export failed.");
+    }
+  }
+  return (
+    <div className="export-buttons panel-export">
+      <button type="button" onClick={() => handle("csv")}>CSV</button>
+      <button type="button" onClick={() => handle("xlsx")}>Excel</button>
+    </div>
+  );
+}
+
 export default function Overview({ onAuthError }: { onAuthError: (message: string) => void }) {
   const [period, setPeriod] = useState<OverviewPeriod>("last30");
+  const [customFrom, setCustomFrom] = useState("");
+  const [customTo, setCustomTo] = useState("");
+  const [appliedCustom, setAppliedCustom] = useState<{ from: string; to: string } | null>(null);
   const [data, setData] = useState<OverviewData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -130,7 +184,7 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
     let cancelled = false;
     setLoading(true);
     setError(null);
-    fetchOverview(period)
+    fetchOverview(period, appliedCustom ?? undefined)
       .then((d) => {
         if (!cancelled) setData(d);
       })
@@ -148,7 +202,23 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
     return () => {
       cancelled = true;
     };
-  }, [period, onAuthError]);
+  }, [period, appliedCustom, onAuthError]);
+
+  function selectPreset(key: Exclude<OverviewPeriod, "custom">) {
+    setAppliedCustom(null);
+    setPeriod(key);
+  }
+
+  function applyCustomRange(e: React.FormEvent) {
+    e.preventDefault();
+    if (!customFrom || !customTo) return;
+    if (customFrom > customTo) {
+      setError("The start date must be on or before the end date.");
+      return;
+    }
+    setPeriod("custom");
+    setAppliedCustom({ from: customFrom, to: customTo });
+  }
 
   return (
     <div>
@@ -159,12 +229,34 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
               key={p.key}
               type="button"
               className={period === p.key ? "active" : ""}
-              onClick={() => setPeriod(p.key)}
+              onClick={() => selectPreset(p.key)}
             >
               {p.label}
             </button>
           ))}
         </div>
+        <form className={`custom-range${period === "custom" ? " active" : ""}`} onSubmit={applyCustomRange}>
+          <input
+            type="date"
+            value={customFrom}
+            min="2025-01-01"
+            max={new Date().toISOString().slice(0, 10)}
+            onChange={(e) => setCustomFrom(e.target.value)}
+            aria-label="Custom range start date"
+          />
+          <span className="custom-range-sep">→</span>
+          <input
+            type="date"
+            value={customTo}
+            min="2025-01-01"
+            max={new Date().toISOString().slice(0, 10)}
+            onChange={(e) => setCustomTo(e.target.value)}
+            aria-label="Custom range end date"
+          />
+          <button type="submit" disabled={!customFrom || !customTo}>
+            Apply
+          </button>
+        </form>
         {data && (
           <span className="overview-range">
             {data.period.from} → {data.period.to}
@@ -179,9 +271,14 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
         <div className="overview">
           <KpiCards data={data} />
 
+          <Highlights data={data} />
+
           <div className="overview-charts">
             <div className="panel">
-              <h3>Spend and revenue by day</h3>
+              <div className="panel-header">
+                <h3>Spend and revenue by day</h3>
+                <ExportButtons queryId={data.export_ids.trend} onAuthError={onAuthError} />
+              </div>
               <ResponsiveContainer width="100%" height={260}>
                 <LineChart data={data.trend} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
@@ -211,8 +308,44 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
             </div>
           </div>
 
+          {(data.movers.up.length > 0 || data.movers.down.length > 0) && (
+            <div className="overview-charts">
+              <div className="panel">
+                <h3>Gaining revenue vs previous period</h3>
+                <ul className="movers-list">
+                  {data.movers.up.map((m) => (
+                    <li key={m.campaign}>
+                      <span className="mover-name">{m.campaign}</span>
+                      <span className="mover-delta pos">
+                        +{fmt(m.delta, "money")} <small>({m.delta_pct > 0 ? "+" : ""}{m.delta_pct}%)</small>
+                      </span>
+                    </li>
+                  ))}
+                  {data.movers.up.length === 0 && <li className="mover-empty">No campaigns gained this period.</li>}
+                </ul>
+              </div>
+              <div className="panel">
+                <h3>Declining revenue vs previous period</h3>
+                <ul className="movers-list">
+                  {data.movers.down.map((m) => (
+                    <li key={m.campaign}>
+                      <span className="mover-name">{m.campaign}</span>
+                      <span className="mover-delta neg">
+                        {fmt(m.delta, "money")} <small>({m.delta_pct}%)</small>
+                      </span>
+                    </li>
+                  ))}
+                  {data.movers.down.length === 0 && <li className="mover-empty">No campaigns declined this period.</li>}
+                </ul>
+              </div>
+            </div>
+          )}
+
           <div className="panel">
-            <h3>Top campaigns by spend</h3>
+            <div className="panel-header">
+              <h3>Top campaigns by spend</h3>
+              <ExportButtons queryId={data.export_ids.campaigns} onAuthError={onAuthError} />
+            </div>
             <div className="table-wrap">
               <table>
                 <thead>
@@ -232,8 +365,12 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
                       <td className="num">{fmt(c.spend, "money")}</td>
                       <td className="num">{fmt(c.revenue, "money")}</td>
                       <td className="num">{fmt(c.conversions, "count")}</td>
-                      <td className="num">{fmt(c.roas, "ratio")}</td>
-                      <td className="num">{fmt(c.margin_pct, "pct")}</td>
+                      <td className={`num ${typeof c.roas === "number" ? (c.roas >= 1 ? "pos" : "neg") : ""}`}>
+                        {fmt(c.roas, "ratio")}
+                      </td>
+                      <td className={`num ${typeof c.margin_pct === "number" ? (c.margin_pct >= 0 ? "pos" : "neg") : ""}`}>
+                        {fmt(c.margin_pct, "pct")}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

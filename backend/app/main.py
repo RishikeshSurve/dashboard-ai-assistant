@@ -170,13 +170,31 @@ def _run_guarded(conn, spec: "nl_query.QuerySpec") -> list[dict]:
 
 
 @app.get("/api/overview")
-def overview(period: str = "last30", _session: dict = Depends(auth.require_session)):
+def overview(
+    period: str = "last30",
+    date_from: str | None = None,
+    date_to: str | None = None,
+    _session: dict = Depends(auth.require_session),
+):
     """Everything the Overview dashboard needs in ONE round trip (one HTTP request, one DB
     connection): KPI totals with previous-period comparison, daily trend, platform breakdown,
     and top campaigns. A single call keeps the dashboard fast -- especially on the free-tier
-    host, where each extra request risks paying connection overhead."""
+    host, where each extra request risks paying connection overhead.
+
+    Pass explicit date_from/date_to (YYYY-MM-DD) for a custom range; otherwise `period`
+    selects a preset (last30 / this_month / ytd)."""
     today = date.today()
-    if period == "this_month":
+    if date_from and date_to:
+        try:
+            d_from = date.fromisoformat(date_from)
+            d_to = date.fromisoformat(date_to)
+        except ValueError:
+            raise HTTPException(status_code=400, detail="Dates must be in YYYY-MM-DD format.")
+        if d_from > d_to:
+            raise HTTPException(status_code=400, detail="date_from must be on or before date_to.")
+        label = "Custom range"
+        period = "custom"
+    elif period == "this_month":
         d_from, d_to = date(today.year, today.month, 1), today
         label = "This month"
     elif period == "ytd":
@@ -185,9 +203,10 @@ def overview(period: str = "last30", _session: dict = Depends(auth.require_sessi
     else:
         d_from, d_to = today - timedelta(days=30), today
         label = "Last 30 days"
+        period = "last30"
     date_from, date_to = d_from.isoformat(), d_to.isoformat()
 
-    kpi_metrics = ["spend", "revenue", "conversions", "clicks", "roas", "margin_pct"]
+    kpi_metrics = ["spend", "revenue", "conversions", "clicks", "roas", "margin_pct", "cpa", "ctr"]
     base = nl_query.QuerySpec(metrics=kpi_metrics, group_by=[], date_from=date_from, date_to=date_to)
 
     prev_from, prev_to = nl_query.previous_period_range(date_from, date_to, "previous_period")
@@ -208,6 +227,10 @@ def overview(period: str = "last30", _session: dict = Depends(auth.require_sessi
             conn,
             replace(base, metrics=["spend", "revenue", "conversions", "roas", "margin_pct"], group_by=["campaign"], limit=100),
         )
+        prev_campaigns = _run_guarded(
+            conn,
+            replace(base, metrics=["spend", "revenue"], group_by=["campaign"], date_from=prev_from, date_to=prev_to, limit=100),
+        )
     finally:
         conn.close()
 
@@ -223,6 +246,39 @@ def overview(period: str = "last30", _session: dict = Depends(auth.require_sessi
         kpis[metric] = {"current": current_val, "previous": prev_val, "delta_pct": delta_pct}
 
     campaigns.sort(key=lambda r: r.get("spend") or 0, reverse=True)
+    top_campaigns = campaigns[:10]
+
+    # Biggest movers: campaigns whose revenue changed most vs the previous period. Uses
+    # absolute revenue delta (not %) so tiny campaigns with noisy percentages don't dominate.
+    prev_by_campaign = {r["campaign"]: r for r in prev_campaigns}
+    movers = []
+    for c in campaigns:
+        prev_rev = (prev_by_campaign.get(c["campaign"]) or {}).get("revenue")
+        cur_rev = c.get("revenue")
+        if prev_rev in (None, 0) or cur_rev is None:
+            continue
+        delta = round(cur_rev - prev_rev, 2)
+        movers.append(
+            {
+                "campaign": c["campaign"],
+                "revenue": cur_rev,
+                "previous_revenue": prev_rev,
+                "delta": delta,
+                "delta_pct": round(delta / abs(prev_rev) * 100, 1),
+            }
+        )
+    movers.sort(key=lambda m: m["delta"], reverse=True)
+    top_movers = {
+        "up": [m for m in movers if m["delta"] > 0][:3],
+        "down": sorted([m for m in movers if m["delta"] < 0], key=lambda m: m["delta"])[:3],
+    }
+
+    # Cache the trend and campaign tables under query_ids so the existing CSV/Excel export
+    # endpoints can serve them -- lets people download exactly what the dashboard shows.
+    trend_export_id = str(uuid.uuid4())
+    campaigns_export_id = str(uuid.uuid4())
+    _RESULT_CACHE[trend_export_id] = trend
+    _RESULT_CACHE[campaigns_export_id] = top_campaigns
 
     return {
         "period": {"from": date_from, "to": date_to, "label": label, "key": period},
@@ -230,7 +286,9 @@ def overview(period: str = "last30", _session: dict = Depends(auth.require_sessi
         "kpis": kpis,
         "trend": trend,
         "platforms": platforms,
-        "campaigns": campaigns[:10],
+        "campaigns": top_campaigns,
+        "movers": top_movers,
+        "export_ids": {"trend": trend_export_id, "campaigns": campaigns_export_id},
     }
 
 
