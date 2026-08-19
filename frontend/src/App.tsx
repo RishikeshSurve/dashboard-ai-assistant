@@ -113,7 +113,7 @@ export default function App() {
     <div className="app">
       <header>
         <div className="header-row">
-          <h1>Dashboard AI Assistant</h1>
+          <h1>Scout</h1>
           <div className="header-actions">
             <ThemeToggle theme={theme} onChange={setTheme} />
             <button className="logout-link" onClick={handleLogout} type="button">

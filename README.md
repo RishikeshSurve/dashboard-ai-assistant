@@ -1,4 +1,4 @@
-# Dashboard AI Assistant — Scaffold
+# Scout — AI reporting assistant
 
 A working starter implementation of the chat-to-dashboard platform described in the
 accompanying design document. Ask a question in plain English, get a dashboard back, export

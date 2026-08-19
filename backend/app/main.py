@@ -27,7 +27,7 @@ from pydantic import BaseModel
 
 from . import auth, db, export, nl_query, semantic_layer, sql_guard
 
-app = FastAPI(title="Dashboard AI Assistant API")
+app = FastAPI(title="Scout API")
 
 app.add_middleware(
     CORSMiddleware,

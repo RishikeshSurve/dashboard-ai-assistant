@@ -1,4 +1,4 @@
-// Thin client for the Dashboard AI Assistant backend.
+// Thin client for the Scout backend.
 // In dev, Vite proxies /api -> http://localhost:8000 (see vite.config.ts).
 // In production, set VITE_API_BASE_URL to your deployed backend URL.
 

@@ -94,7 +94,7 @@ export default function AccessGate({ onUnlocked }: { onUnlocked: () => void }) {
             )}
           </div>
 
-          <h1>{success ? "Access granted" : "Dashboard AI Assistant"}</h1>
+          <h1>{success ? "Access granted" : "Scout"}</h1>
           <p className="subtitle">{success ? "Unlocking your dashboard..." : "Enter your access code to continue"}</p>
 
           {!success && (
