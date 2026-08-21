@@ -1,5 +1,6 @@
 import { lazy, Suspense, useCallback, useEffect, useState } from "react";
 import Dashboard from "./components/Dashboard";
+import ErrorBoundary from "./components/ErrorBoundary";
 import Overview from "./components/Overview";
 import TipsPanel from "./components/TipsPanel";
 import { AuthError, clearToken, getToken, runQuery, type QueryResult } from "./api";
@@ -161,7 +162,12 @@ export default function App() {
                           one block -- for the common single-block case this would just repeat
                           the prompt already shown above. */}
                       {turn.results!.length > 1 && <div className="result-block-caption">{result.prompt}</div>}
-                      <Dashboard result={result} onAuthError={handleAuthError} />
+                      {/* Isolates a render crash to this one card instead of blanking the whole
+                          page -- e.g. an unexpected data shape from one result block shouldn't
+                          take down cards that rendered fine. */}
+                      <ErrorBoundary label="This result card failed to render.">
+                        <Dashboard result={result} onAuthError={handleAuthError} />
+                      </ErrorBoundary>
                     </div>
                   ))}
                 </div>
