@@ -3,14 +3,15 @@ import { verifyAccessCode } from "../api";
 
 type Status = "idle" | "loading" | "success" | "error";
 
-/** Full-bleed decorative background: a dark "data hologram" scene (grid floor, glowing
- *  chart panels, a dotted world map, a network of connector lines) built entirely from
- *  original SVG shapes in the app's own palette -- not a traced/stock image, so there's
- *  nothing borrowed and nothing to watermark. Purely decorative -- aria-hidden. The only
- *  motion is a couple of native SVG <animate> opacity pulses on the map's node dots, which
- *  the browser handles natively (no per-frame JS, no WebGL) -- cheap enough to never risk
- *  the input-lag issue the old three.js background caused. */
-function HologramBackground() {
+/** Full-bleed decorative background: an original "data analysis hero" illustration -- a
+ *  blue-to-indigo gradient with a dot-grid texture, a screen showing a chart, a floating
+ *  stat card, a rising bar chart, a flowing area chart and a phone mockup, clustered on the
+ *  left so the login card (positioned via CSS on the right, see .access-gate) sits on clear
+ *  background. Every shape here is hand-built from scratch in the app's own palette -- not a
+ *  traced/stock image, so there's nothing borrowed and nothing to watermark. Purely
+ *  decorative -- aria-hidden. No per-frame JS or WebGL, so this can't reintroduce the
+ *  input-lag issue the old three.js background caused. */
+function AnalyticsHeroBackground() {
   return (
     <svg
       viewBox="0 0 1600 900"
@@ -21,151 +22,133 @@ function HologramBackground() {
     >
       <defs>
         <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#121935" />
-          <stop offset="55%" stopColor="#05060f" />
-          <stop offset="100%" stopColor="#000002" />
+          <stop offset="0%" stopColor="#2563eb" />
+          <stop offset="45%" stopColor="#1e3a8a" />
+          <stop offset="100%" stopColor="#2e1065" />
         </linearGradient>
-        <radialGradient id="glowPurple" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#8b7ff9" stopOpacity="0.55" />
-          <stop offset="100%" stopColor="#8b7ff9" stopOpacity="0" />
+        <pattern id="dotGrid" width="34" height="34" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.6" fill="rgba(255,255,255,0.35)" />
+        </pattern>
+        <radialGradient id="glowOrange" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.35" />
+          <stop offset="100%" stopColor="#fb923c" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="glowCyan" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#22d3ee" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#22d3ee" stopOpacity="0" />
-        </radialGradient>
-        <radialGradient id="glowPink" cx="50%" cy="50%" r="50%">
-          <stop offset="0%" stopColor="#f472b6" stopOpacity="0.4" />
+        <radialGradient id="glowPink2" cx="50%" cy="50%" r="50%">
+          <stop offset="0%" stopColor="#f472b6" stopOpacity="0.3" />
           <stop offset="100%" stopColor="#f472b6" stopOpacity="0" />
         </radialGradient>
-        <radialGradient id="vignette" cx="50%" cy="50%" r="72%">
-          <stop offset="55%" stopColor="#000000" stopOpacity="0" />
-          <stop offset="100%" stopColor="#000000" stopOpacity="0.6" />
-        </radialGradient>
-        <pattern id="floorGrid" width="80" height="60" patternUnits="userSpaceOnUse">
-          <path d="M80 0H0V60" fill="none" stroke="rgba(255,255,255,0.06)" strokeWidth="1" />
-        </pattern>
+        <linearGradient id="barPink" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fbcfe8" />
+          <stop offset="100%" stopColor="#ec4899" />
+        </linearGradient>
+        <linearGradient id="waveFill" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#fb923c" stopOpacity="0.85" />
+          <stop offset="100%" stopColor="#ec4899" stopOpacity="0.35" />
+        </linearGradient>
+        <linearGradient id="waveStroke" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stopColor="#fb923c" />
+          <stop offset="100%" stopColor="#f472b6" />
+        </linearGradient>
       </defs>
 
       <rect width="1600" height="900" fill="url(#bgGrad)" />
-      <rect width="1600" height="900" fill="url(#floorGrid)" opacity="0.6" />
-      <circle cx="260" cy="180" r="280" fill="url(#glowPurple)" />
-      <circle cx="1370" cy="700" r="320" fill="url(#glowCyan)" />
-      <circle cx="1460" cy="140" r="200" fill="url(#glowPink)" />
+      <rect width="1600" height="900" fill="url(#dotGrid)" opacity="0.55" />
+      <ellipse cx="430" cy="560" rx="320" ry="100" fill="rgba(255,255,255,0.05)" />
+      <circle cx="360" cy="140" r="240" fill="url(#glowOrange)" />
+      <circle cx="140" cy="640" r="220" fill="url(#glowPink2)" />
 
-      {/* Faint connector lines threading the panels together, "network" feel */}
-      <g stroke="rgba(255,255,255,0.1)" strokeWidth="1.2">
-        <line x1="400" y1="175" x2="760" y2="230" />
-        <line x1="1180" y1="210" x2="820" y2="260" />
-        <line x1="270" y1="560" x2="500" y2="330" />
-        <line x1="1140" y1="600" x2="900" y2="380" />
-        <line x1="700" y1="60" x2="820" y2="150" />
-        <line x1="640" y1="620" x2="760" y2="540" />
+      {/* Screen with a chart -- the illustration's centerpiece */}
+      <g transform="translate(190,90)">
+        <rect width="340" height="220" rx="16" fill="#f8fafc" stroke="rgba(255,255,255,0.5)" strokeWidth="2" />
+        <path d="M0 16a16 16 0 0 1 16-16h308a16 16 0 0 1 16 16v18H0Z" fill="#fb923c" />
+        <circle cx="20" cy="17" r="4" fill="#fff" opacity="0.85" />
+        <circle cx="34" cy="17" r="4" fill="#fff" opacity="0.6" />
+        <circle cx="48" cy="17" r="4" fill="#fff" opacity="0.4" />
+        <circle cx="72" cy="112" r="32" fill="none" stroke="#e2e8f0" strokeWidth="14" />
+        <circle cx="72" cy="112" r="32" fill="none" stroke="#2563eb" strokeWidth="14" strokeDasharray="86 115" strokeLinecap="round" />
+        <circle cx="72" cy="112" r="32" fill="none" stroke="#fb923c" strokeWidth="14" strokeDasharray="32 115" strokeDashoffset="-86" strokeLinecap="round" />
+        <rect x="180" y="60" width="18" height="46" rx="3" fill="#93c5fd" />
+        <rect x="204" y="42" width="18" height="64" rx="3" fill="#2563eb" />
+        <rect x="228" y="70" width="18" height="36" rx="3" fill="#93c5fd" />
+        <rect x="252" y="30" width="18" height="76" rx="3" fill="#1d4ed8" />
+        <rect x="276" y="56" width="18" height="50" rx="3" fill="#93c5fd" />
+        <rect x="300" y="20" width="18" height="86" rx="3" fill="#2563eb" />
+        <polyline
+          points="24,190 70,168 116,180 162,150 208,162 254,132 300,146"
+          fill="none"
+          stroke="#ec4899"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
       </g>
 
-      {/* Panel: small readout strip (top-center) -- fills the gap between the two corner
-          panels so the collage reads as dense as the reference mood board. */}
-      <g transform="translate(660,40) rotate(-2)">
-        <rect width="260" height="96" rx="14" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <circle cx="26" cy="26" r="6" fill="#facc15" />
-        <rect x="42" y="20" width="80" height="7" rx="3.5" fill="rgba(255,255,255,0.4)" />
-        <rect x="42" y="32" width="50" height="6" rx="3" fill="rgba(255,255,255,0.22)" />
-        <rect x="16" y="56" width="34" height="24" rx="4" fill="#22d3ee" opacity="0.85" />
-        <rect x="56" y="48" width="34" height="32" rx="4" fill="#8b7ff9" opacity="0.85" />
-        <rect x="96" y="40" width="34" height="40" rx="4" fill="#f472b6" opacity="0.85" />
-        <rect x="136" y="52" width="34" height="28" rx="4" fill="#facc15" opacity="0.85" />
-        <rect x="176" y="34" width="34" height="46" rx="4" fill="#10b981" opacity="0.85" />
-        <rect x="216" y="58" width="30" height="22" rx="4" fill="#22d3ee" opacity="0.6" />
+      {/* Small floating summary card, tucked above-left of the screen */}
+      <g transform="translate(120,44) rotate(-3)">
+        <rect width="140" height="86" rx="12" fill="#ffffff" stroke="rgba(0,0,0,0.04)" strokeWidth="1.5" />
+        <rect x="16" y="18" width="10" height="50" rx="3" fill="#fdba74" />
+        <rect x="32" y="30" width="10" height="38" rx="3" fill="#fb923c" />
+        <rect x="48" y="14" width="10" height="54" rx="3" fill="#ea580c" />
+        <circle cx="104" cy="42" r="24" fill="none" stroke="#dbeafe" strokeWidth="9" />
+        <circle cx="104" cy="42" r="24" fill="none" stroke="#2563eb" strokeWidth="9" strokeDasharray="60 91" strokeLinecap="round" />
       </g>
 
-      {/* Panel: mini donut readout (center, between the two rows) */}
-      <g transform="translate(700,610) rotate(2)">
-        <rect width="220" height="150" rx="14" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <circle cx="70" cy="75" r="46" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="13" />
-        <circle cx="70" cy="75" r="46" fill="none" stroke="#f472b6" strokeWidth="13" strokeDasharray="100 189" strokeLinecap="round" />
-        <circle cx="70" cy="75" r="46" fill="none" stroke="#22d3ee" strokeWidth="13" strokeDasharray="55 189" strokeDashoffset="-100" strokeLinecap="round" />
-        <rect x="140" y="40" width="60" height="9" rx="4.5" fill="rgba(255,255,255,0.4)" />
-        <rect x="140" y="58" width="42" height="7" rx="3.5" fill="rgba(255,255,255,0.2)" />
-        <rect x="140" y="92" width="66" height="9" rx="4.5" fill="rgba(255,255,255,0.4)" />
-        <rect x="140" y="110" width="36" height="7" rx="3.5" fill="rgba(255,255,255,0.2)" />
+      {/* Rising bar chart, lower-left -- each bar has a lighter "top" face for a touch of depth */}
+      <g transform="translate(70,470)">
+        {[
+          { x: 0, h: 70 },
+          { x: 62, h: 120 },
+          { x: 124, h: 175 },
+          { x: 186, h: 235 },
+        ].map((bar) => (
+          <g key={bar.x} transform={`translate(${bar.x},0)`}>
+            <rect y={260 - bar.h} width="46" height={bar.h} rx="6" fill="url(#barPink)" />
+            <polygon
+              points={`0,${260 - bar.h} 46,${260 - bar.h} 38,${252 - bar.h} -8,${252 - bar.h}`}
+              fill="#fce7f3"
+            />
+          </g>
+        ))}
       </g>
 
-      {/* Panel: bar chart (top-left) */}
-      <g transform="translate(60,60) rotate(-1.5)">
-        <rect width="340" height="210" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <circle cx="24" cy="24" r="5" fill="#ef4444" opacity="0.8" />
-        <circle cx="42" cy="24" r="5" fill="#f59e0b" opacity="0.8" />
-        <circle cx="60" cy="24" r="5" fill="#10b981" opacity="0.8" />
-        <rect x="24" y="150" width="24" height="40" rx="4" fill="#22d3ee" />
-        <rect x="60" y="120" width="24" height="70" rx="4" fill="#8b7ff9" />
-        <rect x="96" y="90" width="24" height="100" rx="4" fill="#f472b6" />
-        <rect x="132" y="130" width="24" height="60" rx="4" fill="#22d3ee" opacity="0.7" />
-        <rect x="168" y="70" width="24" height="120" rx="4" fill="#a855f7" />
-        <rect x="204" y="110" width="24" height="80" rx="4" fill="#f59e0b" />
-        <rect x="240" y="60" width="24" height="130" rx="4" fill="#10b981" />
-        <rect x="276" y="140" width="24" height="50" rx="4" fill="#22d3ee" opacity="0.6" />
+      {/* Flowing area chart, lower-right of the cluster */}
+      <g transform="translate(500,480)">
+        <path
+          d="M0,150 C40,110 70,170 110,120 C150,70 190,140 230,90 L260,90 L260,190 L0,190 Z"
+          fill="url(#waveFill)"
+        />
+        <path
+          d="M0,150 C40,110 70,170 110,120 C150,70 190,140 230,90 L260,90"
+          fill="none"
+          stroke="url(#waveStroke)"
+          strokeWidth="3.5"
+          strokeLinecap="round"
+        />
       </g>
 
-      {/* Panel: donut + trend (top-right) */}
-      <g transform="translate(1180,80) rotate(1.5)">
-        <rect width="360" height="230" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <circle cx="95" cy="115" r="58" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="16" />
-        <circle cx="95" cy="115" r="58" fill="none" stroke="#22d3ee" strokeWidth="16" strokeDasharray="130 234" strokeLinecap="round" />
-        <circle cx="95" cy="115" r="58" fill="none" stroke="#8b7ff9" strokeWidth="16" strokeDasharray="70 234" strokeDashoffset="-130" strokeLinecap="round" />
-        <circle cx="95" cy="115" r="58" fill="none" stroke="#f472b6" strokeWidth="16" strokeDasharray="34 234" strokeDashoffset="-200" strokeLinecap="round" />
-        <polyline points="185,180 210,150 235,165 260,120 285,135 310,88" fill="none" stroke="#facc15" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="310" cy="88" r="5" fill="#facc15" />
+      {/* Phone mockup, right of the screen */}
+      <g transform="translate(560,140) rotate(4)">
+        <rect width="76" height="150" rx="16" fill="#111827" />
+        <rect x="6" y="12" width="64" height="118" rx="8" fill="#eef2ff" />
+        <polyline points="14,90 26,70 38,80 50,54 62,66" fill="none" stroke="#2563eb" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+        <circle cx="62" cy="66" r="3.4" fill="#fb923c" />
+        <rect x="14" y="102" width="48" height="6" rx="3" fill="#c7d2fe" />
+        <rect x="14" y="114" width="32" height="6" rx="3" fill="#c7d2fe" />
       </g>
 
-      {/* Panel: dotted world map with pulsing nodes (bottom-left) */}
-      <g transform="translate(90,540) rotate(-1.2)">
-        <rect width="400" height="240" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <g fill="rgba(255,255,255,0.22)">
-          <circle cx="40" cy="60" r="2.4" /><circle cx="58" cy="72" r="2.4" /><circle cx="76" cy="58" r="2.4" />
-          <circle cx="94" cy="70" r="2.4" /><circle cx="112" cy="55" r="2.4" /><circle cx="130" cy="68" r="2.4" />
-          <circle cx="60" cy="90" r="2.4" /><circle cx="80" cy="95" r="2.4" /><circle cx="100" cy="88" r="2.4" />
-          <circle cx="180" cy="60" r="2.4" /><circle cx="198" cy="72" r="2.4" /><circle cx="216" cy="58" r="2.4" />
-          <circle cx="234" cy="66" r="2.4" /><circle cx="200" cy="90" r="2.4" /><circle cx="220" cy="98" r="2.4" />
-          <circle cx="280" cy="120" r="2.4" /><circle cx="298" cy="132" r="2.4" /><circle cx="316" cy="118" r="2.4" />
-          <circle cx="334" cy="128" r="2.4" /><circle cx="300" cy="150" r="2.4" /><circle cx="320" cy="158" r="2.4" />
-          <circle cx="150" cy="140" r="2.4" /><circle cx="168" cy="152" r="2.4" /><circle cx="186" cy="145" r="2.4" />
-          <circle cx="70" cy="160" r="2.4" /><circle cx="90" cy="172" r="2.4" /><circle cx="110" cy="165" r="2.4" />
-        </g>
-        <circle cx="120" cy="90" r="6" fill="#22d3ee">
-          <animate attributeName="opacity" values="1;0.3;1" dur="2.4s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="260" cy="140" r="6" fill="#f472b6">
-          <animate attributeName="opacity" values="0.3;1;0.3" dur="2.8s" repeatCount="indefinite" />
-        </circle>
-        <circle cx="310" cy="70" r="6" fill="#facc15">
-          <animate attributeName="opacity" values="1;0.4;1" dur="3.2s" repeatCount="indefinite" />
-        </circle>
-      </g>
-
-      {/* Panel: readouts + sparkline (bottom-right) */}
-      <g transform="translate(1140,520) rotate(1.8)">
-        <rect width="380" height="260" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
-        <rect x="24" y="24" width="150" height="46" rx="10" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.35)" />
-        <circle cx="46" cy="47" r="6" fill="#22d3ee" />
-        <rect x="64" y="38" width="86" height="8" rx="4" fill="rgba(255,255,255,0.35)" />
-        <rect x="24" y="82" width="150" height="46" rx="10" fill="rgba(139,127,249,0.12)" stroke="rgba(139,127,249,0.35)" />
-        <circle cx="46" cy="105" r="6" fill="#8b7ff9" />
-        <rect x="64" y="96" width="64" height="8" rx="4" fill="rgba(255,255,255,0.35)" />
-        <rect x="200" y="150" width="14" height="60" rx="3" fill="#f472b6" />
-        <rect x="222" y="120" width="14" height="90" rx="3" fill="#22d3ee" />
-        <rect x="244" y="160" width="14" height="50" rx="3" fill="#facc15" />
-        <rect x="266" y="100" width="14" height="110" rx="3" fill="#8b7ff9" />
-        <rect x="288" y="140" width="14" height="70" rx="3" fill="#10b981" />
-        <rect x="310" y="80" width="14" height="130" rx="3" fill="#22d3ee" opacity="0.7" />
-      </g>
-
-      <rect width="1600" height="900" fill="url(#vignette)" />
+      {/* Scattered accent dots for polish */}
+      <circle cx="60" cy="120" r="5" fill="#fb923c" opacity="0.7" />
+      <circle cx="700" cy="70" r="4" fill="#f472b6" opacity="0.6" />
+      <circle cx="780" cy="420" r="5" fill="#93c5fd" opacity="0.5" />
+      <circle cx="40" cy="700" r="4" fill="#fbcfe8" opacity="0.6" />
     </svg>
   );
 }
 
-/** Full-screen invite-code gate shown before the chat UI: a dark "data hologram" background
- *  (original artwork -- see HologramBackground above) with a centered glass card holding the
- *  form. On success, plays a short "unlocked" animation before calling onUnlocked(). */
+/** Full-screen invite-code gate shown before the chat UI: an original "data analysis" hero
+ *  illustration (see AnalyticsHeroBackground above) on the left, with a glass login card
+ *  anchored to the right (see .access-gate's flex layout in styles.css). On success, plays a
+ *  short "unlocked" animation before calling onUnlocked(). */
 export default function AccessGate({ onUnlocked }: { onUnlocked: () => void }) {
   const [code, setCode] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -195,7 +178,7 @@ export default function AccessGate({ onUnlocked }: { onUnlocked: () => void }) {
 
   return (
     <div className="access-gate">
-      <HologramBackground />
+      <AnalyticsHeroBackground />
       <div className={`access-gate-card${shake ? " shake" : ""}`}>
         <div className="access-gate-form-panel">
           <div className={`access-gate-icon${success ? " success" : ""}`}>

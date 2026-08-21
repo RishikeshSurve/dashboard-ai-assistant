@@ -182,26 +182,29 @@ header h1 { margin-bottom: 4px; }
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .theme-toggle[data-mode="dark"] .theme-toggle-thumb { transform: translateX(26px); }
-/* ---------- Access gate: dark data-hologram background with a centered glass card ----------
-   The background is a full-bleed original SVG (HologramBackground in AccessGate.tsx) -- no
-   stock imagery, so nothing borrowed and nothing to watermark. The card floats on top as a
-   frosted-glass panel; only cheap CSS/SMIL animation is used (no WebGL, no per-frame JS), so
-   this can't reintroduce the input-lag bug the old three.js background caused. */
+/* ---------- Access gate: blue "data analysis" hero illustration with the login card on the
+   right ----------
+   The illustration is a full-bleed original SVG (AnalyticsHeroBackground in AccessGate.tsx)
+   clustered on the left half -- no stock imagery, so nothing borrowed and nothing to
+   watermark. The card floats on top as a frosted-glass panel, pushed to the right via
+   justify-content so the illustration reads clearly beside it. Only cheap CSS/SMIL animation
+   is used (no WebGL, no per-frame JS), so this can't reintroduce the input-lag bug the old
+   three.js background caused. */
 
 .access-gate {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 24px;
+  justify-content: flex-end;
+  padding: 24px 7vw 24px 24px;
   position: relative;
   overflow: hidden;
-  background: radial-gradient(circle at 30% 20%, #131a34 0%, #05060f 55%, #000003 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 45%, #2e1065 100%);
 }
 
 .access-gate-loading {
   min-height: 100vh;
-  background: radial-gradient(circle at 30% 20%, #131a34 0%, #05060f 55%, #000003 100%);
+  background: linear-gradient(135deg, #2563eb 0%, #1e3a8a 45%, #2e1065 100%);
 }
 
 .access-gate-bg {
@@ -210,11 +213,10 @@ header h1 { margin-bottom: 4px; }
   width: 100%;
   height: 100%;
   z-index: 0;
-  /* Slight tilt + scale-up so the panel collage reads as a tilted 3D scene (like looking down
-     at an angled floor of screens) instead of a flat frontal grid -- a cheap, static CSS
-     transform (GPU-composited, no per-frame JS) so it can't reintroduce the old perf issue. */
-  transform: perspective(1400px) rotateX(7deg) rotateZ(-1.4deg) scale(1.14);
-  transform-origin: 50% 45%;
+}
+
+@media (max-width: 900px) {
+  .access-gate { justify-content: center; padding: 24px; }
 }
 
 .access-gate-card {
