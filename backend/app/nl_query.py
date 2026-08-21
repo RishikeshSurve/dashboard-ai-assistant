@@ -36,6 +36,10 @@ class QuerySpec:
     limit: int = 500
     # "previous_period" (immediately preceding range of equal length) or "yoy" (same dates, 1 year back).
     compare: str | None = None
+    # Ranking support ("best performing campaigns", "top 5 platforms by revenue"): sort the
+    # grouped results by this metric instead of alphabetically by dimension.
+    sort_by: str | None = None
+    sort_desc: bool = True
 
 
 def _default_date_range(days: int = 30) -> tuple[str, str]:
@@ -164,6 +168,21 @@ def _rule_based_parse(prompt: str) -> QuerySpec:
         found_metrics.append("roas")
     if "margin" in text:
         found_metrics.append("margin_pct")
+    # Natural-language synonyms so plain-English phrasing isn't ignored (people rarely type
+    # the raw metric keys like "cpa" or "ctr").
+    for phrase, key in (
+        ("cost per acquisition", "cpa"),
+        ("cost per conversion", "cpa"),
+        ("acquisition cost", "cpa"),
+        ("click through rate", "ctr"),
+        ("click-through rate", "ctr"),
+        ("clickthrough rate", "ctr"),
+        ("cost per thousand", "cpm"),
+        ("cost per mille", "cpm"),
+        ("cost per 1000 impressions", "cpm"),
+    ):
+        if phrase in text:
+            found_metrics.append(key)
     if found_metrics:
         spec.metrics = sorted(set(found_metrics), key=list(sl.METRICS.keys()).index)
 
@@ -182,6 +201,61 @@ def _rule_based_parse(prompt: str) -> QuerySpec:
     platforms = [p for p in sl.VALID_PLATFORMS if p.lower() in text or p.lower().replace(" ", "") in text]
     if platforms:
         spec.platforms = platforms
+
+    # Ranking phrases: "best performing campaigns", "top 5 platforms", "best roas platform",
+    # "highest spend day", "worst campaigns by spend". Adds the dimension to group_by (people
+    # rarely also say "by campaign" in these) and sorts by the most relevant metric.
+    _RANK_WORD_TO_METRIC = {"performing": None, "spending": "spend", "converting": "conversions"}
+    m = re.search(
+        r"\b(best|top|highest|biggest|worst|lowest|bottom)\s+(?:(\d+)\s+)?(?:([a-z-]+)\s+)?"
+        r"(campaigns?|platforms?|adsets?|ad\s?sets?|days?)\b",
+        text,
+    )
+    if m:
+        dim = {"c": "campaign", "p": "platform", "a": "adset", "d": "date"}[m.group(4)[0]]
+        if dim not in spec.group_by:
+            spec.group_by.append(dim)
+        spec.sort_desc = m.group(1) not in ("worst", "lowest", "bottom")
+        middle = m.group(3)
+        explicit = None
+        if middle:
+            explicit = _RANK_WORD_TO_METRIC.get(middle, middle if middle in sl.METRICS else None)
+        if explicit:
+            spec.sort_by = explicit
+            if explicit not in spec.metrics:
+                spec.metrics.append(explicit)
+        else:
+            for preferred in ("revenue", "roas", "conversions", "spend"):
+                if preferred in spec.metrics:
+                    spec.sort_by = preferred
+                    break
+            else:
+                spec.sort_by = spec.metrics[0]
+        if m.group(2):
+            spec.limit = max(1, min(int(m.group(2)), 100))
+
+    # Movers phrasing ("biggest gainers", "top decliners", "which campaigns dropped"): the
+    # Overview's movers analysis, available from chat. Groups by campaign, compares against
+    # the previous period, and sorts by the change in revenue (handled post-query in main.py
+    # via the special "delta:" sort key, since the change column doesn't exist in SQL).
+    m = re.search(r"\b(gainers?|winners?|decliners?|losers?|movers?|gained|declined|dropped)\b", text)
+    if m:
+        word = m.group(1)
+        if not spec.group_by:
+            spec.group_by.append("campaign")
+        if not spec.compare:
+            spec.compare = "previous_period"
+        if "revenue" not in spec.metrics:
+            spec.metrics.append("revenue")
+        spec.sort_by = "delta:revenue"
+        spec.sort_desc = word not in ("decliners", "decliner", "losers", "loser", "declined", "dropped")
+
+    # "sorted by X" / "ranked by X" / "<ranking phrase> ... by X" overrides the sort metric.
+    m = re.search(r"\b(?:sorted by|ranked by|order(?:ed)? by)\s+([a-z_ ]+?)\b(?:\s|$|,)", text)
+    if m and spec.group_by:
+        candidate = m.group(1).strip().replace(" ", "_")
+        if candidate in sl.METRICS:
+            spec.sort_by = candidate
 
     date_range = _parse_date_range_from_text(text)
     if date_range:
@@ -207,10 +281,20 @@ def _rule_based_parse(prompt: str) -> QuerySpec:
     ):
         spec.compare = "previous_period"
 
-    m = re.search(r"campaign[s]? (?:called|named|containing|with name)?\s*[\"']?([a-z0-9 ]+)[\"']?", text)
+    # Campaign-name filter. The naming keyword (called/named/...) or quotes are REQUIRED:
+    # an earlier version made the keyword optional, which captured whatever words happened to
+    # follow "campaign(s)" (e.g. "by campaign this year" -> filter LIKE '%this year%') and
+    # silently returned zero rows. A filter that matches nothing is worse than no filter.
+    m = re.search(
+        r"campaigns?\s+(?:called|named|containing|with name)\s+[\"']?([a-z0-9 ]+?)[\"']?"
+        r"(?=\s+(?:for|last|this|in|from|between|during|by|over|compared|vs)\b|\s*$)",
+        text,
+    )
+    if not m:
+        m = re.search(r"campaigns?\s+[\"']([a-z0-9 ]+)[\"']", text)
     if m:
         candidate = m.group(1).strip()
-        if candidate and candidate not in ("s", ""):
+        if candidate:
             spec.campaign_contains = candidate
 
     return spec
@@ -228,7 +312,20 @@ def _llm_parse(prompt: str) -> QuerySpec:
         "QuerySpec JSON shape: {\"metrics\": [...], \"group_by\": [...], "
         "\"platforms\": [...] | null, \"campaign_contains\": str | null, "
         "\"date_from\": \"YYYY-MM-DD\", \"date_to\": \"YYYY-MM-DD\", \"limit\": int, "
-        "\"compare\": \"previous_period\" | \"yoy\" | null}\n\n"
+        "\"compare\": \"previous_period\" | \"yoy\" | null, "
+        "\"sort_by\": metric | null, \"sort_desc\": bool}\n\n"
+        "campaign_contains is ONLY for when the user names a specific campaign (e.g. "
+        "\"the Summer Sale campaign\"). NEVER put descriptive words like \"best performing\" "
+        "or date phrases in it -- a filter that matches no campaign names returns zero rows. "
+        "For ranking requests (\"best/top/worst performing campaigns\", \"top 5 platforms\"), "
+        "use group_by with the dimension, sort_by with the most relevant metric (revenue "
+        "unless the user emphasizes another), sort_desc true for best/top (false for worst), "
+        "and limit N if they gave a number.\n\n"
+        "compare may be combined with a non-empty group_by: each row then gains previous-"
+        "period and change columns. For \"biggest gainers/decliners/movers\" requests, use "
+        "group_by [\"campaign\"], compare \"previous_period\", and the special sort key "
+        "sort_by \"delta:revenue\" (sort_desc false for decliners) -- it sorts rows by the "
+        "change in revenue vs the previous period.\n\n"
         "Leave group_by as an empty array [] when the user just wants overall totals with no "
         "breakdown (e.g. \"what's my total spend\") -- this renders as score cards. Only include "
         "a dimension in group_by when the user explicitly asks to break results out by it "
@@ -260,6 +357,8 @@ def _llm_parse(prompt: str) -> QuerySpec:
         date_to=data.get("date_to") or date_to,
         limit=int(data.get("limit") or 500),
         compare=data.get("compare"),
+        sort_by=data.get("sort_by"),
+        sort_desc=bool(data.get("sort_desc", True)),
     )
 
 
@@ -282,6 +381,12 @@ def build_sql(spec: QuerySpec) -> tuple[str, list[Any]]:
     metrics = [m for m in spec.metrics if m in sl.METRICS] or ["spend"]
     group_by = [g for g in spec.group_by if g in sl.DIMENSIONS]
 
+    # Ranking: sort_by must be a whitelisted metric; make sure it's selected so the SQL alias
+    # exists to ORDER BY.
+    sort_by = spec.sort_by if spec.sort_by in sl.METRICS else None
+    if sort_by and sort_by not in metrics:
+        metrics.append(sort_by)
+
     select_cols = [f"{sl.DIMENSIONS[g]} AS {g}" for g in group_by]
     select_cols += [f"{sl.METRICS[m][0]} AS {m}" for m in metrics]
 
@@ -301,8 +406,11 @@ def build_sql(spec: QuerySpec) -> tuple[str, list[Any]]:
 
     if group_by:
         group_cols = ", ".join(sl.DIMENSIONS[g] for g in group_by)
-        order_col = sl.DIMENSIONS[group_by[0]]
-        sql += f" GROUP BY {group_cols} ORDER BY {order_col}"
+        sql += f" GROUP BY {group_cols}"
+        if sort_by:
+            sql += f" ORDER BY {sort_by} {'DESC' if spec.sort_desc else 'ASC'}"
+        else:
+            sql += f" ORDER BY {sl.DIMENSIONS[group_by[0]]}"
 
     sql += " LIMIT ?"
     params.append(min(spec.limit, 5000) if group_by else 1)

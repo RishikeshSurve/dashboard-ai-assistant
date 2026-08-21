@@ -28,6 +28,7 @@ const KPI_ORDER: { key: string; label: string; kind: "money" | "count" | "ratio"
   { key: "clicks", label: "Clicks", kind: "count" },
   { key: "roas", label: "ROAS", kind: "ratio" },
   { key: "margin_pct", label: "Margin", kind: "pct" },
+  { key: "cpm", label: "CPM", kind: "money" },
 ];
 
 function fmt(value: number | null | undefined, kind: "money" | "count" | "ratio" | "pct"): string {

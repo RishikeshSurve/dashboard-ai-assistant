@@ -12,9 +12,10 @@ const AccessGate = lazy(() => import("./components/AccessGate"));
 const EXAMPLE_PROMPTS = [
   "Show spend, clicks and conversions by platform for the last 30 days",
   "Total spend and revenue for the last 14 days compared to previous period",
+  "Best performing campaigns last 7 days",
+  "Biggest gainers vs previous period, last 30 days",
+  "CPM and CTR by platform, last 7 days",
   "Spend trend over the last 30 days",
-  "CTR and CPA by platform, last 7 days",
-  "Total spend and revenue in 2025",
 ];
 
 type Theme = "light" | "dark";

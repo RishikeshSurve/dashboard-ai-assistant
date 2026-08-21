@@ -146,6 +146,53 @@ def run_query(req: QueryRequest, _session: dict = Depends(auth.require_session))
         except sql_guard.UnsafeSQLError:
             comparison = None  # comparison is best-effort; don't fail the whole request over it
 
+    # Grouped comparison ("spend by campaign vs previous period", "biggest gainers"): run the
+    # same grouped query over the comparison window and attach per-row <metric>_prev and
+    # <metric>_change columns, joined on the first group_by dimension. This is the Overview's
+    # movers analysis made available to any chat prompt.
+    if spec.compare and spec.group_by and rows:
+        prev_from, prev_to = nl_query.previous_period_range(
+            spec.date_from or "", spec.date_to or "", spec.compare
+        )
+        prev_spec = replace(spec, date_from=prev_from, date_to=prev_to, compare=None, limit=5000)
+        prev_sql, prev_params = nl_query.build_sql(prev_spec)
+        try:
+            sql_guard.validate(prev_sql)
+            prev_conn = db.get_connection()
+            try:
+                prev_cur = prev_conn.execute(prev_sql, prev_params)
+                prev_cols = [d[0] for d in prev_cur.description]
+                prev_rows = [dict(zip(prev_cols, r)) for r in prev_cur.fetchall()]
+            finally:
+                prev_conn.close()
+
+            dim_key = spec.group_by[0]
+            prev_map = {r.get(dim_key): r for r in prev_rows}
+            metric_cols = [c for c in cols if c not in spec.group_by]
+            for row in rows:
+                prev_row = prev_map.get(row.get(dim_key)) or {}
+                for m in metric_cols:
+                    prev_val = prev_row.get(m)
+                    cur_val = row.get(m)
+                    row[f"{m}_prev"] = prev_val
+                    row[f"{m}_change"] = (
+                        round(cur_val - prev_val, 2) if cur_val is not None and prev_val is not None else None
+                    )
+            cols = list(rows[0].keys())
+            comparison = {"_range": {"previous_from": prev_from, "previous_to": prev_to, "mode": spec.compare}}
+        except sql_guard.UnsafeSQLError:
+            pass  # best-effort, same as totals comparison
+
+    # Special "delta:<metric>" sort (biggest gainers/decliners): the change column only exists
+    # post-join, so sorting happens here rather than in SQL. Rows without a change value sink
+    # to the bottom either way.
+    if spec.sort_by and spec.sort_by.startswith("delta:") and rows:
+        target = f"{spec.sort_by.split(':', 1)[1]}_change"
+        if target in rows[0]:
+            rows.sort(
+                key=lambda r: (r.get(target) is None, (r.get(target) or 0) * (-1 if spec.sort_desc else 1))
+            )
+
     query_id = str(uuid.uuid4())
     _RESULT_CACHE[query_id] = rows
 
@@ -206,7 +253,7 @@ def overview(
         period = "last30"
     date_from, date_to = d_from.isoformat(), d_to.isoformat()
 
-    kpi_metrics = ["spend", "revenue", "conversions", "clicks", "roas", "margin_pct", "cpa", "ctr"]
+    kpi_metrics = ["spend", "revenue", "conversions", "clicks", "roas", "margin_pct", "cpa", "ctr", "cpm"]
     base = nl_query.QuerySpec(metrics=kpi_metrics, group_by=[], date_from=date_from, date_to=date_to)
 
     prev_from, prev_to = nl_query.previous_period_range(date_from, date_to, "previous_period")

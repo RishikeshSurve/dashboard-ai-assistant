@@ -31,6 +31,11 @@ METRICS = {
     "spend": ("ROUND(SUM(spend), 2)", "sum", "Media spend in USD"),
     "conversions": ("SUM(conversions)", "sum", "Conversions reported by the ad platform"),
     "ctr": ("ROUND(SUM(clicks) * 1.0 / NULLIF(SUM(impressions), 0), 4)", "ratio", "Click-through rate"),
+    "cpm": (
+        "ROUND(SUM(spend) * 1000.0 / NULLIF(SUM(impressions), 0), 2)",
+        "ratio",
+        "Cost per 1,000 impressions (CPM): spend / impressions * 1000",
+    ),
     "cpv": ("ROUND(AVG(cpv), 2)", "avg", "Cost-per-visit/value from Salesforce"),
     "revenue": ("ROUND(SUM(revenue), 2)", "sum", "conversions * Salesforce CPV, joined on ecd_code"),
     "visits": ("SUM(visits)", "sum", "Site visits from Adobe Analytics, joined on ecd_code"),

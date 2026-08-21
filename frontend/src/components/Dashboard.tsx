@@ -101,7 +101,12 @@ export default function Dashboard({
   onAuthError?: (message: string) => void;
 }) {
   const dimensionCol = result.dimension;
-  const metricCols = dimensionCol ? result.columns.filter((c) => c !== dimensionCol) : result.columns;
+  // _prev/_change helper columns (grouped comparisons) belong in the table, not as extra
+  // chart series -- charting them doubles every line/bar and buries the actual metrics.
+  const isHelperCol = (c: string) => c.endsWith("_prev") || c.endsWith("_change");
+  const metricCols = dimensionCol
+    ? result.columns.filter((c) => c !== dimensionCol && !isHelperCol(c))
+    : result.columns.filter((c) => !isHelperCol(c));
   const isTotals = !dimensionCol;
   const isTrend = dimensionCol === "date";
 
@@ -130,6 +135,14 @@ export default function Dashboard({
           </button>
         </div>
       </div>
+
+      {dimensionCol && result.comparison?._range && (
+        <p className="compare-note">
+          _prev and _change columns compare against{" "}
+          {result.comparison._range.mode === "yoy" ? "the same dates last year" : "the previous period"} (
+          {formatDateRange(result.comparison._range.previous_from, result.comparison._range.previous_to)}).
+        </p>
+      )}
 
       {isTotals && result.rows.length > 0 && <ScoreCards result={result} />}
 
@@ -182,9 +195,16 @@ export default function Dashboard({
           <tbody>
             {result.rows.map((row, i) => (
               <tr key={i}>
-                {result.columns.map((c) => (
-                  <td key={c}>{c === dimensionCol ? row[c] : formatValue(row[c], c)}</td>
-                ))}
+                {result.columns.map((c) => {
+                  const raw = row[c];
+                  const changeClass =
+                    c.endsWith("_change") && typeof raw === "number" ? (raw > 0 ? " pos" : raw < 0 ? " neg" : "") : "";
+                  return (
+                    <td key={c} className={changeClass || undefined}>
+                      {c === dimensionCol ? raw : formatValue(raw, c)}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>

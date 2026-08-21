@@ -20,7 +20,7 @@ const COMPARISON_EXAMPLES: { label: string; hint: string }[] = [
   },
 ];
 
-const GROUPING_EXAMPLES = ["by platform", "by campaign", "trend over time (daily)"];
+const GROUPING_EXAMPLES = ["by platform", "by campaign", "trend over time (daily)", "top 5 campaigns by revenue", "biggest gainers"];
 
 /** Right-side panel with example prompt phrasing, always visible, plus a contextual callout
  *  when the last query came back empty or errored -- helps people self-correct an inaccurate
