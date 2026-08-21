@@ -3,16 +3,20 @@ import * as THREE from "three";
 
 const GLASS_COLORS = [0x6d5bf7, 0xa855f7, 0x22d3ee, 0xf472b6, 0x818cf8];
 
+// `transmission` (real glass refraction) makes Three.js render the whole scene to an offscreen
+// target for every transmissive object, every frame -- with 9+ "glass" meshes here, that was
+// pegging the GPU/main thread hard enough to make the entire page feel unresponsive (including
+// typing in the access-code field, which shares the same thread). Dropping transmission in
+// favor of plain transparency + clearcoat keeps the glossy look at a fraction of the cost.
 function glassMaterial(color: number) {
   return new THREE.MeshPhysicalMaterial({
     color,
-    metalness: 0.1,
-    roughness: 0.15,
-    transmission: 0.85,
+    metalness: 0.15,
+    roughness: 0.25,
     transparent: true,
-    opacity: 0.85,
+    opacity: 0.78,
     clearcoat: 1,
-    clearcoatRoughness: 0.1,
+    clearcoatRoughness: 0.15,
   });
 }
 
@@ -29,7 +33,10 @@ export default function LoginBackground3D() {
     if (!canvas) return;
 
     const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    // Capped at 1.5 rather than 2 -- on a high-DPI display, rendering at native 2x resolution
+    // multiplies every pixel-shading cost (lighting, clearcoat) for no visible gain on a
+    // decorative background that's mostly out of focus behind the login card.
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     renderer.setSize(window.innerWidth, window.innerHeight);
 
     const scene = new THREE.Scene();
@@ -119,7 +126,7 @@ export default function LoginBackground3D() {
     disposables.push(donut2Geo, donut2Mat);
 
     const ambientNodes: THREE.Mesh[] = [];
-    for (let i = 0; i < 22; i++) {
+    for (let i = 0; i < 12; i++) {
       const geo = new THREE.SphereGeometry(0.045 + Math.random() * 0.05, 12, 12);
       const color = GLASS_COLORS[i % GLASS_COLORS.length];
       const mat = new THREE.MeshStandardMaterial({ color: 0xffffff, emissive: color, emissiveIntensity: 1.1 });
