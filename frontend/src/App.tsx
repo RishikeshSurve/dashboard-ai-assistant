@@ -5,9 +5,8 @@ import Overview from "./components/Overview";
 import TipsPanel from "./components/TipsPanel";
 import { AuthError, clearToken, getToken, runQuery, type QueryResult } from "./api";
 
-// Code-split: the login gate pulls in three.js for its background scene (~250KB gzipped).
-// Returning users with a valid session token skip the gate entirely, so there's no reason to
-// make them download that chunk -- only fetched when someone actually needs to log in.
+// Code-split: returning users with a valid session token skip the gate entirely, so there's no
+// reason to bundle it into the main chunk -- only fetched when someone actually needs to log in.
 const AccessGate = lazy(() => import("./components/AccessGate"));
 
 const EXAMPLE_PROMPTS = [

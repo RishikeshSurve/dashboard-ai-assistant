@@ -42,6 +42,20 @@ function formatDateRange(from: string, to: string): string {
   return from === to ? fmt(from) : `${fmt(from)} – ${fmt(to)}`;
 }
 
+// Theme-aware chart chrome (grid lines, axis ticks, tooltip) via CSS variables -- without this,
+// Recharts falls back to its own default gray/white styling, which reads fine in light mode but
+// goes muddy or glaringly bright-white against a dark/black page.
+const AXIS_TICK_STYLE = { fontSize: 12, fill: "var(--text-secondary)" };
+const TOOLTIP_STYLE = {
+  contentStyle: {
+    background: "var(--surface)",
+    border: "1px solid var(--border-strong)",
+    borderRadius: 8,
+    color: "var(--text-primary)",
+  },
+  labelStyle: { color: "var(--text-secondary)", fontWeight: 600 },
+} as const;
+
 const COMPARISON_EXPLANATIONS: Record<string, string> = {
   yoy: "Year over year: compared to the exact same calendar dates one year earlier.",
   previous_period:
@@ -151,11 +165,14 @@ export default function Dashboard({
           <ResponsiveContainer width="100%" height={320}>
             {isTrend ? (
               <LineChart data={result.rows}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey={dimensionCol!} tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} />
-                <Tooltip formatter={(value: number, name: string) => [formatValue(value, name), formatMetricName(name)]} />
-                <Legend />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                <XAxis dataKey={dimensionCol!} tick={AXIS_TICK_STYLE} />
+                <YAxis tick={AXIS_TICK_STYLE} />
+                <Tooltip
+                  formatter={(value: number, name: string) => [formatValue(value, name), formatMetricName(name)]}
+                  {...TOOLTIP_STYLE}
+                />
+                <Legend wrapperStyle={{ color: "var(--text-secondary)" }} />
                 {metricCols.map((col, i) => (
                   <Line
                     key={col}
@@ -169,11 +186,15 @@ export default function Dashboard({
               </LineChart>
             ) : (
               <BarChart data={result.rows}>
-                <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey={dimensionCol!} tick={{ fontSize: 12 }} />
-                <YAxis tick={{ fontSize: 12 }} />
-                <Tooltip formatter={(value: number, name: string) => [formatValue(value, name), formatMetricName(name)]} />
-                <Legend />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
+                <XAxis dataKey={dimensionCol!} tick={AXIS_TICK_STYLE} />
+                <YAxis tick={AXIS_TICK_STYLE} />
+                <Tooltip
+                  formatter={(value: number, name: string) => [formatValue(value, name), formatMetricName(name)]}
+                  cursor={{ fill: "var(--surface-muted)" }}
+                  {...TOOLTIP_STYLE}
+                />
+                <Legend wrapperStyle={{ color: "var(--text-secondary)" }} />
                 {metricCols.map((col, i) => (
                   <Bar key={col} dataKey={col} fill={COLORS[i % COLORS.length]} />
                 ))}

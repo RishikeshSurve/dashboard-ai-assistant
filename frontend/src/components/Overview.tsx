@@ -15,6 +15,10 @@ import { AuthError, exportFile, fetchOverview, type OverviewData, type OverviewP
 
 const COLORS = ["#4f46e5", "#0ea5e9", "#10b981", "#f59e0b", "#ef4444", "#8b5cf6"];
 
+// Explicit fill so axis labels stay legible against a dark/black page instead of falling back
+// to Recharts' default mid-gray, which reads dim on true black.
+const AXIS_TICK_FILL = "var(--text-secondary)";
+
 const PERIODS: { key: Exclude<OverviewPeriod, "custom">; label: string }[] = [
   { key: "last30", label: "Last 30 days" },
   { key: "this_month", label: "This month" },
@@ -283,10 +287,10 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
               <ResponsiveContainer width="100%" height={260}>
                 <LineChart data={data.trend} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                  <XAxis dataKey="date" tick={{ fontSize: 11 }} tickFormatter={fmtDateLabel} minTickGap={28} />
-                  <YAxis tick={{ fontSize: 11 }} tickFormatter={fmtShort} width={44} />
+                  <XAxis dataKey="date" tick={{ fontSize: 11, fill: AXIS_TICK_FILL }} tickFormatter={fmtDateLabel} minTickGap={28} />
+                  <YAxis tick={{ fontSize: 11, fill: AXIS_TICK_FILL }} tickFormatter={fmtShort} width={44} />
                   <Tooltip labelFormatter={(l: string) => fmtDateLabel(l)} formatter={tooltipFormatter} {...TOOLTIP_STYLE} />
-                  <Legend />
+                  <Legend wrapperStyle={{ color: "var(--text-secondary)" }} />
                   <Line type="monotone" dataKey="spend" name="Spend" stroke={COLORS[0]} dot={false} strokeWidth={2} />
                   <Line type="monotone" dataKey="revenue" name="Revenue" stroke={COLORS[2]} dot={false} strokeWidth={2} />
                 </LineChart>
@@ -298,10 +302,10 @@ export default function Overview({ onAuthError }: { onAuthError: (message: strin
               <ResponsiveContainer width="100%" height={260}>
                 <BarChart data={data.platforms} margin={{ top: 4, right: 8, bottom: 0, left: 0 }}>
                   <CartesianGrid strokeDasharray="3 3" stroke="var(--border)" />
-                  <XAxis dataKey="platform" tick={{ fontSize: 11 }} interval={0} />
-                  <YAxis tick={{ fontSize: 11 }} tickFormatter={fmtShort} width={44} />
+                  <XAxis dataKey="platform" tick={{ fontSize: 11, fill: AXIS_TICK_FILL }} interval={0} />
+                  <YAxis tick={{ fontSize: 11, fill: AXIS_TICK_FILL }} tickFormatter={fmtShort} width={44} />
                   <Tooltip formatter={tooltipFormatter} cursor={{ fill: "var(--surface-muted)" }} {...TOOLTIP_STYLE} />
-                  <Legend />
+                  <Legend wrapperStyle={{ color: "var(--text-secondary)" }} />
                   <Bar dataKey="spend" name="Spend" fill={COLORS[0]} radius={[3, 3, 0, 0]} />
                   <Bar dataKey="revenue" name="Revenue" fill={COLORS[2]} radius={[3, 3, 0, 0]} />
                 </BarChart>

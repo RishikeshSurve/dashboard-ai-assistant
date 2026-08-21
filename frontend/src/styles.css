@@ -14,20 +14,23 @@
   --card-shadow: rgba(0, 0, 0, 0.08);
 }
 
+/* True-black dark mode (OLED-style): the page background is pure black, and surfaces/cards
+   sit one step up (near-black gray) purely so card boundaries and borders stay visible against
+   it -- pure black-on-black everywhere would make card edges and dividers disappear. */
 [data-theme="dark"] {
   color-scheme: dark;
-  --bg-page: #131320;
-  --text-primary: #e9e9f4;
-  --text-secondary: #a5a5bd;
-  --text-muted: #7d7d95;
-  --surface: #1c1c2b;
-  --surface-muted: #232334;
-  --border: #33334a;
-  --border-strong: #40405c;
+  --bg-page: #000000;
+  --text-primary: #f2f2f5;
+  --text-secondary: #b7b7c3;
+  --text-muted: #8a8a97;
+  --surface: #0c0c0e;
+  --surface-muted: #16161a;
+  --border: #2a2a30;
+  --border-strong: #3c3c44;
   --accent: #8b7ff9;
   --accent-contrast: #fff;
-  --code-bg: #191927;
-  --card-shadow: rgba(0, 0, 0, 0.35);
+  --code-bg: #111114;
+  --card-shadow: rgba(0, 0, 0, 0.7);
 }
 
 * { box-sizing: border-box; }
@@ -179,116 +182,40 @@ header h1 { margin-bottom: 4px; }
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .theme-toggle[data-mode="dark"] .theme-toggle-thumb { transform: translateX(26px); }
-/* ---------- Access gate: glossy full-screen login ---------- */
+/* ---------- Access gate: clean split-panel login ---------- */
 
 .access-gate {
-  position: relative;
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  overflow: hidden;
-  background: radial-gradient(circle at 20% 20%, #2d2a6e 0%, #14123a 45%, #0a0918 100%);
-  perspective: 1200px;
+  padding: 24px;
+  background: #eef0fb;
 }
 
-/* Full-page 3D scene (LoginBackground3D) -- the canvas has a transparent clear color, so
-   this dark gradient still shows through anywhere the WebGL objects don't cover. */
 .access-gate-loading {
   min-height: 100vh;
-  background: radial-gradient(circle at 20% 20%, #2d2a6e 0%, #14123a 45%, #0a0918 100%);
-}
-
-.login-bg-canvas {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
-.card-wrap {
-  position: relative;
-  z-index: 2;
-  transform-style: preserve-3d;
-}
-
-.access-gate-glare {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease-out;
-}
-
-/* Diagonal glossy sheen that periodically sweeps across the card */
-.access-gate-shine {
-  position: absolute;
-  inset: 0;
-  border-radius: 20px;
-  overflow: hidden;
-  pointer-events: none;
-}
-.access-gate-shine::before {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -60%;
-  width: 40%;
-  height: 200%;
-  background: linear-gradient(
-    75deg,
-    transparent 0%,
-    rgba(255, 255, 255, 0.14) 45%,
-    rgba(255, 255, 255, 0.28) 50%,
-    rgba(255, 255, 255, 0.14) 55%,
-    transparent 100%
-  );
-  animation: card-shine 5s ease-in-out infinite;
-}
-@keyframes card-shine {
-  0%, 15% { left: -60%; }
-  40%, 100% { left: 130%; }
+  background: #eef0fb;
 }
 
 .access-gate-card {
-  position: relative;
-  z-index: 1;
+  display: flex;
   width: 100%;
-  max-width: 380px;
-  text-align: center;
-  padding: 40px 32px 32px;
-  border-radius: 20px;
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.45),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  animation: gate-in 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: perspective(1000px) rotateX(0deg) rotateY(0deg);
-  transform-style: preserve-3d;
-  transition: transform 0.15s ease-out;
-  will-change: transform;
+  max-width: 860px;
+  min-height: 500px;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 20px 60px rgba(79, 70, 229, 0.12), 0 4px 16px rgba(20, 20, 40, 0.06);
+  overflow: hidden;
+  animation: gate-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
-
-/* Mouse-tilt depth: these lift slightly toward the viewer as the card rotates */
-.access-gate-icon { transform: translateZ(30px); }
-.access-gate-card h1 { transform: translateZ(20px); }
-.access-gate-card .subtitle { transform: translateZ(15px); }
-.access-gate-input-wrap { transform: translateZ(15px); }
-.access-gate-submit { transform: translateZ(25px); }
 
 @keyframes gate-in {
-  from { opacity: 0; transform: translateY(16px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
-.access-gate-card.shake { animation: gate-in 0.5s cubic-bezier(0.16, 1, 0.3, 1), shake 0.45s ease; }
+.access-gate-card.shake .access-gate-form-panel { animation: shake 0.45s ease; }
 @keyframes shake {
   10%, 90% { transform: translateX(-1px); }
   20%, 80% { transform: translateX(2px); }
@@ -296,53 +223,29 @@ header h1 { margin-bottom: 4px; }
   40%, 60% { transform: translateX(5px); }
 }
 
-.access-gate-card.success {
-  border-color: rgba(74, 222, 128, 0.4);
-  box-shadow:
-    0 8px 40px rgba(0, 0, 0, 0.45),
-    0 0 0 1px rgba(74, 222, 128, 0.15),
-    0 0 50px rgba(74, 222, 128, 0.25),
-    inset 0 1px 0 rgba(255, 255, 255, 0.15);
-  animation: gate-in 0.5s cubic-bezier(0.16, 1, 0.3, 1), success-pulse 0.9s ease;
+.access-gate-form-panel {
+  flex: 1 1 380px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 56px 48px;
 }
-@keyframes success-pulse {
-  0% { transform: scale(1); }
-  35% { transform: scale(1.03); }
-  100% { transform: scale(1); }
-}
-
-.access-gate-progress {
-  height: 3px;
-  border-radius: 3px;
-  margin-top: 22px;
-  background: rgba(255, 255, 255, 0.12);
-  overflow: hidden;
-}
-.access-gate-progress::after {
-  content: "";
-  display: block;
-  height: 100%;
-  width: 0%;
-  background: linear-gradient(90deg, #4ade80, #22d3ee);
-  animation: progress-fill 0.9s ease forwards;
-}
-@keyframes progress-fill { to { width: 100%; } }
 
 .access-gate-icon {
-  width: 54px;
-  height: 54px;
-  margin: 0 auto 18px;
+  width: 44px;
+  height: 44px;
+  margin-bottom: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 16px;
-  background: linear-gradient(135deg, #6d5bf7, #a855f7);
-  box-shadow: 0 6px 24px rgba(109, 91, 247, 0.55), inset 0 1px 0 rgba(255,255,255,0.3);
-  transition: background 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 13px;
+  background: linear-gradient(135deg, #6d5bf7, #4f46e5);
+  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+  transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .access-gate-icon.success {
-  background: linear-gradient(135deg, #4ade80, #22d3ee);
-  box-shadow: 0 6px 24px rgba(74, 222, 128, 0.55), inset 0 1px 0 rgba(255,255,255,0.3);
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
 }
 .access-gate-icon .check-path {
   stroke-dasharray: 24;
@@ -351,20 +254,25 @@ header h1 { margin-bottom: 4px; }
 }
 @keyframes draw-check { to { stroke-dashoffset: 0; } }
 
-.access-gate-card h1 {
-  font-size: 21px;
-  font-weight: 700;
+.access-gate-form-panel h1 {
+  font-size: 28px;
+  font-weight: 800;
   margin: 0 0 6px;
-  background: linear-gradient(135deg, #fff, #cfcaff);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  color: #17172b;
 }
 
-.access-gate-card .subtitle {
-  color: rgba(255, 255, 255, 0.62);
-  font-size: 13.5px;
-  margin: 0 0 26px;
+.access-gate-subtitle {
+  color: #7c7c93;
+  font-size: 14px;
+  margin: 0 0 28px;
+}
+
+.access-gate-label {
+  display: block;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #4b4b63;
+  margin-bottom: 6px;
 }
 
 .access-gate-input-wrap {
@@ -374,97 +282,147 @@ header h1 { margin-bottom: 4px; }
 
 .access-gate-input-wrap input {
   width: 100%;
-  padding: 13px 44px 13px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.06);
-  color: #fff;
-  font-size: 15px;
-  letter-spacing: 1px;
-  text-align: center;
+  padding: 12px 42px 12px 14px;
+  border-radius: 10px;
+  border: 1.5px solid #e4e4f0;
+  background: #f9f9fd;
+  color: #17172b;
+  font-size: 14.5px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.access-gate-input-wrap input::placeholder { color: rgba(255,255,255,0.35); letter-spacing: normal; }
+.access-gate-input-wrap input::placeholder { color: #a5a5ba; }
 .access-gate-input-wrap input:focus {
   outline: none;
-  border-color: #a78bfa;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 0 0 4px rgba(167, 139, 250, 0.22);
+  border-color: #6d5bf7;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(109, 91, 247, 0.14);
 }
 .access-gate-input-wrap.has-error input {
-  border-color: #f87171;
-  box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.18);
+  border-color: #ef4444;
+  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
 }
 
 .toggle-visibility {
   position: absolute;
-  right: 6px;
+  right: 5px;
   top: 50%;
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.45);
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+  color: #9494a8;
+  width: 30px;
+  height: 30px;
+  border-radius: 7px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   transition: color 0.15s ease, background 0.15s ease;
 }
-.toggle-visibility:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
+.toggle-visibility:hover { color: #4f46e5; background: #f0f0fb; }
 
 .access-gate-error {
-  background: rgba(248, 113, 113, 0.12);
-  border: 1px solid rgba(248, 113, 113, 0.35);
-  color: #fecaca;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #b91c1c;
   font-size: 12.5px;
   padding: 8px 12px;
-  border-radius: 10px;
+  border-radius: 8px;
   margin-bottom: 14px;
 }
 
 .access-gate-submit {
   width: 100%;
-  padding: 13px;
+  padding: 12px;
   border: none;
-  border-radius: 12px;
+  border-radius: 10px;
   color: #fff;
   font-weight: 600;
   font-size: 14.5px;
   cursor: pointer;
-  background: linear-gradient(135deg, #6d5bf7, #a855f7);
-  background-size: 160% 160%;
-  box-shadow: 0 6px 20px rgba(109, 91, 247, 0.45);
+  background: #4f46e5;
+  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-position 0.4s ease;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  margin-top: 6px;
 }
 .access-gate-submit:hover:not(:disabled) {
+  background: #4338ca;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
   transform: translateY(-1px);
-  box-shadow: 0 10px 28px rgba(109, 91, 247, 0.6);
-  background-position: 100% 0;
 }
 .access-gate-submit:active:not(:disabled) { transform: translateY(0); }
-.access-gate-submit:disabled { opacity: 0.45; cursor: not-allowed; box-shadow: none; }
+.access-gate-submit:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
 
 .spinner {
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.35);
+  border: 2px solid rgba(255, 255, 255, 0.4);
   border-top-color: #fff;
   animation: spin 0.7s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 
+.access-gate-progress {
+  height: 3px;
+  border-radius: 3px;
+  margin-top: 22px;
+  background: #eceafb;
+  overflow: hidden;
+}
+.access-gate-progress::after {
+  content: "";
+  display: block;
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #22c55e, #22d3ee);
+  animation: progress-fill 0.7s ease forwards;
+}
+@keyframes progress-fill { to { width: 100%; } }
+
 .access-gate-footnote {
   margin: 18px 0 0;
   font-size: 11.5px;
-  color: rgba(255, 255, 255, 0.35);
+  color: #a5a5ba;
+}
+
+/* ---------- Access gate: illustration side panel ---------- */
+.access-gate-illustration-panel {
+  flex: 1 1 380px;
+  background: linear-gradient(160deg, #eef0fd 0%, #e4e6fb 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 40px 36px;
+}
+.login-illustration-svg { width: 100%; max-width: 320px; height: auto; margin-bottom: 8px; }
+.access-gate-illustration-panel h2 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #232338;
+  margin: 8px 0 8px;
+}
+.access-gate-illustration-panel p {
+  font-size: 13px;
+  color: #6f6f88;
+  line-height: 1.5;
+  margin: 0;
+  max-width: 260px;
+}
+.access-gate-dots { display: flex; gap: 6px; margin-top: 22px; }
+.access-gate-dots span { width: 6px; height: 6px; border-radius: 3px; background: #cfcdf2; transition: all 0.2s ease; }
+.access-gate-dots span.active { width: 18px; background: #4f46e5; }
+
+@media (max-width: 760px) {
+  .access-gate-card { flex-direction: column; max-width: 420px; min-height: 0; }
+  .access-gate-illustration-panel { display: none; }
+  .access-gate-form-panel { padding: 40px 28px; }
 }
 .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
 .examples button { background: var(--surface); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 20px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
