@@ -182,7 +182,11 @@ header h1 { margin-bottom: 4px; }
   transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .theme-toggle[data-mode="dark"] .theme-toggle-thumb { transform: translateX(26px); }
-/* ---------- Access gate: clean split-panel login ---------- */
+/* ---------- Access gate: dark data-hologram background with a centered glass card ----------
+   The background is a full-bleed original SVG (HologramBackground in AccessGate.tsx) -- no
+   stock imagery, so nothing borrowed and nothing to watermark. The card floats on top as a
+   frosted-glass panel; only cheap CSS/SMIL animation is used (no WebGL, no per-frame JS), so
+   this can't reintroduce the input-lag bug the old three.js background caused. */
 
 .access-gate {
   min-height: 100vh;
@@ -190,28 +194,41 @@ header h1 { margin-bottom: 4px; }
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: #eef0fb;
+  position: relative;
+  overflow: hidden;
+  background: radial-gradient(circle at 30% 20%, #131a34 0%, #05060f 55%, #000003 100%);
 }
 
 .access-gate-loading {
   min-height: 100vh;
-  background: #eef0fb;
+  background: radial-gradient(circle at 30% 20%, #131a34 0%, #05060f 55%, #000003 100%);
+}
+
+.access-gate-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
 }
 
 .access-gate-card {
-  display: flex;
+  position: relative;
+  z-index: 1;
   width: 100%;
-  max-width: 860px;
-  min-height: 500px;
-  border-radius: 24px;
-  background: #fff;
-  box-shadow: 0 20px 60px rgba(79, 70, 229, 0.12), 0 4px 16px rgba(20, 20, 40, 0.06);
+  max-width: 420px;
+  border-radius: 22px;
+  background: rgba(13, 16, 32, 0.62);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.55), 0 0 40px rgba(109, 91, 247, 0.12);
   overflow: hidden;
-  animation: gate-in 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: gate-in 0.45s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @keyframes gate-in {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(14px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
@@ -224,11 +241,10 @@ header h1 { margin-bottom: 4px; }
 }
 
 .access-gate-form-panel {
-  flex: 1 1 380px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 56px 48px;
+  padding: 48px 40px;
 }
 
 .access-gate-icon {
@@ -239,13 +255,13 @@ header h1 { margin-bottom: 4px; }
   align-items: center;
   justify-content: center;
   border-radius: 13px;
-  background: linear-gradient(135deg, #6d5bf7, #4f46e5);
-  box-shadow: 0 6px 18px rgba(79, 70, 229, 0.3);
+  background: linear-gradient(135deg, #22d3ee, #6d5bf7);
+  box-shadow: 0 6px 20px rgba(109, 91, 247, 0.45);
   transition: background 0.3s ease, box-shadow 0.3s ease;
 }
 .access-gate-icon.success {
   background: linear-gradient(135deg, #22c55e, #16a34a);
-  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.35);
+  box-shadow: 0 6px 18px rgba(34, 197, 94, 0.4);
 }
 .access-gate-icon .check-path {
   stroke-dasharray: 24;
@@ -258,11 +274,11 @@ header h1 { margin-bottom: 4px; }
   font-size: 28px;
   font-weight: 800;
   margin: 0 0 6px;
-  color: #17172b;
+  color: #f5f6ff;
 }
 
 .access-gate-subtitle {
-  color: #7c7c93;
+  color: #9fa0c0;
   font-size: 14px;
   margin: 0 0 28px;
 }
@@ -271,7 +287,7 @@ header h1 { margin-bottom: 4px; }
   display: block;
   font-size: 12.5px;
   font-weight: 600;
-  color: #4b4b63;
+  color: #c2c3e0;
   margin-bottom: 6px;
 }
 
@@ -284,22 +300,22 @@ header h1 { margin-bottom: 4px; }
   width: 100%;
   padding: 12px 42px 12px 14px;
   border-radius: 10px;
-  border: 1.5px solid #e4e4f0;
-  background: #f9f9fd;
-  color: #17172b;
+  border: 1.5px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.05);
+  color: #f2f2fb;
   font-size: 14.5px;
   transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
-.access-gate-input-wrap input::placeholder { color: #a5a5ba; }
+.access-gate-input-wrap input::placeholder { color: rgba(242, 242, 251, 0.35); }
 .access-gate-input-wrap input:focus {
   outline: none;
-  border-color: #6d5bf7;
-  background: #fff;
-  box-shadow: 0 0 0 4px rgba(109, 91, 247, 0.14);
+  border-color: #7dd3fc;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 0 4px rgba(109, 91, 247, 0.28);
 }
 .access-gate-input-wrap.has-error input {
-  border-color: #ef4444;
-  box-shadow: 0 0 0 4px rgba(239, 68, 68, 0.1);
+  border-color: #f87171;
+  box-shadow: 0 0 0 4px rgba(248, 113, 113, 0.16);
 }
 
 .toggle-visibility {
@@ -309,7 +325,7 @@ header h1 { margin-bottom: 4px; }
   transform: translateY(-50%);
   background: transparent;
   border: none;
-  color: #9494a8;
+  color: rgba(255, 255, 255, 0.5);
   width: 30px;
   height: 30px;
   border-radius: 7px;
@@ -319,12 +335,12 @@ header h1 { margin-bottom: 4px; }
   cursor: pointer;
   transition: color 0.15s ease, background 0.15s ease;
 }
-.toggle-visibility:hover { color: #4f46e5; background: #f0f0fb; }
+.toggle-visibility:hover { color: #fff; background: rgba(255, 255, 255, 0.08); }
 
 .access-gate-error {
-  background: #fef2f2;
-  border: 1px solid #fecaca;
-  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.14);
+  border: 1px solid rgba(248, 113, 113, 0.35);
+  color: #fca5a5;
   font-size: 12.5px;
   padding: 8px 12px;
   border-radius: 8px;
@@ -336,22 +352,22 @@ header h1 { margin-bottom: 4px; }
   padding: 12px;
   border: none;
   border-radius: 10px;
-  color: #fff;
-  font-weight: 600;
+  color: #06060d;
+  font-weight: 700;
   font-size: 14.5px;
   cursor: pointer;
-  background: #4f46e5;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+  background: linear-gradient(135deg, #22d3ee, #6d5bf7);
+  box-shadow: 0 4px 20px rgba(109, 91, 247, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
-  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+  transition: box-shadow 0.15s ease, transform 0.15s ease, filter 0.15s ease;
   margin-top: 6px;
 }
 .access-gate-submit:hover:not(:disabled) {
-  background: #4338ca;
-  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45);
+  filter: brightness(1.08);
+  box-shadow: 0 6px 26px rgba(109, 91, 247, 0.55);
   transform: translateY(-1px);
 }
 .access-gate-submit:active:not(:disabled) { transform: translateY(0); }
@@ -361,8 +377,8 @@ header h1 { margin-bottom: 4px; }
   width: 15px;
   height: 15px;
   border-radius: 50%;
-  border: 2px solid rgba(255, 255, 255, 0.4);
-  border-top-color: #fff;
+  border: 2px solid rgba(6, 6, 13, 0.35);
+  border-top-color: #06060d;
   animation: spin 0.7s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -371,7 +387,7 @@ header h1 { margin-bottom: 4px; }
   height: 3px;
   border-radius: 3px;
   margin-top: 22px;
-  background: #eceafb;
+  background: rgba(255, 255, 255, 0.08);
   overflow: hidden;
 }
 .access-gate-progress::after {
@@ -387,42 +403,12 @@ header h1 { margin-bottom: 4px; }
 .access-gate-footnote {
   margin: 18px 0 0;
   font-size: 11.5px;
-  color: #a5a5ba;
+  color: rgba(255, 255, 255, 0.35);
 }
 
-/* ---------- Access gate: illustration side panel ---------- */
-.access-gate-illustration-panel {
-  flex: 1 1 380px;
-  background: linear-gradient(160deg, #eef0fd 0%, #e4e6fb 100%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 40px 36px;
-}
-.login-illustration-svg { width: 100%; max-width: 320px; height: auto; margin-bottom: 8px; }
-.access-gate-illustration-panel h2 {
-  font-size: 17px;
-  font-weight: 700;
-  color: #232338;
-  margin: 8px 0 8px;
-}
-.access-gate-illustration-panel p {
-  font-size: 13px;
-  color: #6f6f88;
-  line-height: 1.5;
-  margin: 0;
-  max-width: 260px;
-}
-.access-gate-dots { display: flex; gap: 6px; margin-top: 22px; }
-.access-gate-dots span { width: 6px; height: 6px; border-radius: 3px; background: #cfcdf2; transition: all 0.2s ease; }
-.access-gate-dots span.active { width: 18px; background: #4f46e5; }
-
-@media (max-width: 760px) {
-  .access-gate-card { flex-direction: column; max-width: 420px; min-height: 0; }
-  .access-gate-illustration-panel { display: none; }
-  .access-gate-form-panel { padding: 40px 28px; }
+@media (max-width: 480px) {
+  .access-gate-card { max-width: 360px; }
+  .access-gate-form-panel { padding: 40px 26px; }
 }
 .examples { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0 24px; }
 .examples button { background: var(--surface); border: 1px solid var(--border-strong); color: var(--text-primary); border-radius: 20px; padding: 6px 14px; font-size: 13px; cursor: pointer; }
