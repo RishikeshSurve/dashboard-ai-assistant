@@ -55,7 +55,7 @@ function ThemeToggle({ theme, onChange }: { theme: Theme; onChange: (t: Theme) =
 export default function App() {
   const [unlocked, setUnlocked] = useState(() => Boolean(getToken()));
   const [prompt, setPrompt] = useState("");
-  const [history, setHistory] = useState<{ prompt: string; result?: QueryResult; error?: string }[]>([]);
+  const [history, setHistory] = useState<{ prompt: string; results?: QueryResult[]; error?: string }[]>([]);
   const [loading, setLoading] = useState(false);
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
   const [tab, setTab] = useState<"overview" | "chat">("overview");
@@ -85,8 +85,8 @@ export default function App() {
     setLoading(true);
     setPrompt("");
     try {
-      const result = await runQuery(text);
-      setHistory((h) => [...h, { prompt: text, result }]);
+      const results = await runQuery(text);
+      setHistory((h) => [...h, { prompt: text, results }]);
     } catch (err: any) {
       if (err instanceof AuthError) {
         handleAuthError(err.message);
@@ -107,7 +107,7 @@ export default function App() {
   }
 
   const lastTurn = history[history.length - 1];
-  const lastEmpty = Boolean(lastTurn?.result && lastTurn.result.row_count === 0);
+  const lastEmpty = Boolean(lastTurn?.results?.length && lastTurn.results.every((r) => r.row_count === 0));
   const lastError = lastTurn?.error ?? null;
 
   return (
@@ -155,7 +155,15 @@ export default function App() {
                 <div className="turn" key={i}>
                   <div className="user-prompt">{turn.prompt}</div>
                   {turn.error && <div className="error">{turn.error}</div>}
-                  {turn.result && <Dashboard result={turn.result} onAuthError={handleAuthError} />}
+                  {turn.results?.map((result, j) => (
+                    <div className="result-block" key={result.query_id}>
+                      {/* Only label sub-prompts when the ask was actually split into more than
+                          one block -- for the common single-block case this would just repeat
+                          the prompt already shown above. */}
+                      {turn.results!.length > 1 && <div className="result-block-caption">{result.prompt}</div>}
+                      <Dashboard result={result} onAuthError={handleAuthError} />
+                    </div>
+                  ))}
                 </div>
               ))}
               {loading && <div className="loading">Fetching data...</div>}

@@ -67,19 +67,32 @@ class QueryRequest(BaseModel):
     prompt: str
 
 
-class QueryResponse(BaseModel):
+class QueryBlock(BaseModel):
+    # Each block gets its own query_id/cache entry so CSV/Excel export works per-card even when
+    # one prompt produced several blocks.
     query_id: str
+    # The sub-prompt this block answers. Equal to the original prompt when it wasn't split;
+    # the frontend only shows this as a caption when a prompt produced more than one block.
+    prompt: str
     sql: str
     columns: list[str]
     rows: list[dict]
     row_count: int
-    # The single dimension results are grouped by (e.g. "platform", "date"), or None for a grand
+    # The dimension results are grouped by (e.g. "platform", "date"), or None for a grand
     # total. The frontend uses this to decide: None -> score cards, "date" -> line chart,
     # anything else -> bar chart.
     dimension: str | None = None
-    # Present only when the prompt asked for a period/YoY comparison on a totals (no group_by)
-    # query. Maps each metric to {current, previous, delta_pct}.
+    # Present only when the prompt asked for a period/YoY comparison. Maps each metric to
+    # {current, previous, delta_pct} (totals) or carries just "_range" (grouped comparisons,
+    # where the per-row _prev/_change columns carry the numbers instead).
     comparison: dict | None = None
+
+
+class QueryResponse(BaseModel):
+    # Almost every prompt resolves to exactly one block; a compound prompt ("spend by platform
+    # and top campaigns by revenue") resolves to more than one. Callers can always just iterate
+    # this list instead of branching on single vs. multi.
+    results: list[QueryBlock]
 
 
 @app.get("/health")
@@ -102,7 +115,20 @@ def schema(_session: dict = Depends(auth.require_session)):
 
 @app.post("/api/query", response_model=QueryResponse)
 def run_query(req: QueryRequest, _session: dict = Depends(auth.require_session)):
-    spec = nl_query.parse_prompt(req.prompt)
+    specs = nl_query.parse_prompt_multi(req.prompt)
+    sub_prompts = nl_query.split_compound_prompt(req.prompt)
+    # Best-effort pairing of each spec with the sub-prompt text that produced it, for the
+    # frontend caption -- falls back to the full prompt if the two lists don't line up (e.g.
+    # the LLM path split differently than the rule-based splitter would have).
+    prompts = sub_prompts if len(sub_prompts) == len(specs) else [req.prompt] * len(specs)
+    results = [_answer_spec(spec, prompt) for spec, prompt in zip(specs, prompts)]
+    return QueryResponse(results=results)
+
+
+def _answer_spec(spec: nl_query.QuerySpec, prompt: str) -> QueryBlock:
+    """Runs one QuerySpec end to end (query + optional comparison) and returns a QueryBlock.
+    This is the body of what used to be the whole /api/query handler, factored out so a
+    compound prompt can call it once per sub-question."""
     sql, params = nl_query.build_sql(spec)
 
     try:
@@ -196,8 +222,9 @@ def run_query(req: QueryRequest, _session: dict = Depends(auth.require_session))
     query_id = str(uuid.uuid4())
     _RESULT_CACHE[query_id] = rows
 
-    return QueryResponse(
+    return QueryBlock(
         query_id=query_id,
+        prompt=prompt,
         sql=sql,
         columns=cols,
         rows=rows,

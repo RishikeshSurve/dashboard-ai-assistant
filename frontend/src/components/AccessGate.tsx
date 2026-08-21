@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { verifyAccessCode } from "../api";
 import LoginBackground3D from "./LoginBackground3D";
 
@@ -21,14 +21,36 @@ export default function AccessGate({ onUnlocked }: { onUnlocked: () => void }) {
   const loading = status === "loading";
   const success = status === "success";
 
-  function handleMouseMove(e: React.MouseEvent) {
-    const gate = gateRef.current;
+  // The tilt effect used to call gate.getBoundingClientRect() on every native mousemove event
+  // and write straight to element styles synchronously -- getBoundingClientRect() forces a
+  // layout read, so with a mouse that reports at high frequency (and the WebGL background
+  // already rendering every frame) that turned into layout thrashing: the main thread was doing
+  // a forced reflow + style write dozens of times per animation frame, which is what made
+  // clicking the password field's show/hide toggle (or anywhere else) feel stuck until a
+  // refresh cleared the backlog. Fix: cache the rect (only recomputed on resize) and coalesce
+  // all the pointer moves within a frame into a single rAF-scheduled style update.
+  const rectRef = useRef<DOMRect | null>(null);
+  const pointerRef = useRef({ px: 0.5, py: 0.5 });
+  const rafRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    function updateRect() {
+      rectRef.current = gateRef.current?.getBoundingClientRect() ?? null;
+    }
+    updateRect();
+    window.addEventListener("resize", updateRect);
+    return () => {
+      window.removeEventListener("resize", updateRect);
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
+
+  function applyTilt() {
+    rafRef.current = null;
     const card = cardRef.current;
     const glare = glareRef.current;
-    if (!gate || !card || !glare) return;
-    const rect = gate.getBoundingClientRect();
-    const px = (e.clientX - rect.left) / rect.width;
-    const py = (e.clientY - rect.top) / rect.height;
+    if (!card || !glare) return;
+    const { px, py } = pointerRef.current;
     const rotateY = (px - 0.5) * 16;
     const rotateX = (0.5 - py) * 16;
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
@@ -36,7 +58,23 @@ export default function AccessGate({ onUnlocked }: { onUnlocked: () => void }) {
     glare.style.background = `radial-gradient(circle at ${px * 100}% ${py * 100}%, rgba(255,255,255,0.18), transparent 55%)`;
   }
 
+  function handleMouseMove(e: React.MouseEvent) {
+    const rect = rectRef.current;
+    if (!rect) return;
+    pointerRef.current = {
+      px: (e.clientX - rect.left) / rect.width,
+      py: (e.clientY - rect.top) / rect.height,
+    };
+    if (rafRef.current == null) {
+      rafRef.current = requestAnimationFrame(applyTilt);
+    }
+  }
+
   function handleMouseLeave() {
+    if (rafRef.current != null) {
+      cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
+    }
     const card = cardRef.current;
     const glare = glareRef.current;
     if (card) card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg)";

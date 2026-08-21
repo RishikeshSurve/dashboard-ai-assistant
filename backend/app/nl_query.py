@@ -347,6 +347,10 @@ def _llm_parse(prompt: str) -> QuerySpec:
     )
     raw = resp.content[0].text
     data: dict[str, Any] = json.loads(raw)
+    return _spec_from_dict(data)
+
+
+def _spec_from_dict(data: dict[str, Any]) -> QuerySpec:
     date_from, date_to = _default_date_range(30)
     return QuerySpec(
         metrics=data.get("metrics") or ["spend", "clicks", "conversions"],
@@ -362,6 +366,70 @@ def _llm_parse(prompt: str) -> QuerySpec:
     )
 
 
+_MULTI_SYSTEM_SUFFIX = (
+    "\n\nThis request may contain MORE THAN ONE distinct ask -- e.g. \"spend by platform and "
+    "top campaigns by revenue\" is two separate breakdowns, not one. Respond with a JSON ARRAY "
+    "of QuerySpec objects, one per distinct ask, in the order the user asked them. Almost all "
+    "prompts have exactly one ask -- return a one-item array for those; only split into more "
+    "when the user is clearly requesting multiple different breakdowns/rankings in the same "
+    "message. Do NOT split a prompt that just lists multiple metrics against one breakdown "
+    "(e.g. \"spend and revenue by platform\" is ONE ask with two metrics -- a single-item "
+    "array). Cap at 4 items even if more asks are present -- keep only the first 4."
+)
+
+
+def _llm_parse_multi(prompt: str) -> list[QuerySpec]:
+    """Same as _llm_parse, but lets the model split a compound prompt into multiple QuerySpecs."""
+    import anthropic
+
+    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
+    system = (
+        "You translate a marketing analyst's request into JSON QuerySpec(s) for a fixed "
+        "semantic layer. Only use fields/values defined below. Respond with JSON only.\n\n"
+        f"{sl.schema_description()}\n\n"
+        "QuerySpec JSON shape: {\"metrics\": [...], \"group_by\": [...], "
+        "\"platforms\": [...] | null, \"campaign_contains\": str | null, "
+        "\"date_from\": \"YYYY-MM-DD\", \"date_to\": \"YYYY-MM-DD\", \"limit\": int, "
+        "\"compare\": \"previous_period\" | \"yoy\" | null, "
+        "\"sort_by\": metric | null, \"sort_desc\": bool}\n\n"
+        "campaign_contains is ONLY for when the user names a specific campaign (e.g. "
+        "\"the Summer Sale campaign\"). NEVER put descriptive words like \"best performing\" "
+        "or date phrases in it -- a filter that matches no campaign names returns zero rows. "
+        "For ranking requests (\"best/top/worst performing campaigns\", \"top 5 platforms\"), "
+        "use group_by with the dimension, sort_by with the most relevant metric (revenue "
+        "unless the user emphasizes another), sort_desc true for best/top (false for worst), "
+        "and limit N if they gave a number.\n\n"
+        "compare may be combined with a non-empty group_by: each row then gains previous-"
+        "period and change columns. For \"biggest gainers/decliners/movers\" requests, use "
+        "group_by [\"campaign\"], compare \"previous_period\", and the special sort key "
+        "sort_by \"delta:revenue\" (sort_desc false for decliners) -- it sorts rows by the "
+        "change in revenue vs the previous period.\n\n"
+        "Leave group_by as an empty array [] when the user just wants overall totals with no "
+        "breakdown (e.g. \"what's my total spend\") -- this renders as score cards. Only include "
+        "a dimension in group_by when the user explicitly asks to break results out by it "
+        "(e.g. \"by platform\", \"by campaign\", \"trend\"/\"daily\" implies group_by ['date']). "
+        "Set compare to 'previous_period' when the user asks to compare against the prior "
+        "period of equal length (e.g. \"vs last period\", \"week over week\"), or 'yoy' when "
+        "they ask for a year-over-year comparison. Otherwise leave compare null.\n\n"
+        "Be precise about date ranges: a specific month like \"Jan 2026\" or \"January 2026\" "
+        "means date_from/date_to spanning ONLY that calendar month (e.g. 2026-01-01 to "
+        "2026-01-31), never the whole year. \"in 2026\" or \"this year\" with no month "
+        "mentioned means the full calendar year. Don't widen a range beyond what the user "
+        "actually asked for." + _MULTI_SYSTEM_SUFFIX
+    )
+    resp = client.messages.create(
+        model="claude-sonnet-5",
+        max_tokens=1200,
+        system=system,
+        messages=[{"role": "user", "content": prompt}],
+    )
+    raw = resp.content[0].text
+    data = json.loads(raw)
+    items = data if isinstance(data, list) else [data]
+    specs = [_spec_from_dict(d) for d in items[:MAX_SUBQUERIES]]
+    return specs or [QuerySpec()]
+
+
 def parse_prompt(prompt: str) -> QuerySpec:
     if ANTHROPIC_API_KEY:
         try:
@@ -369,6 +437,56 @@ def parse_prompt(prompt: str) -> QuerySpec:
         except Exception:
             pass  # fall back rather than hard-fail the request
     return _rule_based_parse(prompt)
+
+
+# Maximum sub-questions we'll split one prompt into. Keeps a rambling prompt from turning
+# into a wall of cards, and bounds how many extra DB round trips one submission can trigger.
+MAX_SUBQUERIES = 4
+
+_EXPLICIT_SEPARATORS = re.compile(r"\s*(?:;|,?\s+also\s+show\s+|,?\s+also\s+|,?\s+as well as\s+)\s*", re.IGNORECASE)
+
+
+def split_compound_prompt(prompt: str) -> list[str]:
+    """Splits a prompt into independently-answerable sub-prompts when it contains more than one
+    distinct ask, e.g. "spend by platform and top campaigns by revenue" -> two sub-prompts.
+    Returns [prompt] unchanged for the common single-ask case (including "spend and revenue by
+    platform", where "and" just joins two metrics against one breakdown) -- that keeps the
+    normal path exactly as fast and simple as before.
+
+    Two signals, checked in order:
+      1. Explicit separators (";", "also", "as well as") are unambiguous -- always split on them.
+      2. An implicit "and" joining two clauses that each independently resolve to their own
+         grouping/ranking (via the rule-based parser) is treated as two asks. Metrics-only asks
+         ("spend and revenue") don't have a grouping of their own, so they're left alone.
+    """
+    explicit_parts = [p.strip() for p in _EXPLICIT_SEPARATORS.split(prompt) if p.strip()]
+    if len(explicit_parts) > 1:
+        return explicit_parts[:MAX_SUBQUERIES]
+
+    text = prompt.strip()
+    for m in re.finditer(r"\band\b", text, re.IGNORECASE):
+        left, right = text[: m.start()].strip(" ,"), text[m.end() :].strip(" ,")
+        if not left or not right:
+            continue
+        left_spec, right_spec = _rule_based_parse(left), _rule_based_parse(right)
+        left_has_ask = bool(left_spec.group_by) or left_spec.sort_by is not None
+        right_has_ask = bool(right_spec.group_by) or right_spec.sort_by is not None
+        if left_has_ask and right_has_ask and left_spec.group_by != right_spec.group_by:
+            return [left, right]
+
+    return [prompt]
+
+
+def parse_prompt_multi(prompt: str) -> list[QuerySpec]:
+    """Entry point for /api/query: splits a prompt into one or more QuerySpecs. The common case
+    (a single ask) always returns a one-item list, so callers can treat every response uniformly
+    as "one or more result blocks" instead of branching on single vs. multi."""
+    if ANTHROPIC_API_KEY:
+        try:
+            return _llm_parse_multi(prompt)
+        except Exception:
+            pass  # fall back rather than hard-fail the request
+    return [_rule_based_parse(p) for p in split_compound_prompt(prompt)]
 
 
 def build_sql(spec: QuerySpec) -> tuple[str, list[Any]]:

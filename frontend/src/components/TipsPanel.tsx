@@ -22,6 +22,11 @@ const COMPARISON_EXAMPLES: { label: string; hint: string }[] = [
 
 const GROUPING_EXAMPLES = ["by platform", "by campaign", "trend over time (daily)", "top 5 campaigns by revenue", "biggest gainers"];
 
+// Ask AI can split one prompt into several result cards when it recognizes more than one
+// distinct breakdown -- this example demonstrates that rather than routing through onSuggest's
+// single-metric template like the grouping examples above.
+const MULTI_OUTPUT_EXAMPLE = "spend by platform and top 5 campaigns by revenue, last 30 days";
+
 /** Right-side panel with example prompt phrasing, always visible, plus a contextual callout
  *  when the last query came back empty or errored -- helps people self-correct an inaccurate
  *  prompt instead of guessing why nothing showed up. */
@@ -93,6 +98,18 @@ export default function TipsPanel({
               </button>
             </li>
           ))}
+        </ul>
+      </div>
+
+      <div className="tips-section">
+        <h4>Multiple breakdowns at once</h4>
+        <p className="tips-hint">Ask two distinct questions in one prompt and each comes back as its own card.</p>
+        <ul className="tips-list">
+          <li>
+            <button type="button" onClick={() => onSuggest(MULTI_OUTPUT_EXAMPLE)}>
+              {MULTI_OUTPUT_EXAMPLE}
+            </button>
+          </li>
         </ul>
       </div>
 

@@ -59,8 +59,14 @@ export interface ComparisonEntry {
   delta_pct: number | null;
 }
 
+// One result block -- almost every prompt resolves to exactly one, but a compound prompt
+// ("spend by platform and top campaigns by revenue") resolves to several, each rendered as
+// its own card.
 export interface QueryResult {
   query_id: string;
+  // The sub-prompt this block answers. Equal to the prompt that was submitted when it wasn't
+  // split into multiple asks.
+  prompt: string;
   sql: string;
   columns: string[];
   rows: Record<string, string | number>[];
@@ -73,7 +79,7 @@ export interface QueryResult {
   comparison: (Record<string, ComparisonEntry> & { _range?: { previous_from: string; previous_to: string; mode: string } }) | null;
 }
 
-export async function runQuery(prompt: string): Promise<QueryResult> {
+export async function runQuery(prompt: string): Promise<QueryResult[]> {
   const res = await authFetch("/api/query", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
@@ -83,7 +89,8 @@ export async function runQuery(prompt: string): Promise<QueryResult> {
     const body = await res.json().catch(() => ({}));
     throw new Error(body.detail ?? `Request failed (${res.status})`);
   }
-  return res.json();
+  const data = await res.json();
+  return data.results as QueryResult[];
 }
 
 /** Downloads the export as a file. Auth requires a header, so this can't be a plain <a href> —
