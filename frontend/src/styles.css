@@ -210,6 +210,11 @@ header h1 { margin-bottom: 4px; }
   width: 100%;
   height: 100%;
   z-index: 0;
+  /* Slight tilt + scale-up so the panel collage reads as a tilted 3D scene (like looking down
+     at an angled floor of screens) instead of a flat frontal grid -- a cheap, static CSS
+     transform (GPU-composited, no per-frame JS) so it can't reintroduce the old perf issue. */
+  transform: perspective(1400px) rotateX(7deg) rotateZ(-1.4deg) scale(1.14);
+  transform-origin: 50% 45%;
 }
 
 .access-gate-card {

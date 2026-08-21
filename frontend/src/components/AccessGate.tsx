@@ -53,16 +53,45 @@ function HologramBackground() {
       <circle cx="1460" cy="140" r="200" fill="url(#glowPink)" />
 
       {/* Faint connector lines threading the panels together, "network" feel */}
-      <g stroke="rgba(255,255,255,0.08)" strokeWidth="1.2">
+      <g stroke="rgba(255,255,255,0.1)" strokeWidth="1.2">
         <line x1="400" y1="175" x2="760" y2="230" />
         <line x1="1180" y1="210" x2="820" y2="260" />
         <line x1="270" y1="560" x2="500" y2="330" />
         <line x1="1140" y1="600" x2="900" y2="380" />
+        <line x1="700" y1="60" x2="820" y2="150" />
+        <line x1="640" y1="620" x2="760" y2="540" />
+      </g>
+
+      {/* Panel: small readout strip (top-center) -- fills the gap between the two corner
+          panels so the collage reads as dense as the reference mood board. */}
+      <g transform="translate(660,40) rotate(-2)">
+        <rect width="260" height="96" rx="14" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+        <circle cx="26" cy="26" r="6" fill="#facc15" />
+        <rect x="42" y="20" width="80" height="7" rx="3.5" fill="rgba(255,255,255,0.4)" />
+        <rect x="42" y="32" width="50" height="6" rx="3" fill="rgba(255,255,255,0.22)" />
+        <rect x="16" y="56" width="34" height="24" rx="4" fill="#22d3ee" opacity="0.85" />
+        <rect x="56" y="48" width="34" height="32" rx="4" fill="#8b7ff9" opacity="0.85" />
+        <rect x="96" y="40" width="34" height="40" rx="4" fill="#f472b6" opacity="0.85" />
+        <rect x="136" y="52" width="34" height="28" rx="4" fill="#facc15" opacity="0.85" />
+        <rect x="176" y="34" width="34" height="46" rx="4" fill="#10b981" opacity="0.85" />
+        <rect x="216" y="58" width="30" height="22" rx="4" fill="#22d3ee" opacity="0.6" />
+      </g>
+
+      {/* Panel: mini donut readout (center, between the two rows) */}
+      <g transform="translate(700,610) rotate(2)">
+        <rect width="220" height="150" rx="14" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
+        <circle cx="70" cy="75" r="46" fill="none" stroke="rgba(255,255,255,0.1)" strokeWidth="13" />
+        <circle cx="70" cy="75" r="46" fill="none" stroke="#f472b6" strokeWidth="13" strokeDasharray="100 189" strokeLinecap="round" />
+        <circle cx="70" cy="75" r="46" fill="none" stroke="#22d3ee" strokeWidth="13" strokeDasharray="55 189" strokeDashoffset="-100" strokeLinecap="round" />
+        <rect x="140" y="40" width="60" height="9" rx="4.5" fill="rgba(255,255,255,0.4)" />
+        <rect x="140" y="58" width="42" height="7" rx="3.5" fill="rgba(255,255,255,0.2)" />
+        <rect x="140" y="92" width="66" height="9" rx="4.5" fill="rgba(255,255,255,0.4)" />
+        <rect x="140" y="110" width="36" height="7" rx="3.5" fill="rgba(255,255,255,0.2)" />
       </g>
 
       {/* Panel: bar chart (top-left) */}
-      <g transform="translate(60,60)">
-        <rect width="340" height="210" rx="16" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.09)" strokeWidth="1.5" />
+      <g transform="translate(60,60) rotate(-1.5)">
+        <rect width="340" height="210" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
         <circle cx="24" cy="24" r="5" fill="#ef4444" opacity="0.8" />
         <circle cx="42" cy="24" r="5" fill="#f59e0b" opacity="0.8" />
         <circle cx="60" cy="24" r="5" fill="#10b981" opacity="0.8" />
@@ -77,8 +106,8 @@ function HologramBackground() {
       </g>
 
       {/* Panel: donut + trend (top-right) */}
-      <g transform="translate(1180,80)">
-        <rect width="360" height="230" rx="16" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.09)" strokeWidth="1.5" />
+      <g transform="translate(1180,80) rotate(1.5)">
+        <rect width="360" height="230" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
         <circle cx="95" cy="115" r="58" fill="none" stroke="rgba(255,255,255,0.08)" strokeWidth="16" />
         <circle cx="95" cy="115" r="58" fill="none" stroke="#22d3ee" strokeWidth="16" strokeDasharray="130 234" strokeLinecap="round" />
         <circle cx="95" cy="115" r="58" fill="none" stroke="#8b7ff9" strokeWidth="16" strokeDasharray="70 234" strokeDashoffset="-130" strokeLinecap="round" />
@@ -88,8 +117,8 @@ function HologramBackground() {
       </g>
 
       {/* Panel: dotted world map with pulsing nodes (bottom-left) */}
-      <g transform="translate(90,540)">
-        <rect width="400" height="240" rx="16" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.09)" strokeWidth="1.5" />
+      <g transform="translate(90,540) rotate(-1.2)">
+        <rect width="400" height="240" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
         <g fill="rgba(255,255,255,0.22)">
           <circle cx="40" cy="60" r="2.4" /><circle cx="58" cy="72" r="2.4" /><circle cx="76" cy="58" r="2.4" />
           <circle cx="94" cy="70" r="2.4" /><circle cx="112" cy="55" r="2.4" /><circle cx="130" cy="68" r="2.4" />
@@ -113,8 +142,8 @@ function HologramBackground() {
       </g>
 
       {/* Panel: readouts + sparkline (bottom-right) */}
-      <g transform="translate(1140,520)">
-        <rect width="380" height="260" rx="16" fill="rgba(15,20,40,0.55)" stroke="rgba(255,255,255,0.09)" strokeWidth="1.5" />
+      <g transform="translate(1140,520) rotate(1.8)">
+        <rect width="380" height="260" rx="16" fill="rgba(15,20,40,0.6)" stroke="rgba(255,255,255,0.12)" strokeWidth="1.5" />
         <rect x="24" y="24" width="150" height="46" rx="10" fill="rgba(34,211,238,0.12)" stroke="rgba(34,211,238,0.35)" />
         <circle cx="46" cy="47" r="6" fill="#22d3ee" />
         <rect x="64" y="38" width="86" height="8" rx="4" fill="rgba(255,255,255,0.35)" />
